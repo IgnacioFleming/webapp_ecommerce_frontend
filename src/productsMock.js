@@ -1,0 +1,98 @@
+export const products = [
+  {
+    id: 1,
+    title: "Laptop Dell Inspiron 15",
+    price: 35000,
+    stock: 5,
+    description:
+      "Laptop con procesador Intel Core i5, 8GB de RAM y 256GB de almacenamiento SSD",
+    category: "computacion",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682119671/D_NQ_NP_977568-MLA45597561768_042021-O_e0atif.webp",
+  },
+  {
+    id: 2,
+    title: "Escritorio de oficina",
+    price: 8000,
+    stock: 3,
+    description:
+      "Escritorio de madera resistente con espacio para almacenamiento",
+    category: "muebles",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682120121/D_NQ_NP_865314-MLA42037138058_062020-O_olc68a.webp",
+  },
+  {
+    id: 3,
+    title: "Sistema de Monitoreo Inalámbrico",
+    price: 15000,
+    stock: 2,
+    description: "Sistema de monitoreo inalámbrico para oficinas y negocios",
+    category: "sistemas-de-monitoreo",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682120232/D_NQ_NP_700189-MLA32525044974_102019-O_alkz9s.webp",
+  },
+  {
+    id: 4,
+    title: "Silla ergonómica",
+    price: 5000,
+    stock: 10,
+    description: "Silla de oficina ergonómica con soporte lumbar ajustable",
+    category: "muebles",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682119808/D_NQ_NP_630166-MLA45787954825_052021-O_d1ijnm.webp",
+  },
+  {
+    id: 5,
+    title: "Monitor LG 27 pulgadas",
+    price: 12000,
+    stock: 7,
+    description:
+      "Monitor de 27 pulgadas con resolución Full HD y tecnología IPS para una calidad de imagen superior",
+    category: "computacion",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682119850/D_NQ_NP_837450-MLA45212599279_032021-O_zfsx3q.webp",
+  },
+  {
+    id: 6,
+    title: "Mesa de conferencias",
+    price: 10000,
+    stock: 2,
+    description: "Mesa grande de conferencias con capacidad para 10 personas",
+    category: "muebles",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682120371/HLB1cSt8UhjaK1RjSZFAq6zdLFXaL.jpg_960x960_txtdsi.jpg",
+  },
+  {
+    id: 7,
+    title: "Impresora multifunción",
+    price: 6000,
+    stock: 8,
+    description:
+      "Impresora multifunción con impresión a color y escaneo de alta calidad",
+    category: "equipamiento",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682119936/D_NQ_NP_894651-MLA43332981311_092020-O_iguxl2.webp",
+  },
+  {
+    id: 8,
+    title: "Estantería de almacenamiento",
+    price: 5000,
+    stock: 4,
+    description:
+      "Estantería de metal resistente con 4 niveles de almacenamiento",
+    category: "muebles",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682119975/D_NQ_NP_950496-MLA50013269505_052022-O_ikmrm0.webp",
+  },
+  {
+    id: 9,
+    title: "Cámara de seguridad",
+    price: 4500,
+    stock: 6,
+    description: "Cámara de seguridad con tecnología de monitoreo 24/7",
+    category: "sistemas-de-monitoreo",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682119783/D_NQ_NP_676239-MLA51466916902_092022-O_n7fnoj.webp",
+  },
+  {
+    id: 10,
+    title: "Escritorio ejecutivo",
+    price: 12000,
+    stock: 2,
+    description:
+      "Escritorio ejecutivo con superficie de madera y diseño moderno",
+    category: "muebles",
+    img: "https://res.cloudinary.com/dah7yxmc5/image/upload/v1682120512/D_NQ_NP_910303-MLA50801150108_072022-O_liu4qq.webp",
+  },
+];
