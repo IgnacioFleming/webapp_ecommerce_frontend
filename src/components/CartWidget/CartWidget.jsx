@@ -12,7 +12,6 @@ const boxStyle = {
   cursor: "pointer",
 };
 const counterStyle = {
-  height: "100%",
   border: "solid 1px white",
   borderRadius: "50%",
   position: "relative",

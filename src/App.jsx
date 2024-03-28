@@ -1,4 +1,3 @@
-import logo from "./logo.svg";
 import "./App.css";
 import Navbar from "./components/Nabvar/Navbar.jsx";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
@@ -9,6 +8,7 @@ import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import CartContainer from "./components/Cart/CartContainer";
 import CartContextProvider from "./context/CartContext";
 import CheckoutContainer from "./components/Checkout/CheckoutContainer";
+import Login from "./components/Login/Login.jsx";
 
 function App() {
   return (
@@ -24,6 +24,7 @@ function App() {
                 <Route path="/cart" element={<CartContainer />} />
                 <Route path="/checkout" element={<CheckoutContainer />} />
               </Route>
+              <Route path="/login" element={<Login />}></Route>
               <Route
                 path="*"
                 element={
