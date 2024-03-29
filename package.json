@@ -1,7 +1,7 @@
 {
   "name": "webapp-ecommerce-front",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -25,7 +25,8 @@
     "react-icons": "^4.8.0",
     "react-loader-spinner": "^5.3.4",
     "react-router-dom": "^6.10.0",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
+    "react-social-login-buttons": "^4.1.0",
     "sweetalert2": "^11.6.13",
     "web-vitals": "^2.1.4",
     "yup": "^1.1.1"
