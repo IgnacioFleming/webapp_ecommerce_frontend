@@ -17,13 +17,14 @@ const formContainer = {
 const thirdPartyAuthButtonStyle = {
   width: "220px",
   borderRadius: 45,
+  margin: 0,
 };
 
 const loginButtonStyle = { width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 2, alignSelf: "center" };
 
 const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" };
 
-const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%" };
+const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%", gap: 2 };
 
 const Login = () => {
   return (
@@ -56,7 +57,7 @@ const Login = () => {
               </form>
               <Box sx={dividerStyle}>
                 <div className={styles.line}></div>
-                <Typography variant="subtitle2" color="initial" fontSize={15} mt={10} mb={10}>
+                <Typography variant="subtitle2" color="initial" fontSize={15} mt={5} mb={5}>
                   OR
                 </Typography>
                 <div className={styles.line}></div>
