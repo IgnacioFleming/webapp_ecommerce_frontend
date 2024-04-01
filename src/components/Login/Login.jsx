@@ -26,7 +26,7 @@ const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyCon
 
 const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%", gap: 2 };
 
-const Login = () => {
+const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => {
   return (
     <>
       <div className={styles.container}>
@@ -43,10 +43,10 @@ const Login = () => {
               <Typography variant="subtitle1" color="initial" mb={6}>
                 Wellcome Back. Please login to your account.
               </Typography>
-              <form id="login" className={styles.form}>
-                <TextField id="email" label="Email" variant="outlined" fullWidth />
+              <form id="login" className={styles.form} onSubmit={handleSubmit}>
+                <TextField name="email" label="Email" variant="outlined" fullWidth onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
                 <Box>
-                  <TextField id="password" label="Password" variant="outlined" type="password" fullWidth />
+                  <TextField name="password" label="Password" variant="outlined" type="password" fullWidth onChange={handleChange} helperText={errors.password} error={errors.password && true} value={values.password} />
                   <Typography variant="body1" color="initial">
                     Forgot your password?
                   </Typography>

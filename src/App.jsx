@@ -8,7 +8,7 @@ import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import CartContainer from "./components/Cart/CartContainer";
 import CartContextProvider from "./context/CartContext";
 import CheckoutContainer from "./components/Checkout/CheckoutContainer";
-import Login from "./components/Login/Login.jsx";
+import LoginContainer from "./components/Login/LoginContainer.jsx";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
                 <Route path="/cart" element={<CartContainer />} />
                 <Route path="/checkout" element={<CheckoutContainer />} />
               </Route>
-              <Route path="/login" element={<Login />}></Route>
+              <Route path="/login" element={<LoginContainer />}></Route>
               <Route
                 path="*"
                 element={
