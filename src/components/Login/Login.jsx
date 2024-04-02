@@ -2,6 +2,7 @@ import styles from "./Login.module.css";
 import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
 import { Box, Button, Typography } from "@mui/material";
+import { FacebookLoginButton } from "react-social-login-buttons";
 
 const formContainer = {
   display: "flex",
@@ -14,7 +15,6 @@ const formContainer = {
 const Login = () => {
   return (
     <>
-      <script src="https://accounts.google.com/gsi/client" async></script>
       <div className={styles.container}>
         <Grid container sx={{ height: "100%" }}>
           <Grid md sx={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}>
@@ -48,8 +48,7 @@ const Login = () => {
                 </Typography>
                 <div className={styles.line}></div>
               </Box>
-              <div className="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left"></div>
-              <Typography variant="h6" color="initial"></Typography>
+              <FacebookLoginButton />
               <Typography variant="h6" color="initial">
                 Sign In with Github
               </Typography>
