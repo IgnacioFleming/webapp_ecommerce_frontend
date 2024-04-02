@@ -13,45 +13,51 @@ const formContainer = {
 
 const Login = () => {
   return (
-    <div className={styles.container}>
-      <Grid container sx={{ height: "100%" }}>
-        <Grid md sx={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}>
-          <img className={styles.mainImg} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1711495777/habitacion-vacia-sillas-escritorios_23-2149008873_ydrfj5.jpg" alt="background-image" />
-        </Grid>
-        <Grid md sx={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}>
-          <Box sx={formContainer}>
-            <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
-            <Typography variant="h2" color="initial" mb={1} fontWeight="semibold">
-              Login
-            </Typography>
-            <Typography variant="subtitle1" color="initial" mb={6}>
-              Wellcome Back. Please login to your account.
-            </Typography>
-            <form id="login" className={styles.form}>
-              <TextField id="email" label="Email" variant="outlined" fullWidth />
-              <TextField id="password" label="Password" variant="outlined" type="password" fullWidth />
-              <Typography variant="body1" color="initial">
-                Forgot my password.
+    <>
+      <script src="https://accounts.google.com/gsi/client" async></script>
+      <div className={styles.container}>
+        <Grid container sx={{ height: "100%" }}>
+          <Grid md sx={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}>
+            <img className={styles.mainImg} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1711660908/pexels-elvis-2528118_1_brmtfw.jpg" alt="Main image" />
+          </Grid>
+          <Grid md sx={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}>
+            <Box sx={formContainer}>
+              <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
+              <Typography variant="h2" color="initial" mb={2} fontWeight="semibold">
+                Login
               </Typography>
-              <Button type="submit" variant="contained">
-                SIGN IN
-              </Button>
-            </form>
-
-            <Typography variant="subtitle2" color="initial" fontSize={15}>
-              OR
-            </Typography>
-
-            <Typography variant="h6" color="initial">
-              Sign In with Google
-            </Typography>
-            <Typography variant="h6" color="initial">
-              Sign In with Github
-            </Typography>
-          </Box>
+              <Typography variant="subtitle1" color="initial" mb={6}>
+                Wellcome Back. Please login to your account.
+              </Typography>
+              <form id="login" className={styles.form}>
+                <TextField id="email" label="Email" variant="outlined" fullWidth />
+                <Box>
+                  <TextField id="password" label="Password" variant="outlined" type="password" fullWidth />
+                  <Typography variant="body1" color="initial">
+                    Forgot your password?
+                  </Typography>
+                </Box>
+                <Button type="submit" variant="contained" sx={{ width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 90, marginTop: 2 }}>
+                  SIGN IN
+                </Button>
+              </form>
+              <Box sx={{ display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" }}>
+                <div className={styles.line}></div>
+                <Typography variant="subtitle2" color="initial" fontSize={15} mt={10} mb={10}>
+                  OR
+                </Typography>
+                <div className={styles.line}></div>
+              </Box>
+              <div className="g_id_signin" data-type="standard" data-size="large" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left"></div>
+              <Typography variant="h6" color="initial"></Typography>
+              <Typography variant="h6" color="initial">
+                Sign In with Github
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
-    </div>
+      </div>
+    </>
   );
 };
 
