@@ -1,0 +1,42 @@
+import { useFormik } from "formik";
+import Login from "./Login";
+import * as Yup from "yup";
+import { useEffect, useState } from "react";
+
+function LoginContainer() {
+  const [submitted, setSubmitted] = useState(false);
+  const loginUser = async ({ email, password }) => {
+    fetch("http://localhost:8080/api/sessions/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
+  };
+  const { handleChange, handleSubmit, values, errors } = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+    },
+    onSubmit: loginUser,
+    validationSchema: Yup.object().shape({
+      email: Yup.string().required("Email field is required").email("This field must be an email"),
+      password: Yup.string().required("Password fiel is required"),
+    }),
+    validateOnChange: submitted,
+  });
+  useEffect(() => {
+    if (Object.keys(errors).length !== 0) {
+      setSubmitted(true);
+    }
+  }, [errors]);
+  return (
+    <div>
+      <Login handleChange={handleChange} handleSubmit={handleSubmit} values={values} errors={errors} />
+    </div>
+  );
+}
+
+export default LoginContainer;
