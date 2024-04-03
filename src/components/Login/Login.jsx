@@ -2,7 +2,9 @@ import styles from "./Login.module.css";
 import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
 import { Box, Button, Typography } from "@mui/material";
-import { FacebookLoginButton } from "react-social-login-buttons";
+import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+
+const gridStyle = { display: "flex", alignItems: "center", justifyContent: "center" };
 
 const formContainer = {
   display: "flex",
@@ -12,15 +14,26 @@ const formContainer = {
   justifyContent: "center",
 };
 
+const thirdPartyAuthButtonStyle = {
+  width: "220px",
+  borderRadius: 45,
+};
+
+const loginButtonStyle = { width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 2, alignSelf: "center" };
+
+const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" };
+
+const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%" };
+
 const Login = () => {
   return (
     <>
       <div className={styles.container}>
-        <Grid container sx={{ height: "100%" }}>
-          <Grid md sx={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}>
+        <Grid container>
+          <Grid md sx={gridStyle}>
             <img className={styles.mainImg} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1711660908/pexels-elvis-2528118_1_brmtfw.jpg" alt="Main image" />
           </Grid>
-          <Grid md sx={{ display: "flex", alignItems: "stretch", justifyContent: "center" }}>
+          <Grid md sx={gridStyle}>
             <Box sx={formContainer}>
               <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
               <Typography variant="h2" color="initial" mb={2} fontWeight="semibold">
@@ -37,21 +50,21 @@ const Login = () => {
                     Forgot your password?
                   </Typography>
                 </Box>
-                <Button type="submit" variant="contained" sx={{ width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 90, marginTop: 2 }}>
+                <Button type="submit" variant="contained" sx={loginButtonStyle}>
                   SIGN IN
                 </Button>
               </form>
-              <Box sx={{ display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" }}>
+              <Box sx={dividerStyle}>
                 <div className={styles.line}></div>
                 <Typography variant="subtitle2" color="initial" fontSize={15} mt={10} mb={10}>
                   OR
                 </Typography>
                 <div className={styles.line}></div>
               </Box>
-              <FacebookLoginButton />
-              <Typography variant="h6" color="initial">
-                Sign In with Github
-              </Typography>
+              <Box sx={thirdPartyAuthButtonContainer}>
+                <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
+                <GithubLoginButton style={thirdPartyAuthButtonStyle} />
+              </Box>
             </Box>
           </Grid>
         </Grid>
