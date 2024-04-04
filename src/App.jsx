@@ -10,6 +10,7 @@ import CartContextProvider from "./context/CartContext";
 import CheckoutContainer from "./components/Checkout/CheckoutContainer";
 import LoginContainer from "./components/Login/LoginContainer.jsx";
 import Current from "./components/Current/current.jsx";
+import RegisterContainer from "./components/Register/RegisterContainer.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
                 <Route path="/checkout" element={<CheckoutContainer />} />
               </Route>
               <Route path="/login" element={<LoginContainer />}></Route>
+              <Route path="/register" element={<RegisterContainer />}></Route>
               <Route path="/current" element={<Current />}></Route>
               <Route
                 path="*"
