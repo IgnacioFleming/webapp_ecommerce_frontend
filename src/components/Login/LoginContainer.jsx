@@ -9,6 +9,7 @@ function LoginContainer() {
     fetch("http://localhost:8080/api/sessions/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
+      credentials: "include",
       body: JSON.stringify({ email, password }),
     })
       .then((res) => res.json())
