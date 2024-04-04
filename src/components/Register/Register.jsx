@@ -1,12 +1,24 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import styles from "./Register.module.css";
 import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+import { Link } from "react-router-dom";
+
+const container = {
+  height: "100vh",
+  width: "100%",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+};
 const formContainer = {
   display: "flex",
   flexDirection: "column",
-  width: "80%",
-  height: "100%",
+  width: "40%",
+  height: "80%",
   justifyContent: "center",
+  alignItems: "center",
+  backgroundColor: "white",
+  borderRadius: "25px",
 };
 
 const thirdPartyAuthButtonStyle = {
@@ -14,48 +26,62 @@ const thirdPartyAuthButtonStyle = {
   borderRadius: 45,
   margin: 0,
 };
-const loginButtonStyle = { width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 2, alignSelf: "center" };
+const RegisterButtonStyle = { width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 2, alignSelf: "center" };
 
 const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" };
 
-const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%", gap: 2 };
+const thirdPartyAuthButtonContainer = { display: "flex", justifyContent: "center", gap: 3 };
+
+const shortInputBox = { display: "flex", gap: 2, width: "100%" };
 
 function Register({ handleChange, handleSubmit, errors, values }) {
   return (
-    <div className={styles.container}>
-      <Box sx={formContainer}>
-        <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
-        <Typography variant="h2" color="initial" mb={2} fontWeight="semibold">
-          Login
-        </Typography>
-        <Typography variant="subtitle1" color="initial" mb={6}>
-          Wellcome Back. Please login to your account.
-        </Typography>
-        <form id="login" className={styles.form} onSubmit={handleSubmit}>
-          <TextField name="email" label="Email" variant="outlined" fullWidth onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
+    <>
+      <div className={styles.background}></div>
+      <Box sx={container}>
+        <Box sx={formContainer}>
+          <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
+          <Typography variant="h2" color="initial" mb={2} fontWeight="bold">
+            Create Account
+          </Typography>
+          <Typography variant="subtitle1" color="initial" mb={2}>
+            Please Register to your account.
+          </Typography>
+          <form id="Register" className={styles.form} onSubmit={handleSubmit}>
+            <Box sx={shortInputBox}>
+              <TextField className={styles.shortInput} name="first-name" label="First Name" variant="outlined" onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
+              <TextField className={styles.shortInput} name="last-name" label="Last Name" variant="outlined" onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
+            </Box>
+            <TextField fullWidth name="email" label="Email" variant="outlined" onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
+            <Box sx={shortInputBox}>
+              <TextField fullWidth name="password" label="Password" variant="outlined" type="password" onChange={handleChange} helperText={errors.password} error={errors.password && true} value={values.password} />
+
+              <TextField fullWidth name="confirm-password" label="Confirm Password" variant="outlined" type="password" onChange={handleChange} helperText={errors.password} error={errors.password && true} value={values.password} />
+            </Box>
+
+            <Button type="submit" variant="contained" sx={RegisterButtonStyle}>
+              SIGN UP
+            </Button>
+          </form>
+          <Box sx={dividerStyle}>
+            <div className={styles.line}></div>
+            <Typography variant="subtitle2" color="initial" fontSize={15} mt={2} mb={2}>
+              OR
+            </Typography>
+            <div className={styles.line}></div>
+          </Box>
+          <Box sx={thirdPartyAuthButtonContainer}>
+            <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
+            <GithubLoginButton style={thirdPartyAuthButtonStyle} />
+          </Box>
           <Box>
-            <TextField name="password" label="Password" variant="outlined" type="password" fullWidth onChange={handleChange} helperText={errors.password} error={errors.password && true} value={values.password} />
-            <Typography variant="body1" color="initial">
-              Forgot your password?
+            <Typography variant="body1" color="initial" mt={3}>
+              Do you already have an account? Go to <Link to="/login">Login</Link>
             </Typography>
           </Box>
-          <Button type="submit" variant="contained" sx={loginButtonStyle}>
-            SIGN IN
-          </Button>
-        </form>
-        <Box sx={dividerStyle}>
-          <div className={styles.line}></div>
-          <Typography variant="subtitle2" color="initial" fontSize={15} mt={5} mb={5}>
-            OR
-          </Typography>
-          <div className={styles.line}></div>
-        </Box>
-        <Box sx={thirdPartyAuthButtonContainer}>
-          <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
-          <GithubLoginButton style={thirdPartyAuthButtonStyle} />
         </Box>
       </Box>
-    </div>
+    </>
   );
 }
 
