@@ -49,14 +49,14 @@ function Register({ handleChange, handleSubmit, errors, values }) {
           </Typography>
           <form id="Register" className={styles.form} onSubmit={handleSubmit}>
             <Box sx={shortInputBox}>
-              <TextField className={styles.shortInput} name="first-name" label="First Name" variant="outlined" onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
-              <TextField className={styles.shortInput} name="last-name" label="Last Name" variant="outlined" onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
+              <TextField className={styles.shortInput} name="first_name" label="First Name" variant="outlined" onChange={handleChange} helperText={errors.first_name} error={errors.first_name && true} value={values.first_name} />
+              <TextField className={styles.shortInput} name="last_name" label="Last Name" variant="outlined" onChange={handleChange} helperText={errors.last_name} error={errors.last_name && true} value={values.last_name} />
             </Box>
             <TextField fullWidth name="email" label="Email" variant="outlined" onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
             <Box sx={shortInputBox}>
               <TextField fullWidth name="password" label="Password" variant="outlined" type="password" onChange={handleChange} helperText={errors.password} error={errors.password && true} value={values.password} />
 
-              <TextField fullWidth name="confirm-password" label="Confirm Password" variant="outlined" type="password" onChange={handleChange} helperText={errors.password} error={errors.password && true} value={values.password} />
+              <TextField fullWidth name="confirm_password" label="Confirm Password" variant="outlined" type="password" onChange={handleChange} helperText={errors.confirm_password} error={errors.confirm_password && true} value={values.confirm_password} />
             </Box>
 
             <Button type="submit" variant="contained" sx={RegisterButtonStyle}>
