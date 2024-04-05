@@ -13,8 +13,8 @@ const container = {
 const formContainer = {
   display: "flex",
   flexDirection: "column",
-  width: "40%",
-  height: "80%",
+  width: "50%",
+  height: "90%",
   justifyContent: "center",
   alignItems: "center",
   backgroundColor: "white",
@@ -26,13 +26,13 @@ const thirdPartyAuthButtonStyle = {
   borderRadius: 45,
   margin: 0,
 };
-const RegisterButtonStyle = { width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 2, alignSelf: "center" };
+const RegisterButtonStyle = { width: 200, height: 50, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 1, alignSelf: "center" };
 
 const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" };
 
 const thirdPartyAuthButtonContainer = { display: "flex", justifyContent: "center", gap: 3 };
 
-const shortInputBox = { display: "flex", gap: 2, width: "100%" };
+const shortInputBox = { display: "flex", gap: "10px", width: "100%" };
 
 function Register({ handleChange, handleSubmit, errors, values }) {
   return (
@@ -41,10 +41,10 @@ function Register({ handleChange, handleSubmit, errors, values }) {
       <Box sx={container}>
         <Box sx={formContainer}>
           <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
-          <Typography variant="h2" color="initial" mb={2} fontWeight="bold">
+          <Typography variant="h2" color="initial" fontWeight="bold">
             Create Account
           </Typography>
-          <Typography variant="subtitle1" color="initial" mb={2}>
+          <Typography variant="subtitle1" color="initial" mb={1}>
             Please Register your new account.
           </Typography>
           <form id="Register" className={styles.form} onSubmit={handleSubmit}>
@@ -65,7 +65,7 @@ function Register({ handleChange, handleSubmit, errors, values }) {
           </form>
           <Box sx={dividerStyle}>
             <div className={styles.line}></div>
-            <Typography variant="subtitle2" color="initial" fontSize={15} mt={2} mb={2}>
+            <Typography variant="subtitle2" color="initial" fontSize={15} mt={1} mb={1}>
               OR
             </Typography>
             <div className={styles.line}></div>
