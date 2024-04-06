@@ -32,6 +32,13 @@ const ItemListContainer = () => {
       .catch((err) => console.log(err));
   }, [categoryName]);
 
+  useEffect(() => {
+    const products = fetch("http://localhost:8080/api/products")
+      .then((res) => res.json())
+      .then((json) => console.log(json))
+      .catch((err) => console.log(err));
+  }, []);
+
   return <>{items.length === 0 ? <Loader /> : <ItemList items={items} />}</>;
 };
 
