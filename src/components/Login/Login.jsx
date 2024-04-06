@@ -3,6 +3,7 @@ import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
 import { Box, Button, Typography } from "@mui/material";
 import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+import { Link } from "react-router-dom";
 
 const gridStyle = { display: "flex", alignItems: "center", justifyContent: "center" };
 
@@ -43,6 +44,7 @@ const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => 
               <Typography variant="subtitle1" color="initial" mb={6}>
                 Wellcome Back. Please login to your account.
               </Typography>
+
               <form id="login" className={styles.form} onSubmit={handleSubmit}>
                 <TextField name="email" label="Email" variant="outlined" fullWidth onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
                 <Box>
@@ -66,6 +68,9 @@ const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => 
                 <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
                 <GithubLoginButton style={thirdPartyAuthButtonStyle} />
               </Box>
+              <Typography variant="body1" color="initial" mt={5}>
+                Do you already have an account? Go to <Link to="/register">Register</Link>
+              </Typography>
             </Box>
           </Grid>
         </Grid>
