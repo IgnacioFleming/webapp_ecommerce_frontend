@@ -3,7 +3,7 @@ import Navbar from "./components/Nabvar/Navbar.jsx";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import { ThemeProvider } from "@emotion/react";
 import theme from "./components/ThemeConfig/ThemeConfig";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import CartContainer from "./components/Cart/CartContainer";
 import CartContextProvider from "./context/CartContext";
@@ -20,7 +20,8 @@ function App() {
           <CartContextProvider>
             <Routes>
               <Route element={<Navbar />}>
-                <Route path="/" element={<ItemListContainer />} />
+                <Route path="/" element={<Navigate to="/products" />} />
+                <Route path="/products" element={<ItemListContainer />} />
                 <Route path="/category/:categoryName" element={<ItemListContainer />} />
                 <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
                 <Route path="/cart" element={<CartContainer />} />
