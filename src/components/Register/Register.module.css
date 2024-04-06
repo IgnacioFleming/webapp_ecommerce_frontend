@@ -1,0 +1,12 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  background-image: url(https://res.cloudinary.com/dah7yxmc5/image/upload/v1712364288/pexels-lukas-917463_wxmzr5.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+}
