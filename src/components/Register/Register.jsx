@@ -45,7 +45,7 @@ function Register({ handleChange, handleSubmit, errors, values }) {
             Create Account
           </Typography>
           <Typography variant="subtitle1" color="initial" mb={2}>
-            Please Register to your account.
+            Please Register your new account.
           </Typography>
           <form id="Register" className={styles.form} onSubmit={handleSubmit}>
             <Box sx={shortInputBox}>
