@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Box } from "@mui/material";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
@@ -28,14 +28,14 @@ const counterStyle = {
 const CartWidget = () => {
   const { cartQuantity } = useContext(CartContext);
   const navigate = useNavigate();
-  let cantidad = cartQuantity();
+  const quantity = cartQuantity();
   return (
     <>
-      {cantidad > 0 && (
+      {quantity > 0 && (
         <Box sx={boxStyle} onClick={() => navigate("/cart")}>
           <RiShoppingCartLine size={25} />
 
-          <span style={counterStyle}>{cantidad || 0}</span>
+          <span style={counterStyle}>{quantity || 0}</span>
         </Box>
       )}
     </>
