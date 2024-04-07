@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardActions,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-} from "@mui/material";
+import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import React from "react";
 import CounterContainer from "../Counter/CounterContainer.jsx";
 const cardActionsStyle = {
@@ -31,7 +24,7 @@ const ItemDetail = ({ item, onAdd, cantidad }) => {
             <CardMedia
               component="img"
               alt="item"
-              image={item.img}
+              image={item.thumbnails ? item.thumbnails[0] : ""}
               sx={{
                 width: "80%",
                 height: "80%",
@@ -47,20 +40,11 @@ const ItemDetail = ({ item, onAdd, cantidad }) => {
                 marginBottom: 30,
               }}
             >
-              <Typography
-                gutterBottom
-                variant="h3"
-                component="div"
-                sx={{ width: "100%", marginBottom: 5, textAlign: "center" }}
-              >
+              <Typography gutterBottom variant="h3" component="div" sx={{ width: "100%", marginBottom: 5, textAlign: "center" }}>
                 {item.title}
               </Typography>
 
-              <Typography
-                variant="body1"
-                color="text.secondary"
-                sx={{ marginBottom: 5, textAlign: "center" }}
-              >
+              <Typography variant="body1" color="text.secondary" sx={{ marginBottom: 5, textAlign: "center" }}>
                 {item.description}
               </Typography>
 
@@ -92,11 +76,7 @@ const ItemDetail = ({ item, onAdd, cantidad }) => {
               </Typography>
             </CardContent>
             <CardActions sx={cardActionsStyle}>
-              <CounterContainer
-                stock={item.stock}
-                onAdd={onAdd}
-                initial={cantidad}
-              />
+              <CounterContainer stock={item.stock} onAdd={onAdd} initial={cantidad} />
             </CardActions>
           </Grid>
         </Grid>
