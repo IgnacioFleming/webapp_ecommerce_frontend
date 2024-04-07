@@ -39,8 +39,7 @@ const ItemDetailContainer = () => {
   }, [id]);
 
   const onAdd = (cantidad) => {
-    let data = { ...item, quantity: cantidad };
-    cantidad > 0 && addToCart(data);
+    cantidad > 0 && addToCart(item._id);
 
     Swal.fire({
       position: "center",
