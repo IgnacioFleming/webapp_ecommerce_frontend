@@ -21,11 +21,7 @@ const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
           <Button onClick={quitar}>
             <AiOutlineMinusSquare size={20} />
           </Button>
-          <Box
-            sx={{ display: "flex", alignItems: "center", paddingBottom: 0.5 }}
-          >
-            {counter}
-          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", paddingBottom: 0.5 }}>{counter}</Box>
           <Button onClick={() => agregar(stock)}>
             <AiOutlinePlusSquare size={20} />
           </Button>
@@ -43,12 +39,7 @@ const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
             marginTop: 15,
           }}
         >
-          <Button
-            size="small"
-            variant="contained"
-            disabled={!notDisabled}
-            onClick={() => onAdd(counter)}
-          >
+          <Button size="small" variant="contained" disabled={!notDisabled} onClick={() => onAdd(counter)}>
             Agregar al carrito
           </Button>
 
