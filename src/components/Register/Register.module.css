@@ -17,13 +17,13 @@
 .logo {
   object-fit: contain;
   width: 25%;
-  margin-bottom: 30px;
+  margin-bottom: 10px;
 }
 
 .form {
   display: flex;
-  gap: 20px;
-  width: 60%;
+  gap: 10px;
+  width: 80%;
   flex-wrap: wrap;
   justify-content: center;
 }

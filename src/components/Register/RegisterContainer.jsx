@@ -29,13 +29,13 @@ function RegisterContainer() {
           icon: "success",
         });
       })
-      .catch((err) =>
+      .catch((err) => {
         swal.fire({
           title: "We're Sorry",
           text: "An Error ocurred during your registration. Please try again later.",
           icon: "error",
-        })
-      );
+        });
+      });
   };
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {

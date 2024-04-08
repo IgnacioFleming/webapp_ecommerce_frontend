@@ -21,11 +21,11 @@ const thirdPartyAuthButtonStyle = {
   margin: 0,
 };
 
-const loginButtonStyle = { width: 200, height: 60, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 2, alignSelf: "center" };
+const loginButtonStyle = { width: 200, height: 50, fontSize: 20, fontWeight: "semibold", borderRadius: 45, alignSelf: "center" };
 
 const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" };
 
-const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%", gap: 2 };
+const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%", gap: 1 };
 
 const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => {
   return (
@@ -38,10 +38,10 @@ const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => 
           <Grid md sx={gridStyle}>
             <Box sx={formContainer}>
               <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
-              <Typography variant="h2" color="initial" mb={2} fontWeight="semibold">
+              <Typography variant="h2" color="initial" mb={1} fontWeight="semibold">
                 Login
               </Typography>
-              <Typography variant="subtitle1" color="initial" mb={6}>
+              <Typography variant="subtitle1" color="initial" mb={2}>
                 Wellcome Back. Please login to your account.
               </Typography>
 
@@ -59,7 +59,7 @@ const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => 
               </form>
               <Box sx={dividerStyle}>
                 <div className={styles.line}></div>
-                <Typography variant="subtitle2" color="initial" fontSize={15} mt={5} mb={5}>
+                <Typography variant="subtitle2" color="initial" fontSize={15} mt={2} mb={2}>
                   OR
                 </Typography>
                 <div className={styles.line}></div>
@@ -68,7 +68,7 @@ const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => 
                 <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
                 <GithubLoginButton style={thirdPartyAuthButtonStyle} />
               </Box>
-              <Typography variant="body1" color="initial" mt={5}>
+              <Typography variant="body1" color="initial" mt={1}>
                 Do you already have an account? Go to <Link to="/register">Register</Link>
               </Typography>
             </Box>
