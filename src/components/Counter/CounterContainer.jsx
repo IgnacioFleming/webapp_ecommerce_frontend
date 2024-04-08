@@ -6,14 +6,7 @@ const CounterContainer = ({ stock, onAdd, initial }) => {
   useEffect(() => {
     stock !== 0 && setNotDisabled(true);
   }, []);
-  return (
-    <Counter
-      stock={stock}
-      onAdd={onAdd}
-      initial={initial}
-      notDisabled={notDisabled}
-    />
-  );
+  return <Counter stock={stock} onAdd={onAdd} initial={initial} notDisabled={notDisabled} />;
 };
 
 export default CounterContainer;

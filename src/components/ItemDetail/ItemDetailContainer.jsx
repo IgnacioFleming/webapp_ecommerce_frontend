@@ -16,7 +16,6 @@ const ItemDetailContainer = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log("paso por aqui");
         setItem(json.payload);
       })
       .catch((err) => console.log(err));
@@ -24,7 +23,6 @@ const ItemDetailContainer = () => {
 
   const onAdd = (cantidad) => {
     cantidad > 0 && addToCart(item._id, { quantity: cantidad });
-    console.log(cantidad);
     Swal.fire({
       position: "center",
       icon: "success",
@@ -33,12 +31,11 @@ const ItemDetailContainer = () => {
       timer: 1500,
     });
   };
-
-  let cantidad = getCartQuantity(item.id);
+  let quantity = getCartQuantity(item._id);
 
   return (
     <>
-      <ItemDetail item={item} onAdd={onAdd} cantidad={cantidad} />
+      <ItemDetail item={item} onAdd={onAdd} quantity={quantity} />
     </>
   );
 };

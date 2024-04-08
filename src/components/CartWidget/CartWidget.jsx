@@ -28,7 +28,8 @@ const counterStyle = {
 const CartWidget = () => {
   const { cartQuantity } = useContext(CartContext);
   const navigate = useNavigate();
-  const quantity = cartQuantity();
+  let quantity = cartQuantity();
+
   return (
     <>
       {quantity > 0 && (

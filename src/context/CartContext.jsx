@@ -11,72 +11,63 @@ const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState(initialCart);
 
   const { user } = useContext(UserContext);
-  console.log(user);
 
   useEffect(() => {
     if (user.cart) {
-      const data = fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+      fetch(`http://localhost:8080/api/carts/${user.cart}`, {
         method: "GET",
         credentials: "include",
       })
         .then((res) => res.json())
         .then((json) => {
-          console.log(json);
           setCart(json.payload.products);
           localStorage.setItem("cart", JSON.stringify(json.payload.products));
-          console.log(cart);
         });
     }
-  }, [user]);
+  }, []);
 
-  const addToCart = (product, quantity) => {
-    console.log(quantity);
-    fetch(`http://localhost:8080/api/carts/${user.cart}/products/${product}`, {
+  const addToCart = async (product, quantity) => {
+    await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${product}`, {
       method: "POST",
       credentials: "include",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ quantity }),
-    })
-      .then((res) => res.json())
-      .then((json) => console.log(json));
+    });
 
-    fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+    await fetch(`http://localhost:8080/api/carts/${user.cart}`, {
       method: "GET",
       credentials: "include",
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log("paso por el addcart", json);
         setCart(json.payload.products);
         localStorage.setItem("cart", JSON.stringify(json.payload.products));
       });
   };
+  // const isInCart = (id) => {
+  //   let exists = cart.some((e) => e.id === id);
+  //   return exists;
+  // };
 
-  const isInCart = (id) => {
-    let exists = cart.some((e) => e.id === id);
-    return exists;
-  };
-
-  const deleteFromCart = (id) => {
-    let newCart = [];
-    cart.map((e) => {
-      if (e.id != id) {
-        return (newCart = [...newCart, e]);
-      }
+  const deleteFromCart = async (id) => {
+    const updatedCart = cart.filter((item) => item.product._id !== id);
+    setCart(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
+    await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${id}`, {
+      method: "DELETE",
+      credentials: "include",
     });
-    setCart(newCart);
   };
   const cartAmount = () => {
     let totalAmount = cart.reduce((acc, e) => {
-      return acc + e.quantity * e.price;
+      return acc + e.quantity * e.product.price;
     }, 0);
     return totalAmount;
   };
 
   const cartQuantity = () => {
-    console.log(cart, "en la funcion cartQuantity");
     if (cart?.length > 0) {
       let itemsQuantity = cart.reduce((acc, e) => {
         return acc + e.quantity;
@@ -86,11 +77,16 @@ const CartContextProvider = ({ children }) => {
   };
 
   const getCartQuantity = (id) => {
-    // let product = cart.find((e) => e.id === id);
-    // return product?.quantity;
+    let product = cart.find((e) => e.product._id === id);
+    return product?.quantity;
   };
-  const setCartEmpty = () => {
+  const setCartEmpty = async () => {
     setCart([]);
+    localStorage.setItem("cart", JSON.stringify([]));
+    await fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+      method: "DELETE",
+      credentials: "include",
+    });
   };
 
   let data = {

@@ -10,28 +10,6 @@ const ItemListContainer = () => {
 
   const { categoryName } = useParams();
 
-  // useEffect(() => {
-  //   let consulta;
-  //   const itemCollection = collection(db, "products");
-
-  //   if (categoryName) {
-  //     const q = query(itemCollection, where("category", "==", categoryName));
-  //     consulta = q;
-  //   } else {
-  //     consulta = itemCollection;
-  //   }
-
-  //   getDocs(consulta)
-  //     .then((response) => {
-  //       const products = response.docs.map((e) => {
-  //         return { ...e.data(), id: e.id };
-  //       });
-
-  //       setItems(products);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [categoryName]);
-
   useEffect(() => {
     fetch("http://localhost:8080/api/products", {
       method: "GET",
