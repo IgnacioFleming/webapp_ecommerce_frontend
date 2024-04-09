@@ -4,6 +4,7 @@ import ConfirmationCheckoutContainer from "../ConfirmationCheckout/ComfirmationC
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import ConfirmationCheckout from "../ConfirmationCheckout/ConfirmationCheckout";
+import Payment from "../Payment/Payment";
 
 const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, totalQuantity }) => {
   const total = cartAmount();
@@ -95,7 +96,7 @@ const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, tota
               </Box>
             </Grid>
             <Grid item md={6}>
-              <ConfirmationCheckout completePurchase={completePurchase} total={total} totalQuantity={totalQuantity} />
+              <Payment completePurchase={completePurchase} total={total} totalQuantity={totalQuantity} />
             </Grid>
           </Grid>
         </div>
