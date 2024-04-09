@@ -3,6 +3,7 @@ import Register from "./Register";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import swal from "sweetalert2";
+import { redirect } from "react-router-dom";
 
 function RegisterContainer() {
   const [submitted, setSubmitted] = useState(false);
@@ -23,11 +24,19 @@ function RegisterContainer() {
           });
           return;
         }
-        swal.fire({
-          title: "Registration completed!",
-          text: "You have been registered successfully. Please Login to start purchasing",
-          icon: "success",
-        });
+        swal
+          .fire({
+            title: "Registration completed!",
+            text: "You have been registered successfully. Please Login to start purchasing",
+            icon: "success",
+            confirmButtonText: "Go to Login",
+          })
+          .then((res) => {
+            if (res.isConfirmed) {
+              console.log("confirmed");
+              redirect("/login");
+            }
+          });
       })
       .catch((err) => {
         swal.fire({
