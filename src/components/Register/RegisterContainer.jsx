@@ -1,52 +1,15 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Register from "./Register";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import swal from "sweetalert2";
-import { redirect } from "react-router-dom";
 
 function RegisterContainer() {
+  const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
-  const registerUser = async (data) => {
-    fetch("http://localhost:8080/api/sessions/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.status === "error") {
-          swal.fire({
-            title: "We're sorry",
-            text: "User email already exists. Please Login or try registering with another email",
-            icon: "error",
-          });
-          return;
-        }
-        swal
-          .fire({
-            title: "Registration completed!",
-            text: "You have been registered successfully. Please Login to start purchasing",
-            icon: "success",
-            confirmButtonText: "Go to Login",
-          })
-          .then((res) => {
-            if (res.isConfirmed) {
-              console.log("confirmed");
-              redirect("/login");
-            }
-          });
-      })
-      .catch((err) => {
-        swal.fire({
-          title: "We're Sorry",
-          text: "An Error ocurred during your registration. Please try again later.",
-          icon: "error",
-        });
-      });
-  };
-  const { handleChange, handleSubmit, values, errors } = useFormik({
+
+  const { handleChange, handleSubmit, values, errors, resetForm } = useFormik({
     initialValues: {
       first_name: "",
       last_name: "",
@@ -76,6 +39,51 @@ function RegisterContainer() {
       setSubmitted(true);
     }
   }, [errors]);
+
+  async function registerUser(data) {
+    fetch("http://localhost:8080/api/sessions/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.status === "error") {
+          swal
+            .fire({
+              title: "We're sorry",
+              text: "User email already exists. Please Login or try registering with another email",
+              icon: "error",
+            })
+            .then((res) => resetForm());
+          return;
+        }
+        swal
+          .fire({
+            title: "Registration completed!",
+            text: "You have been registered successfully. Please Login to start purchasing",
+            icon: "success",
+            confirmButtonText: "Go to Login",
+          })
+          .then((res) => {
+            if (res.isConfirmed) {
+              console.log("confirmed");
+              navigate("/login");
+            }
+          });
+      })
+      .catch((err) => {
+        swal
+          .fire({
+            title: "We're Sorry",
+            text: err,
+            icon: "error",
+          })
+          .then((res) => resetForm());
+      });
+  }
+
   return <Register handleChange={handleChange} handleSubmit={handleSubmit} values={values} errors={errors} />;
 }
 
