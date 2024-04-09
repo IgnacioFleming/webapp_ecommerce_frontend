@@ -18,7 +18,9 @@ const ItemDetailContainer = () => {
       .then((json) => {
         setItem(json.payload);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      });
   }, [id]);
 
   const onAdd = (cantidad) => {

@@ -1,10 +1,11 @@
 import { Avatar, Box, Button, Divider, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import React from "react";
-import FormCheckoutContainer from "../FormCheckout/FormCheckoutContainer";
+import ConfirmationCheckoutContainer from "../ConfirmationCheckout/ComfirmationCheckoutContainer";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import ConfirmationCheckout from "../ConfirmationCheckout/ConfirmationCheckout";
 
-const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading }) => {
+const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, totalQuantity }) => {
   const total = cartAmount();
   if (isLoading) {
     return <Loader />;
@@ -51,16 +52,16 @@ const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading }) =>
                 >
                   {cart.map((e) => {
                     return (
-                      <>
+                      <React.Fragment key={e.product._id}>
                         <ListItem alignItems="flex-start">
                           <ListItemAvatar>
-                            <Avatar alt={e.title} src={e.img} />
+                            <Avatar alt={e.title} src={e.product.thumbnails[0]} />
                           </ListItemAvatar>
                           <ListItemText
-                            primary={e.title}
+                            primary={e.product.title}
                             secondary={
-                              <Box
-                                sx={{
+                              <span
+                                style={{
                                   display: "flex",
                                   flexDirection: "column",
                                 }}
@@ -70,20 +71,17 @@ const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading }) =>
                                 </Typography>
 
                                 <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                                  Monto: $ {e.quantity * e.price}
+                                  Monto: $ {e.quantity * e.product.price}
                                 </Typography>
-                              </Box>
+                              </span>
                             }
                           />
                         </ListItem>
                         <Divider variant="inset" component="li" />
-                      </>
+                      </React.Fragment>
                     );
                   })}
                 </List>
-                <Typography variant="h5" color="initial" mt={5} mb={5}>
-                  Total de la Compra: $ {total}
-                </Typography>
               </Box>
               <Box sx={{ display: "flex", alignItems: "center" }}>
                 <div
@@ -97,7 +95,7 @@ const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading }) =>
               </Box>
             </Grid>
             <Grid item md={6}>
-              <FormCheckoutContainer completePurchase={completePurchase} />
+              <ConfirmationCheckout completePurchase={completePurchase} total={total} totalQuantity={totalQuantity} />
             </Grid>
           </Grid>
         </div>
