@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 function LoginContainer() {
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
-  const { user, setUserData } = useContext(UserContext);
+  const { setUserData } = useContext(UserContext);
   const loginUser = async ({ email, password }) => {
     fetch("http://localhost:8080/api/sessions/login", {
       method: "POST",

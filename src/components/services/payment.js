@@ -14,7 +14,6 @@ export default class PaymentService {
   }
   async confirmPaymentIntent(paymentInstance, elements) {
     const response = await paymentInstance.confirmPayment({ elements, confirmParams: { redirect: "if_required" } });
-    console.log(response);
     return response;
   }
   async createPaymentMethod(paymentInstance) {

@@ -1,5 +1,6 @@
 import { Box, Button, Typography } from "@mui/material";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import Swal from "sweetalert2";
 
 import React from "react";
 import { Link } from "react-router-dom";
@@ -7,6 +8,7 @@ import { Link } from "react-router-dom";
 const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
   const stripe = useStripe();
   const elements = useElements();
+  let initializePurchaseConfirmation;
   const handleSubmit = async (event) => {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
@@ -23,15 +25,20 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
       elements,
       redirect: "if_required",
     });
-    console.log(result);
 
     if (result.error) {
       // Show error to your customer (for example, payment details incomplete)
-      console.log(result.error.message);
+
+      Swal.fire({
+        title: "Error! The Payment was declined",
+        icon: "error",
+        text: "Please try using another payment method or try again later",
+        confirmButtonText: "OK",
+      });
+      initializePurchaseConfirmation = () => completePurchase(true);
+      return;
     } else {
-      // Your customer will be redirected to your `return_url`. For some payment
-      // methods like iDEAL, your customer will be redirected to an intermediate
-      // site first to authorize the payment, then redirected to the `return_url`.
+      initializePurchaseConfirmation = () => completePurchase();
     }
   };
   return (
@@ -54,7 +61,7 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
           Total de la Compra: $ {total}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", gap: 5 }}>
-          <Button type="submit" variant="contained" onClick={completePurchase}>
+          <Button type="submit" variant="contained" onClick={initializePurchaseConfirmation}>
             Confirmar Compra
           </Button>
 
