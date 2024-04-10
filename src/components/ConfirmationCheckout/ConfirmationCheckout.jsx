@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
   const stripe = useStripe();
   const elements = useElements();
-  let initializePurchaseConfirmation;
+
   const handleSubmit = async (event) => {
     // We don't want to let default form submission happen here,
     // which would refresh the page.
@@ -28,19 +28,19 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
 
     if (result.error) {
       // Show error to your customer (for example, payment details incomplete)
-
+      await completePurchase(true);
       Swal.fire({
         title: "Error! The Payment was declined",
         icon: "error",
         text: "Please try using another payment method or try again later",
         confirmButtonText: "OK",
       });
-      initializePurchaseConfirmation = () => completePurchase(true);
-      return;
+      elements.getElement(PaymentElement).clear();
     } else {
-      initializePurchaseConfirmation = () => completePurchase();
+      await completePurchase();
     }
   };
+
   return (
     <Box
       sx={{
@@ -61,7 +61,7 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
           Total de la Compra: $ {total}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", gap: 5 }}>
-          <Button type="submit" variant="contained" onClick={initializePurchaseConfirmation}>
+          <Button type="submit" variant="contained">
             Confirmar Compra
           </Button>
 
