@@ -24,7 +24,6 @@ export const CategoriesDesktop = () => {
           };
         });
         setCategories(itemCategories);
-        console.log(categories);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -33,12 +32,7 @@ export const CategoriesDesktop = () => {
       {categories.map((category) => {
         return (
           <Grid item xs={2} sx={alignment} key={category.id}>
-            <Typography
-              variant="h6"
-              onClick={() => navigate(category.path)}
-              sx={{ cursor: "pointer" }}
-              align="center"
-            >
+            <Typography variant="h6" onClick={() => navigate(category.path)} sx={{ cursor: "pointer" }} align="center">
               {category.title}
             </Typography>
           </Grid>
