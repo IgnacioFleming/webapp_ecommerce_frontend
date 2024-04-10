@@ -1,5 +1,3 @@
-import { useStripe } from "@stripe/react-stripe-js";
-
 export default class PaymentService {
   constructor() {}
   async createPaymentIntent({ amount, currency }) {
@@ -12,11 +10,12 @@ export default class PaymentService {
       body: JSON.stringify({ amount, currency }),
     });
     const response = await fetchData.json();
-    console.log(response);
+    return response;
   }
-  async confirmPaymentIntent(paymentInstance, clientSecret) {
-    const response = await paymentInstance.confirmPayment({ clientSecret });
+  async confirmPaymentIntent(paymentInstance, elements) {
+    const response = await paymentInstance.confirmPayment({ elements, confirmParams: { redirect: "if_required" } });
     console.log(response);
+    return response;
   }
   async createPaymentMethod(paymentInstance) {
     const paymentMethodData = {
@@ -29,6 +28,7 @@ export default class PaymentService {
       },
     };
     const response = await paymentInstance.paymentMethods.create();
-    console.log(response);
   }
 }
+
+export const paymentService = new PaymentService();
