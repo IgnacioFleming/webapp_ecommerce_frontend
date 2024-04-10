@@ -21,7 +21,9 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
     const result = await stripe.confirmPayment({
       //`Elements` instance that was used to create the Payment Element
       elements,
+      redirect: "if_required",
     });
+    console.log(result);
 
     if (result.error) {
       // Show error to your customer (for example, payment details incomplete)
@@ -42,7 +44,7 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
     >
       <form onSubmit={handleSubmit}>
         <Typography variant="h5" mt={11} color="initial">
-          Por favor completá tus datos para continuar
+          Por favor completá tus datos de pago
         </Typography>
         <PaymentElement />
         <Typography variant="h5" color="initial" mt={10} mb={5}>

@@ -16,12 +16,11 @@ const CheckoutContainer = () => {
   let totalQuantity = cartQuantity();
 
   const completePurchase = async () => {
-    // await paymentService.confirmPaymentIntent(clientSecret);
-
     const purchase = await fetch(`http://localhost:8080/api/carts/${user.cart}/purchase`, {
       method: "POST",
       credentials: "include",
     });
+
     const ticketData = await purchase.json();
     const result = await fetch(`http://localhost:8080/api/carts/${user.cart}`, {
       method: "GET",
