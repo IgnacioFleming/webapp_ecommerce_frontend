@@ -6,6 +6,7 @@ import { db } from "../../firebaseConfig";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import PaymentService from "../services/payment";
+import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 
 const CheckoutContainer = () => {
   const { cart, cartAmount, setCart, cartQuantity } = useContext(CartContext);
@@ -15,8 +16,8 @@ const CheckoutContainer = () => {
   let totalQuantity = cartQuantity();
 
   const completePurchase = async () => {
-    const paymentService = new PaymentService();
-    await paymentService.createPaymentIntent();
+    // await paymentService.confirmPaymentIntent(clientSecret);
+
     const purchase = await fetch(`http://localhost:8080/api/carts/${user.cart}/purchase`, {
       method: "POST",
       credentials: "include",
@@ -28,7 +29,7 @@ const CheckoutContainer = () => {
     });
     const { payload } = await result.json();
     setCart(payload.products);
-    localStorage.setItem("cart", JSON.stringify(payload.products9));
+    localStorage.setItem("cart", JSON.stringify(payload.products));
     setOrderId(ticketData.payload.split(":")[1].trim());
   };
   console.log(cart);
