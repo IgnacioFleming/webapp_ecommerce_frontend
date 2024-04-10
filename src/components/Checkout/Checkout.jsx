@@ -1,9 +1,7 @@
 import { Avatar, Box, Button, Divider, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import React from "react";
-import ConfirmationCheckoutContainer from "../ConfirmationCheckout/ComfirmationCheckoutContainer";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
-import ConfirmationCheckout from "../ConfirmationCheckout/ConfirmationCheckout";
 import Payment from "../Payment/Payment";
 
 const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, totalQuantity }) => {
