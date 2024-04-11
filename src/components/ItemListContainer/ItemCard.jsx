@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
   return (
-    <Card sx={{ maxWidth: 300, padding: "10px" }}>
+    <Card sx={{ width: 300, padding: "10px" }}>
       <CardMedia
         component="img"
         alt="item"
