@@ -12,6 +12,7 @@ import LoginContainer from "./components/Login/LoginContainer.jsx";
 import Current from "./components/Current/current.jsx";
 import RegisterContainer from "./components/Register/RegisterContainer.jsx";
 import UserContextProvider from "./context/UserContext.jsx";
+import Profile from "./components/Profile/Profile.jsx";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
                   <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
                   <Route path="/cart" element={<CartContainer />} />
                   <Route path="/checkout" element={<CheckoutContainer />} />
+                  <Route path="/profile" element={<Profile />} />
                 </Route>
                 <Route path="/login" element={<LoginContainer />}></Route>
                 <Route path="/register" element={<RegisterContainer />}></Route>

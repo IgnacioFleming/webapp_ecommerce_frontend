@@ -36,7 +36,7 @@ export const NavigationMenu = () => {
         <Dropdown type="text" title="Categorías" listItems={categories} />
       </Grid>
       <Grid item xs={4} sx={alignment}>
-        <IconButton size="small" variant="body1" onClick={() => navigate("")} sx={{ cursor: "pointer", color: "white" }} align="center">
+        <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
           <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>
           Perfil
         </IconButton>
