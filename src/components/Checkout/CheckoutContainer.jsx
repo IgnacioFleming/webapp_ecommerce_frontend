@@ -11,12 +11,13 @@ const CheckoutContainer = () => {
   let totalQuantity = cartQuantity();
 
   const completePurchase = async (error = false) => {
+    console.log("paso por el complete purchase porque el error es: ", error);
     if (error) return;
     const purchase = await fetch(`http://localhost:8080/api/carts/${user.cart}/purchase`, {
       method: "POST",
       credentials: "include",
     });
-
+    console.log("paso por el complete purchase");
     const ticketData = await purchase.json();
     const result = await fetch(`http://localhost:8080/api/carts/${user.cart}`, {
       method: "GET",

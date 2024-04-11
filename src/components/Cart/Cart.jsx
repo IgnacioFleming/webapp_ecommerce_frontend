@@ -80,7 +80,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
                   }}
                 >
                   <Typography gutterBottom variant="h5" color="initial">
-                    {e.title}
+                    {e.product.title}
                   </Typography>
                 </Grid>
                 <Grid
