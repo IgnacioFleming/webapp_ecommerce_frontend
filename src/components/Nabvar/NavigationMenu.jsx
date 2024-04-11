@@ -1,18 +1,21 @@
-import { Grid, Typography } from "@mui/material";
+import { Avatar, Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import React from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import { useState } from "react";
+import Dropdown from "./Dropdown";
 const alignment = {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
 };
-export const CategoriesDesktop = () => {
+export const NavigationMenu = () => {
   const navigate = useNavigate();
   const [categories, setCategories] = useState([]);
+  const userInfo = JSON.parse(localStorage.getItem("user"));
+  const initialsOfName = userInfo.first_name[0] + userInfo.last_name[0];
   useEffect(() => {
     const categoriesCollection = collection(db, "categories");
     getDocs(categoriesCollection)
@@ -29,15 +32,15 @@ export const CategoriesDesktop = () => {
   }, []);
   return (
     <Grid container sx={{ justifyContent: "center" }}>
-      {categories.map((category) => {
-        return (
-          <Grid item xs={2} sx={alignment} key={category.id}>
-            <Typography variant="h6" onClick={() => navigate(category.path)} sx={{ cursor: "pointer" }} align="center">
-              {category.title}
-            </Typography>
-          </Grid>
-        );
-      })}
+      <Grid item xs={4} sx={alignment}>
+        <Dropdown type="text" title="Categorías" listItems={categories} />
+      </Grid>
+      <Grid item xs={4} sx={alignment}>
+        <IconButton size="small" variant="body1" onClick={() => navigate("")} sx={{ cursor: "pointer", color: "white" }} align="center">
+          <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>
+          Perfil
+        </IconButton>
+      </Grid>
     </Grid>
   );
 };

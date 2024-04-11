@@ -14,7 +14,7 @@ const ItemDetail = ({ item, onAdd, quantity }) => {
       <Card
         sx={{
           width: "50%",
-          height: 500,
+          height: 600,
           padding: "100px",
           margin: "50px",
         }}
