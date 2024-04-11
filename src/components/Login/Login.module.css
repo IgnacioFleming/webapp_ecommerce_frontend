@@ -27,3 +27,8 @@
   width: 20%;
   border: solid black 1pt;
 }
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
