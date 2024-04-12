@@ -34,10 +34,11 @@ export const NavigationMenu = () => {
   return (
     <Box sx={alignment}>
       <Dropdown type="text" title="Categorías" listItems={categories} />
-
-      <Typography variant="body" color="white">
-        Mis Compras
-      </Typography>
+      <IconButton size="small" aria-label="mis-compras" onClick={() => navigate("/tickets")}>
+        <Typography variant="body" color="white">
+          Mis Compras
+        </Typography>
+      </IconButton>
 
       <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
         <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>

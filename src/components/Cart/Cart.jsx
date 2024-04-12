@@ -2,13 +2,7 @@ import { Box, Button, Divider, Grid, List, Paper, Stack, Typography } from "@mui
 import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import StackOfProducts from "../StackOfProducts/StackOfProducts";
 
 const boxStyle = {
   paddingTop: 5,
@@ -32,102 +26,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
         alignItems: "center",
       }}
     >
-      <Stack
-        direction="column"
-        sx={{
-          width: "100%",
-          display: "flex",
-          alignItems: "center",
-          marginTop: 10,
-          marginBottom: 10,
-        }}
-        spacing={5}
-      >
-        {cart.map((e) => {
-          return (
-            <Item
-              sx={{
-                width: "80%",
-                height: 150,
-                display: "flex",
-                justifyContent: "space-evenly",
-                alignItems: "center",
-              }}
-              key={e._id}
-              elevation={5}
-            >
-              <Grid container>
-                <Grid item md={1} sx={{ display: "flex", alignItems: "center" }}>
-                  <Box sx={{ height: "80%", width: "80%" }}>
-                    <img
-                      style={{
-                        maxHeight: "100%",
-                        maxWidth: "100%",
-                        objectFit: "contain",
-                        paddingLeft: 100,
-                      }}
-                      src={e.product.thumbnails[0]}
-                    />
-                  </Box>
-                </Grid>
-                <Grid
-                  item
-                  md={5}
-                  sx={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <Typography gutterBottom variant="h5" color="initial">
-                    {e.product.title}
-                  </Typography>
-                </Grid>
-                <Grid
-                  item
-                  md={2}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
-                    Cantidad
-                  </Typography>
-                  <Typography gutterBottom variant="h5" color="initial">
-                    {e.quantity}
-                  </Typography>
-                </Grid>
-                <Grid
-                  item
-                  md={2}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-
-                    gap: 1,
-                  }}
-                >
-                  <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
-                    Importe
-                  </Typography>
-                  <Typography gutterBottom variant="h5" color="initial">
-                    {e.quantity * e.product.price}
-                  </Typography>
-                </Grid>
-                <Grid item md={2} sx={{ display: "flex", alignItems: "center" }}>
-                  <Button variant="contained" onClick={() => deleteFromCart(e.product._id)}>
-                    Eliminar
-                  </Button>
-                </Grid>
-              </Grid>
-            </Item>
-          );
-        })}
-      </Stack>
+      <StackOfProducts array={cart} hasDeleteAction />
       <List sx={{ width: "80%" }}>
         {cart.length > 0 && (
           <>
