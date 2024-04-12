@@ -16,18 +16,18 @@ export default class PaymentService {
     const response = await paymentInstance.confirmPayment({ elements, confirmParams: { redirect: "if_required" } });
     return response;
   }
-  async createPaymentMethod(paymentInstance) {
-    const paymentMethodData = {
-      type: "card",
-      card: {
-        number: "4242424242424242",
-        exp_month: 8,
-        exp_year: 2026,
-        cvc: "314",
-      },
-    };
-    const response = await paymentInstance.paymentMethods.create();
-  }
+  // async createPaymentMethod(paymentInstance) {
+  //   const paymentMethodData = {
+  //     type: "card",
+  //     card: {
+  //       number: "4242424242424242",
+  //       exp_month: 8,
+  //       exp_year: 2026,
+  //       cvc: "314",
+  //     },
+  //   };
+  //   const response = await paymentInstance.paymentMethods.create();
+  // }
 }
 
 export const paymentService = new PaymentService();
