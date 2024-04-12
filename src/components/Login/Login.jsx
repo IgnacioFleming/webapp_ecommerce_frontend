@@ -27,7 +27,7 @@ const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyCon
 
 const thirdPartyAuthButtonContainer = { display: "flex", flexDirection: "column", alignItems: "center", width: "60%", gap: 1 };
 
-const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => {
+const Login = ({ handleChange, handleSubmit, values, errors }) => {
   return (
     <>
       <div className={styles.container}>
@@ -66,7 +66,9 @@ const Login = ({ handleChange, handleSubmit, values, errors, setSubmitted }) => 
               </Box>
               <Box sx={thirdPartyAuthButtonContainer}>
                 <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
-                <GithubLoginButton style={thirdPartyAuthButtonStyle} />
+                <a href="http://localhost:8080/api/sessions/github">
+                  <GithubLoginButton style={thirdPartyAuthButtonStyle} />
+                </a>
               </Box>
               <Typography variant="body1" color="initial" mt={1}>
                 Do you already have an account? Go to <Link to="/register">Register</Link>

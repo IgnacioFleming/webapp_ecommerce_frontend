@@ -1,4 +1,4 @@
-import { Avatar, Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
+import { Avatar, Box, Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
 import React from "react";
 import { useEffect } from "react";
@@ -7,9 +7,10 @@ import { db } from "../../firebaseConfig";
 import { useState } from "react";
 import Dropdown from "./Dropdown";
 const alignment = {
+  width: "100%",
   display: "flex",
   alignItems: "center",
-  justifyContent: "center",
+  justifyContent: "space-evenly",
 };
 export const NavigationMenu = () => {
   const navigate = useNavigate();
@@ -31,16 +32,17 @@ export const NavigationMenu = () => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <Grid container sx={{ justifyContent: "center" }}>
-      <Grid item xs={4} sx={alignment}>
-        <Dropdown type="text" title="Categorías" listItems={categories} />
-      </Grid>
-      <Grid item xs={4} sx={alignment}>
-        <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
-          <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>
-          Perfil
-        </IconButton>
-      </Grid>
-    </Grid>
+    <Box sx={alignment}>
+      <Dropdown type="text" title="Categorías" listItems={categories} />
+
+      <Typography variant="body" color="white">
+        Mis Compras
+      </Typography>
+
+      <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
+        <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>
+        Perfil
+      </IconButton>
+    </Box>
   );
 };
