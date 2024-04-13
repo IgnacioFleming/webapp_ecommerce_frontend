@@ -12,7 +12,7 @@ const useFetch = (url, method, dependencies = []) => {
       .then((res) => res.json())
       .then((json) => setPayload(json.payload))
       .catch((err) => navigate("/login"));
-  }, []);
+  }, [url, method, ...dependencies]);
   useEffect(() => fetchFunction(), dependencies);
   return { payload };
 };

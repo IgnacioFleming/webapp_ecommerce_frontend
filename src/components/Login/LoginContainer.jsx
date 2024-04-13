@@ -4,28 +4,14 @@ import * as Yup from "yup";
 import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 function LoginContainer() {
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const { setUserData } = useContext(UserContext);
-  const loginUser = async ({ email, password }) => {
-    fetch("http://localhost:8080/api/sessions/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ email, password }),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        setUserData(json.description.dtoUser);
-        localStorage.setItem("user", JSON.stringify(json.description.dtoUser));
-        navigate("/products");
-      })
-      .catch((err) => console.log(err));
-  };
 
-  const { handleChange, handleSubmit, values, errors } = useFormik({
+  const { handleChange, handleSubmit, values, errors, resetForm } = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -37,6 +23,29 @@ function LoginContainer() {
     }),
     validateOnChange: submitted,
   });
+  async function loginUser({ email, password }) {
+    fetch("http://localhost:8080/api/sessions/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ email, password }),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        if (json.status === "success") {
+          setUserData(json.description.dtoUser);
+          localStorage.setItem("user", JSON.stringify(json.description.dtoUser));
+          navigate("/products");
+        } else {
+          Swal.fire({ title: "Credenciales Inválidas", text: "El usuario o la contraseña son incorrectos.", timer: 6000, icon: "warning" });
+        }
+      })
+      .catch((err) => {
+        resetForm();
+        Swal.fire({ title: "Servicio no disponible", text: "Actualmente el servicio no se encuentra disponible, por favor intente más tarde", timer: 6000, icon: "error" });
+      });
+  }
+
   useEffect(() => {
     if (Object.keys(errors).length !== 0) {
       setSubmitted(true);

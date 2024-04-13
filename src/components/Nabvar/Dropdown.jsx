@@ -9,6 +9,7 @@ const paperProps = {
     overflow: "visible",
     filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
     mt: 1.5,
+    width: "150px",
     "& .MuiAvatar-root": {
       width: 32,
       height: 32,
@@ -40,6 +41,7 @@ const Dropdown = ({ title, type, listItems }) => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+
   return (
     <>
       {type === "text" && (
@@ -50,9 +52,10 @@ const Dropdown = ({ title, type, listItems }) => {
       <Menu anchorEl={anchorEl} id="account-menu" open={open} onClose={handleClose} onClick={handleClose} transformOrigin={{ horizontal: "left", vertical: "top" }} anchorOrigin={{ horizontal: "left", vertical: "bottom" }} PaperProps={paperProps}>
         <List>
           {listItems.map((item) => {
+            const path = item._id.toLowerCase() === "todos" ? "/products" : `/products/category/${item._id.toLowerCase()}`;
             return (
-              <ListItemButton key={item.id} onClick={() => navigate(`${item.path}`)}>
-                <ListItemText onClick={handleClose} primary={item.title} />
+              <ListItemButton key={item._id} onClick={() => navigate(path)}>
+                <ListItemText onClick={handleClose} primary={item._id} sx={{ textTransform: "capitalize" }} />
               </ListItemButton>
             );
           })}

@@ -26,6 +26,10 @@ const thirdPartyAuthButtonStyle = {
   borderRadius: 45,
   margin: 0,
 };
+
+const thirdPartyAuthInnerTextStyle = {
+  fontSize: 17,
+};
 const RegisterButtonStyle = { width: 200, height: 50, fontSize: 20, fontWeight: "semibold", borderRadius: 45, marginTop: 1, alignSelf: "center" };
 
 const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyContent: "center", width: "60%" };
@@ -40,7 +44,7 @@ function Register({ handleChange, handleSubmit, errors, values }) {
       <div className={styles.background}></div>
       <Box sx={container}>
         <Box sx={formContainer}>
-          <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/logo_ecommerce_ci16kw.png" alt="Logo.png" />
+          <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/Eccomerce/logo_ecommerce_ci16kw.png" alt="Logo.png" />
           <Typography variant="h2" color="initial" fontWeight="bold">
             Create Account
           </Typography>
@@ -71,8 +75,12 @@ function Register({ handleChange, handleSubmit, errors, values }) {
             <div className={styles.line}></div>
           </Box>
           <Box sx={thirdPartyAuthButtonContainer}>
-            <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
-            <GithubLoginButton style={thirdPartyAuthButtonStyle} />
+            <GoogleLoginButton style={thirdPartyAuthButtonStyle}>
+              <span style={thirdPartyAuthInnerTextStyle}>Sign Up with Google</span>
+            </GoogleLoginButton>
+            <GithubLoginButton style={thirdPartyAuthButtonStyle}>
+              <span style={thirdPartyAuthInnerTextStyle}>Sign Up with Github</span>
+            </GithubLoginButton>
           </Box>
           <Box>
             <Typography variant="body1" color="initial" mt={3}>
