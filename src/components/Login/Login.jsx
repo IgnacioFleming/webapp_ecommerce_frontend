@@ -1,9 +1,12 @@
 import styles from "./Login.module.css";
 import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
 import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useState } from "react";
+import PasswordInput from "./PasswordInput";
 
 const gridStyle = { display: "flex", alignItems: "center", justifyContent: "center" };
 
@@ -48,7 +51,7 @@ const Login = ({ handleChange, handleSubmit, values, errors }) => {
               <form id="login" className={styles.form} onSubmit={handleSubmit}>
                 <TextField name="email" label="Email" variant="outlined" fullWidth onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
                 <Box>
-                  <TextField name="password" label="Password" variant="outlined" type="password" fullWidth onChange={handleChange} helperText={errors.password} error={errors.password && true} value={values.password} />
+                  <PasswordInput handleChange={handleChange} errors={errors} values={values} />
                   <Typography variant="body1" color="initial">
                     Forgot your password?
                   </Typography>

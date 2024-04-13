@@ -26,7 +26,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
         alignItems: "center",
       }}
     >
-      <StackOfProducts array={cart} hasDeleteAction />
+      <StackOfProducts array={cart} hasDeleteAction deleteFromCart={deleteFromCart} />
       <List sx={{ width: "80%" }}>
         {cart.length > 0 && (
           <>

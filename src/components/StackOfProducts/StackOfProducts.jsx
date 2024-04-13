@@ -7,7 +7,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const StackOfProducts = ({ array, hasDeleteAction }) => {
+const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
   if (!Array.isArray(array)) return null;
   return (
     <Stack
