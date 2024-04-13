@@ -3,6 +3,7 @@ import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
+import alerts from "../../utils/alerts/alerts";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -19,7 +20,7 @@ const ItemDetailContainer = () => {
         setItem(json.payload);
       })
       .catch((err) => {
-        console.log(err);
+        alerts.errorAlert(err);
       });
   }, [id]);
 

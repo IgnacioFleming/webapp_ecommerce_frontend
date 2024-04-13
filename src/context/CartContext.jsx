@@ -4,11 +4,7 @@ import { UserContext } from "./UserContext";
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  let localCart = localStorage.getItem("cart");
-
-  let initialCart = JSON.parse(localCart) || [];
-
-  const [cart, setCart] = useState(initialCart);
+  const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
 
   const { user } = useContext(UserContext);
 
@@ -24,7 +20,7 @@ const CartContextProvider = ({ children }) => {
           localStorage.setItem("cart", JSON.stringify(json.payload.products));
         });
     }
-  }, []);
+  }, [user]);
 
   const addToCart = async (product, quantity) => {
     await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${product}`, {

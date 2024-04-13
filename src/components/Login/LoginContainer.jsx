@@ -34,7 +34,6 @@ function LoginContainer() {
       .then((json) => {
         if (json.status === "success") {
           setUserData(json.description.dtoUser);
-          localStorage.setItem("user", JSON.stringify(json.description.dtoUser));
           navigate("/products");
         } else {
           Swal.fire({ title: "Credenciales Inválidas", text: "El usuario o la contraseña son incorrectos.", timer: 6000, icon: "warning" });

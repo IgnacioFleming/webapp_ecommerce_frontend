@@ -9,7 +9,6 @@ import CartContainer from "./components/Cart/CartContainer";
 import CartContextProvider from "./context/CartContext";
 import CheckoutContainer from "./components/Checkout/CheckoutContainer";
 import LoginContainer from "./components/Login/LoginContainer.jsx";
-import Current from "./components/Current/current.jsx";
 import RegisterContainer from "./components/Register/RegisterContainer.jsx";
 import UserContextProvider from "./context/UserContext.jsx";
 import Profile from "./components/Profile/Profile.jsx";
@@ -35,7 +34,6 @@ function App() {
                 </Route>
                 <Route path="/login" element={<LoginContainer />}></Route>
                 <Route path="/register" element={<RegisterContainer />}></Route>
-                <Route path="/current" element={<Current />}></Route>
                 <Route
                   path="*"
                   element={
