@@ -93,7 +93,7 @@ const StackOfProducts = ({ array, hasDeleteAction }) => {
                     Importe
                   </Typography>
                   <Typography gutterBottom variant="h5" color="initial">
-                    {e.quantity * e.product?.price}
+                    ${e.quantity * e.product?.price}
                   </Typography>
                 </Grid>
                 <Grid item md={2} sx={{ display: "flex", alignItems: "center" }}>
