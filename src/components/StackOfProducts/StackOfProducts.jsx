@@ -1,5 +1,5 @@
-import { Box, Button, Grid, Paper, Stack, styled, Typography } from "@mui/material";
-import { Item } from "../../utils/styledComponents/Item";
+import { Box, Button, Grid, Stack, Typography } from "@mui/material";
+import { Container } from "../../utils/styledComponents/Container";
 
 const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
   if (!Array.isArray(array)) return null;
@@ -18,7 +18,7 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
       {array &&
         array.map((e) => {
           return (
-            <Item
+            <Container
               sx={{
                 width: "80%",
                 height: 200,
@@ -98,7 +98,7 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
                   )}
                 </Grid>
               </Grid>
-            </Item>
+            </Container>
           );
         })}
     </Stack>

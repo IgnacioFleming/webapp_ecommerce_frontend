@@ -2,10 +2,12 @@ import { Toolbar, Container, Paper, Typography, Box, Button } from "@mui/materia
 import styles from "./Profile.module.css";
 import { useNavigate } from "react-router-dom";
 import alerts from "../../utils/alerts/alerts";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const user = JSON.parse(localStorage.getItem("user"));
+  const { user } = useContext(UserContext);
   const entries = [
     ["first_name", "Nombre :"],
     ["last_name", "Apellido: "],
