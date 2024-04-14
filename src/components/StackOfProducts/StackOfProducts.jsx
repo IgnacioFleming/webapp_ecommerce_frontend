@@ -1,11 +1,5 @@
 import { Box, Button, Grid, Paper, Stack, styled, Typography } from "@mui/material";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: "center",
-  color: theme.palette.text.secondary,
-}));
+import { Item } from "../../utils/styledComponents/Item";
 
 const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
   if (!Array.isArray(array)) return null;

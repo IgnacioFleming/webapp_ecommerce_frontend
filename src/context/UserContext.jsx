@@ -12,8 +12,9 @@ const UserContextProvider = ({ children }) => {
   };
   useEffect(() => {
     if (Object.keys(user).length !== 0) localStorage.setItem("user", JSON.stringify(user));
+    console.log("renderizo mas de una vez el user context");
   }, [user]);
-
+  console.log("renderizo user context fuera del useEffect");
   let data = {
     user,
     setUserData,

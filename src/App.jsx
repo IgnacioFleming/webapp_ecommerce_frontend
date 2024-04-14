@@ -1,4 +1,3 @@
-import "./App.css";
 import Navbar from "./components/Nabvar/Navbar.jsx";
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
 import { ThemeProvider } from "@emotion/react";
@@ -13,6 +12,7 @@ import RegisterContainer from "./components/Register/RegisterContainer.jsx";
 import UserContextProvider from "./context/UserContext.jsx";
 import Profile from "./components/Profile/Profile.jsx";
 import MyTickets from "./components/MyTickets/MyTickets.jsx";
+import AddProducts from "./components/AddProducts/AddProducts.jsx";
 
 function App() {
   return (
@@ -31,6 +31,7 @@ function App() {
                   <Route path="/checkout" element={<CheckoutContainer />} />
                   <Route path="/profile" element={<Profile />} />
                   <Route path="/tickets" element={<MyTickets />} />
+                  <Route path="/addProducts" element={<AddProducts />} />
                 </Route>
                 <Route path="/login" element={<LoginContainer />}></Route>
                 <Route path="/register" element={<RegisterContainer />}></Route>
