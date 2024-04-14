@@ -29,7 +29,6 @@ function PasswordInput({ handleChange, errors, values }) {
         onChange={handleChange}
         error={errors.password && true}
         value={values.password}
-        helperText={errors.password}
       />
       {errors.password && <FormHelperText error>{errors.password}</FormHelperText>}
     </FormControl>

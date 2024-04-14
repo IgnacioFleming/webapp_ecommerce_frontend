@@ -2,6 +2,7 @@ import { Toolbar, Container, Paper, Typography, Box, Button } from "@mui/materia
 import React from "react";
 import styles from "./Profile.module.css";
 import { useNavigate } from "react-router-dom";
+import alerts from "../../utils/alerts/alerts";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -20,8 +21,11 @@ const Profile = () => {
     })
       .then((res) => res.json())
       .then((json) => {
-        if (json.status === "success") return (window.location.href = "/login");
-        return console.log(json.message);
+        if (json.status === "success") {
+          localStorage.clear("user");
+          return (window.location.href = "/login");
+        }
+        return alerts.errorAlert(json.message);
       });
   };
 

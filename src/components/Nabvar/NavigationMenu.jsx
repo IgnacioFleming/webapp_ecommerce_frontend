@@ -1,12 +1,13 @@
 import { Avatar, Box, Button, Grid, IconButton, Tooltip, Typography } from "@mui/material";
 import { collection, getDocs } from "firebase/firestore";
-import React, { useMemo } from "react";
+import React, { useContext, useMemo } from "react";
 import { useEffect } from "react";
 import { useFetcher, useNavigate } from "react-router-dom";
 import { db } from "../../firebaseConfig";
 import { useState } from "react";
 import Dropdown from "./Dropdown";
 import useFetch from "../../utils/hooks/useFetch";
+import { UserContext } from "../../context/UserContext";
 const alignment = {
   width: "100%",
   display: "flex",
@@ -15,9 +16,10 @@ const alignment = {
 };
 export const NavigationMenu = () => {
   const navigate = useNavigate();
+  const { user } = useContext(UserContext);
   const data = useFetch("http://localhost:8080/api/products/categories", "GET");
-  const userInfo = JSON.parse(localStorage.getItem("user"));
-  const initialsOfName = userInfo.first_name[0] + userInfo.last_name[0];
+
+  const initialsOfName = Object.keys(user).length !== 0 && user.first_name[0] + user.last_name[0];
 
   return (
     <Box sx={alignment}>
