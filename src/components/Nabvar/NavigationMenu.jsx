@@ -1,6 +1,6 @@
 import { Avatar, Box, IconButton, Typography } from "@mui/material";
 import { useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import useFetch from "../../utils/hooks/useFetch";
 import { UserContext } from "../../context/UserContext";
@@ -22,10 +22,16 @@ export const NavigationMenu = () => {
       {data.payload && <Dropdown type="text" title="Productos" listItems={[{ _id: "todos" }, ...data.payload]} />}
       <IconButton size="small" aria-label="mis-compras" onClick={() => navigate("/tickets")}>
         <Typography variant="body" color="white">
-          {user?.first_name === "Admin_User" ? "Ventas" : "Mis Compras"}
+          {user?.role === "admin" ? "Ventas" : "Mis Compras"}
         </Typography>
       </IconButton>
-
+      {user?.role === "admin" && (
+        <Link to="/addProducts">
+          <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
+            Alta de Productos
+          </IconButton>
+        </Link>
+      )}
       <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
         <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>
         Perfil

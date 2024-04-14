@@ -1,12 +1,6 @@
 import { Box, Paper, Stack, styled, Typography } from "@mui/material";
 import StackOfProducts from "../StackOfProducts/StackOfProducts";
-
-const Item = styled(Paper)(({ theme }) => ({
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  color: theme.palette.text.secondary,
-  textAlign: "center",
-}));
+import { Item } from "../../utils/styledComponents/Item";
 
 const StackOfTickets = ({ array, isAdmin }) => {
   if (!Array.isArray(array)) return null;

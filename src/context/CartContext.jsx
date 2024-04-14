@@ -20,7 +20,8 @@ const CartContextProvider = ({ children }) => {
           localStorage.setItem("cart", JSON.stringify(json.payload.products));
         });
     }
-  }, [user]);
+    console.log("paso por el use effect de cart");
+  }, []);
 
   const addToCart = async (product, quantity) => {
     await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${product}`, {

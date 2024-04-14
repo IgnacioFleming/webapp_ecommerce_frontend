@@ -11,7 +11,7 @@ export function useGetUserData() {
   const { setCart } = useContext(CartContext);
 
   useEffect(() => {
-    if (location.pathname === "/products" && !localStorage.getItem("user")) {
+    if (location.pathname === "/products") {
       fetch(`${BASE_URL}/api/sessions/current`, {
         method: "GET",
         credentials: "include",
@@ -34,6 +34,7 @@ export function useGetUserData() {
         .then((json) => setCart(json.payload.products))
         .catch((err) => alerts.errorAlert(err));
     }
-  }, [user]);
+    console.log("pido los datos del carrito");
+  }, []);
   return { user };
 }
