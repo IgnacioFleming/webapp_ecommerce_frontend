@@ -8,7 +8,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: "center",
 }));
 
-const StackOfTickets = ({ array }) => {
+const StackOfTickets = ({ array, isAdmin }) => {
   if (!Array.isArray(array)) return null;
   return (
     <Stack
@@ -33,6 +33,11 @@ const StackOfTickets = ({ array }) => {
               key={e._id}
               elevation={5}
             >
+              {isAdmin && (
+                <Typography mt={2} variant="h5" color="initial" sx={{ fontWeight: "600" }}>
+                  Comprador: {e.purchaser}
+                </Typography>
+              )}
               <Typography mt={2} variant="h5" color="initial" sx={{ fontWeight: "600" }}>
                 {e.purchase_datetime}
               </Typography>

@@ -1,11 +1,9 @@
 import styles from "./Login.module.css";
 import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
-import { Box, Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useState } from "react";
 import PasswordInput from "./PasswordInput";
 
 const gridStyle = { display: "flex", alignItems: "center", justifyContent: "center" };

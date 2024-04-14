@@ -25,7 +25,7 @@ export function useGetUserData() {
           setTimeout(() => (window.location.href = "/login"), 4000);
         });
     }
-    if (Object.keys(user).length !== 0) {
+    if (Object.keys(user).length !== 0 && user.first_name !== "Admin_User") {
       fetch(`${BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
         credentials: "include",

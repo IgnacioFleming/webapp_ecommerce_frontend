@@ -1,5 +1,4 @@
 import { Toolbar, Container, Paper, Typography, Box, Button } from "@mui/material";
-import React from "react";
 import styles from "./Profile.module.css";
 import { useNavigate } from "react-router-dom";
 import alerts from "../../utils/alerts/alerts";

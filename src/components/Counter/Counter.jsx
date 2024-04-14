@@ -1,9 +1,10 @@
 import { Box, Button, Grid } from "@mui/material";
-import React from "react";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { RxCounterClockwiseClock } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import useCounter from "../../utils/hooks/useCounter";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 const counterStyles = {
   display: "flex",
@@ -12,6 +13,8 @@ const counterStyles = {
 };
 
 const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
+  const { isAdmin } = useContext(UserContext);
+  console.log(isAdmin);
   const adjustedInitial = stock === 0 ? 0 : initial;
   const { counter, agregar, quitar, reset } = useCounter(adjustedInitial);
   return (
@@ -39,9 +42,11 @@ const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
             marginTop: 15,
           }}
         >
-          <Button size="small" variant="contained" disabled={!notDisabled} onClick={() => onAdd(counter)}>
-            Agregar al carrito
-          </Button>
+          {!isAdmin && (
+            <Button size="small" variant="contained" disabled={!notDisabled} onClick={() => onAdd(counter)}>
+              Agregar al carrito
+            </Button>
+          )}
 
           <Link to={`/`}>
             <Button size="small" variant="contained">
