@@ -1,7 +1,7 @@
 import { IconButton, List, ListItemButton, ListItemText, Menu } from "@mui/material";
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import { useState } from "react";
 
 const paperProps = {
   elevation: 0,
@@ -32,7 +32,7 @@ const paperProps = {
 };
 
 const Dropdown = ({ title, type, listItems }) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
   const open = Boolean(anchorEl);
   const handleClick = (event) => {

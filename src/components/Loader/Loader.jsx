@@ -1,4 +1,3 @@
-import React from "react";
 import { TailSpin } from "react-loader-spinner";
 
 const Loader = () => {
@@ -9,13 +8,7 @@ const Loader = () => {
         justifyContent: "center",
       }}
     >
-      <TailSpin
-        height="120"
-        width="120"
-        color="black"
-        ariaLabel="tail-spin-loading"
-        wrapperStyle={{ paddingTop: 200 }}
-      />
+      <TailSpin height="120" width="120" color="black" ariaLabel="tail-spin-loading" wrapperStyle={{ paddingTop: 200 }} />
     </div>
   );
 };

@@ -1,9 +1,7 @@
-import { AppBar, Box, CssBaseline, Drawer, Hidden, List, ListItem, ListItemButton, ListItemIcon, ListItemText, Toolbar } from "@mui/material";
+import { AppBar, CssBaseline, Toolbar } from "@mui/material";
 import { NavigationMenu } from "./NavigationMenu";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link, Outlet } from "react-router-dom";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
 const Navbar = () => {
   const drawerWidth = 240;

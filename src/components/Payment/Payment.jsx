@@ -1,7 +1,7 @@
 import { loadStripe } from "@stripe/stripe-js";
 import ConfirmationCheckout from "../ConfirmationCheckout/ConfirmationCheckout";
 import { Elements } from "@stripe/react-stripe-js";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { paymentService } from "../services/payment";
 import { appearance } from "./paymentAppearence";
 const Payment = ({ completePurchase, total, totalQuantity }) => {

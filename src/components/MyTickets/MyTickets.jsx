@@ -2,6 +2,8 @@ import { Box, Button, Typography } from "@mui/material";
 import useFetch from "../../utils/hooks/useFetch";
 import StackOfTickets from "./StackOfTickets";
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 const boxStyle = {
   paddingTop: 5,
   paddingBottom: 5,
@@ -12,7 +14,10 @@ const boxStyle = {
   gap: 5,
 };
 const MyTickets = () => {
-  const myTickets = useFetch("http://localhost:8080/api/tickets", "GET");
+  const { user } = useContext(UserContext);
+  const url = user.first_name === "Admin_User" ? "http://localhost:8080/api/tickets" : `http://localhost:8080/api/tickets/${user.email}`;
+  const myTickets = useFetch(url, "GET");
+  console.log(myTickets.payload);
   const navigate = useNavigate();
   if (myTickets.payload?.length === 0) boxStyle.height = "80vh";
   return (
@@ -23,7 +28,7 @@ const MyTickets = () => {
             Aún no realizaste compras.
           </Typography>
         ) : (
-          <StackOfTickets array={myTickets.payload} />
+          <StackOfTickets array={myTickets.payload} isAdmin={user.first_name === "Admin_User" ? true : false} />
         )}
         <Button variant="contained" onClick={() => navigate("/products")}>
           Volver
