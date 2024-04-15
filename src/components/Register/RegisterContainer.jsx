@@ -41,7 +41,7 @@ function RegisterContainer() {
   }, [errors]);
 
   async function registerUser(data) {
-    fetch("http://localhost:8080/api/sessions/register", {
+    fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

@@ -37,7 +37,7 @@ function AddProductsContainer() {
     });
     selectedFiles.length > 0 && selectedFiles.forEach((file) => formData.append("thumbnail", file));
 
-    fetch("http://localhost:8080/api/products", {
+    fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products`, {
       credentials: "include",
       method: "POST",
       body: formData,

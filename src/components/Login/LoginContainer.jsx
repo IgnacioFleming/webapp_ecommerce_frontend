@@ -24,7 +24,7 @@ function LoginContainer() {
     validateOnChange: submitted,
   });
   async function loginUser({ email, password }) {
-    fetch("http://localhost:8080/api/sessions/login", {
+    fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

@@ -11,7 +11,7 @@ const ItemDetailContainer = () => {
   const { addToCart, getCartQuantity } = useContext(CartContext);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/products/${id}`, {
+    fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
       method: "GET",
       credentials: "include",
     })

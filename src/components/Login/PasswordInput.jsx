@@ -20,7 +20,7 @@ function PasswordInput({ handleChange, errors, values }) {
         endAdornment={
           <InputAdornment position="end">
             <IconButton aria-label="toggle password visibility" onClick={handleClickShowPassword} onMouseDown={handleMouseDownPassword} onMouseUp={handleMouseUpPassword} edge="end">
-              {showPassword ? <VisibilityOff sx={visibilityIconStyle} /> : <Visibility sx={visibilityIconStyle} />}
+              {!showPassword ? <VisibilityOff sx={visibilityIconStyle} /> : <Visibility sx={visibilityIconStyle} />}
             </IconButton>
           </InputAdornment>
         }

@@ -12,12 +12,12 @@ const CheckoutContainer = () => {
 
   const completePurchase = async (error = false) => {
     if (error) return;
-    const purchase = await fetch(`http://localhost:8080/api/carts/${user.cart}/purchase`, {
+    const purchase = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}/purchase`, {
       method: "POST",
       credentials: "include",
     });
     const ticketData = await purchase.json();
-    const result = await fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+    const result = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "GET",
       credentials: "include",
     });

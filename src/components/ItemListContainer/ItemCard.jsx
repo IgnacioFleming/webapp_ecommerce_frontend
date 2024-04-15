@@ -1,8 +1,24 @@
 import { Button, Card, CardActions, CardContent, CardMedia, Typography } from "@mui/material";
-import React from "react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { UserContext } from "../../context/UserContext";
+import alerts from "../../utils/alerts/alerts";
 
-const ItemCard = ({ item }) => {
+const ItemCard = ({ item, refresh }) => {
+  const { user } = useContext(UserContext);
+  const handleDelete = async (id) => {
+    try {
+      refresh(id);
+      let result = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
+        method: "DELETE",
+        credentials: "include",
+      });
+      if (result.status === "error") return alerts.errorAlert(result.description);
+      return alerts.successAlert("Producto Eliminado!", "El producto se eliminó exitosamente");
+    } catch (error) {
+      throw alerts.errorAlert(error);
+    }
+  };
   return (
     <Card sx={{ width: 300, padding: "10px" }}>
       <CardMedia
@@ -36,6 +52,11 @@ const ItemCard = ({ item }) => {
             Detalle
           </Button>
         </Link>
+        {user.role === "admin" && (
+          <Button size="small" variant="contained" sx={{ justifySelf: "start" }} onClick={() => handleDelete(item._id)}>
+            Eliminar
+          </Button>
+        )}
       </CardActions>
     </Card>
   );

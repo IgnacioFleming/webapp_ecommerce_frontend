@@ -10,7 +10,7 @@ const CartContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (user.cart) {
-      fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+      fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
         credentials: "include",
       })
@@ -24,7 +24,7 @@ const CartContextProvider = ({ children }) => {
   }, []);
 
   const addToCart = async (product, quantity) => {
-    await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${product}`, {
+    await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}/products/${product}`, {
       method: "POST",
       credentials: "include",
       headers: {
@@ -33,7 +33,7 @@ const CartContextProvider = ({ children }) => {
       body: JSON.stringify({ quantity }),
     });
 
-    await fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+    await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "GET",
       credentials: "include",
     })
@@ -52,7 +52,7 @@ const CartContextProvider = ({ children }) => {
     const updatedCart = cart.filter((item) => item.product._id !== id);
     setCart(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
-    await fetch(`http://localhost:8080/api/carts/${user.cart}/products/${id}`, {
+    await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}/products/${id}`, {
       method: "DELETE",
       credentials: "include",
     });
@@ -82,7 +82,7 @@ const CartContextProvider = ({ children }) => {
   const setCartEmpty = async () => {
     setCart([]);
     localStorage.setItem("cart", JSON.stringify([]));
-    await fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+    await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "DELETE",
       credentials: "include",
     });
