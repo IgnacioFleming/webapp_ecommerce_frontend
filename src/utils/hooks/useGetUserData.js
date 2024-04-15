@@ -22,10 +22,12 @@ export function useGetUserData() {
         })
         .catch((err) => {
           alerts.errorAlert(err);
-          setTimeout(() => (window.location.href = "/login"), 4000);
+          setTimeout(() => (window.location.href = "/login"), 3000);
         });
     }
-    if (Object.keys(user).length !== 0 && user.first_name !== "Admin_User") {
+  }, []);
+  useEffect(() => {
+    if (Object.keys(user).length !== 0 && user.role !== "admin") {
       fetch(`${BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
         credentials: "include",
@@ -35,6 +37,6 @@ export function useGetUserData() {
         .catch((err) => alerts.errorAlert(err));
     }
     console.log("pido los datos del carrito");
-  }, []);
+  }, [user]);
   return { user };
 }

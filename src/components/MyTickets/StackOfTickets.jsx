@@ -1,6 +1,6 @@
-import { Box, Paper, Stack, styled, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import StackOfProducts from "../StackOfProducts/StackOfProducts";
-import { Item } from "../../utils/styledComponents/Item";
+import { Container } from "../../utils/styledComponents/Container";
 
 const StackOfTickets = ({ array, isAdmin }) => {
   if (!Array.isArray(array)) return null;
@@ -19,7 +19,7 @@ const StackOfTickets = ({ array, isAdmin }) => {
       {array &&
         array.map((e) => {
           return (
-            <Item
+            <Container
               sx={{
                 width: "80%",
                 height: "auto",
@@ -41,7 +41,7 @@ const StackOfTickets = ({ array, isAdmin }) => {
                   <span style={{ fontWeight: 700 }}>Total:</span> ${e.amount.toLocaleString()}
                 </Typography>
               </Box>
-            </Item>
+            </Container>
           );
         })}
     </Stack>
