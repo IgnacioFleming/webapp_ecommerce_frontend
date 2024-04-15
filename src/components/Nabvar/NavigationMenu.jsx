@@ -1,5 +1,5 @@
 import { Avatar, Box, IconButton, Typography } from "@mui/material";
-import { useContext } from "react";
+import { useContext, useMemo } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import useFetch from "../../utils/hooks/useFetch";
@@ -13,8 +13,7 @@ const alignment = {
 export const NavigationMenu = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
-  const data = useFetch("http://localhost:8080/api/products/categories", "GET");
-
+  const data = useFetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/categories`, "GET");
   const initialsOfName = Object.keys(user).length !== 0 && user.first_name !== "Admin_User" ? user.first_name[0] + user.last_name?.[0] : "";
 
   return (

@@ -3,16 +3,14 @@ import { useLocation } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { CartContext } from "../../context/CartContext";
 import alerts from "../alerts/alerts";
-const BASE_URL = "http://localhost:8080";
 
 export function useGetUserData() {
-  const location = useLocation();
   const { user, setUserData } = useContext(UserContext);
   const { setCart } = useContext(CartContext);
 
   useEffect(() => {
-    if (location.pathname === "/products") {
-      fetch(`${BASE_URL}/api/sessions/current`, {
+    if (Object.keys(user).length === 0) {
+      fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/current`, {
         method: "GET",
         credentials: "include",
       })
@@ -28,7 +26,7 @@ export function useGetUserData() {
   }, []);
   useEffect(() => {
     if (Object.keys(user).length !== 0 && user.role !== "admin") {
-      fetch(`${BASE_URL}/api/carts/${user.cart}`, {
+      fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
         credentials: "include",
       })
@@ -36,7 +34,6 @@ export function useGetUserData() {
         .then((json) => setCart(json.payload.products))
         .catch((err) => alerts.errorAlert(err));
     }
-    console.log("pido los datos del carrito");
   }, [user]);
   return { user };
 }

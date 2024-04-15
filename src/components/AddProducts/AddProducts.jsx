@@ -51,7 +51,7 @@ function AddProducts({ handleSubmit, handleChange, values, errors, selectedFiles
             <Box sx={{ display: "flex", alignItems: "center", gap: 1, justifySelf: "flex-end" }}>
               <Button component="label" role={undefined} variant="contained" tabIndex={-1} startIcon={<CloudUploadIcon />}>
                 Attach images
-                <VisuallyHiddenInput type="file" onChange={handleFileChange} name="images" multiple />
+                <VisuallyHiddenInput type="file" onChange={handleFileChange} name="images" />
               </Button>
               {selectedFiles.length > 0 &&
                 selectedFiles.map((file, index) => {

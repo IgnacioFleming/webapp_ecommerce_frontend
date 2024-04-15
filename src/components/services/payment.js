@@ -1,7 +1,7 @@
 export default class PaymentService {
   constructor() {}
   async createPaymentIntent({ amount, currency }) {
-    const fetchData = await fetch("http://localhost:8080/api/payments/create-payment-intent", {
+    const fetchData = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/payments/create-payment-intent`, {
       method: "POST",
       credentials: "include",
       headers: {

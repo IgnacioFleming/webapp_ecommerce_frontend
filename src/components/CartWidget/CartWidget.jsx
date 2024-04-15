@@ -29,7 +29,6 @@ const CartWidget = () => {
   const { cartQuantity } = useContext(CartContext);
   const navigate = useNavigate();
   let quantity = cartQuantity();
-
   return (
     <>
       {quantity > 0 && (

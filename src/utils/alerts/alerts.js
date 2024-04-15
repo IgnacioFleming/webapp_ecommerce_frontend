@@ -13,7 +13,17 @@ const warningAlert = (title, text) => {
   });
 };
 
+const successAlert = (title, text) => {
+  return Swal.fire({
+    title,
+    text,
+    timer: 4000,
+    icon: "success",
+  });
+};
+
 export default {
   errorAlert,
   warningAlert,
+  successAlert,
 };

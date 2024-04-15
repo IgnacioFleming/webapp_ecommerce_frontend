@@ -2,16 +2,16 @@ import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
 import useFetch from "../../utils/hooks/useFetch";
-import { useGetUserData } from "../../utils/hooks/useGetUserData";
-const BASE_URL = "http://localhost:8080";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 const ItemListContainer = () => {
   const { categoryName } = useParams();
 
-  const url = !categoryName ? `${BASE_URL}/api/products` : `${BASE_URL}/api/products?query=${JSON.stringify({ category: categoryName })}`;
-  const { payload } = useFetch(url, "GET", [categoryName]);
-  const { user } = useGetUserData();
+  const url = !categoryName ? `${import.meta.env.VITE_APP_BASE_URL}/api/products?limit=1000` : `${import.meta.env.VITE_APP_BASE_URL}/api/products?query=${JSON.stringify({ category: categoryName })}&limit=1000`;
+  const { payload, refreshPayloadAfterDeletion } = useFetch(url, "GET", [categoryName]);
+  const { user } = useContext(UserContext);
 
-  return <>{!payload || !user ? <Loader /> : <ItemList items={payload} />}</>;
+  return <>{!payload || !user ? <Loader /> : <ItemList items={payload} refresh={refreshPayloadAfterDeletion} />}</>;
 };
 
 export default ItemListContainer;

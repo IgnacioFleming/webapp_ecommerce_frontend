@@ -67,7 +67,7 @@ const Login = ({ handleChange, handleSubmit, values, errors }) => {
               </Box>
               <Box sx={thirdPartyAuthButtonContainer}>
                 <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
-                <a href="http://localhost:8080/api/sessions/github">
+                <a href={`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/github`}>
                   <GithubLoginButton style={thirdPartyAuthButtonStyle} />
                 </a>
               </Box>

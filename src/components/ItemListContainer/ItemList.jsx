@@ -1,6 +1,6 @@
 import ItemCard from "./ItemCard";
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, refresh }) => {
   return (
     <div
       style={{
@@ -13,7 +13,7 @@ const ItemList = ({ items }) => {
       }}
     >
       {items.map((item) => {
-        return <ItemCard item={item} key={item._id} />;
+        return <ItemCard item={item} key={item._id} refresh={refresh} />;
       })}
     </div>
   );
