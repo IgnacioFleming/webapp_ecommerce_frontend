@@ -7,7 +7,7 @@ const UserContextProvider = ({ children }) => {
   const [isAdmin, setIsAdmin] = useState(false);
   const setUserData = (data) => {
     setUser(data);
-    user.first_name === "Admin_User" && setIsAdmin(true);
+    data.role === "admin" && setIsAdmin(true);
   };
 
   let data = {

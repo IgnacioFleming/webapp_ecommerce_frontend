@@ -2,6 +2,7 @@ import { useFormik } from "formik";
 import AddProducts from "./AddProducts";
 import * as Yup from "yup";
 import { useState } from "react";
+import alerts from "../../utils/alerts/alerts";
 
 function AddProductsContainer() {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -44,10 +45,10 @@ function AddProductsContainer() {
     })
       .then((res) => res.json())
       .then((json) => {
-        if (json.status === "success") return console.log(json);
-        console.log("error al crear el producto");
+        if (json.status !== "success") return alerts.errorAlert("There was an error trying to add the product");
+        return alerts.successAlert("Product Added", "The product was added successfully!");
       })
-      .catch((err) => console.log(err));
+      .catch((err) => alerts.errorAlert("There was an error during the process"));
   }
   return <AddProducts handleChange={handleChange} handleSubmit={handleSubmit} values={values} errors={errors} setSelectedFiles={setSelectedFiles} selectedFiles={selectedFiles} />;
 }

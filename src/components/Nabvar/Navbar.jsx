@@ -6,7 +6,6 @@ import { useGetUserData } from "../../utils/hooks/useGetUserData";
 const Navbar = () => {
   const drawerWidth = 240;
   useGetUserData();
-
   return (
     <>
       <CssBaseline />

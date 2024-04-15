@@ -32,7 +32,6 @@ const paperProps = {
 };
 
 const Dropdown = ({ title, type, listItems }) => {
-  console.log("se renderiza el dropdown");
   const [anchorEl, setAnchorEl] = useState(null);
   const navigate = useNavigate();
   const open = Boolean(anchorEl);

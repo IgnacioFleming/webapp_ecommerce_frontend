@@ -20,7 +20,6 @@ const CartContextProvider = ({ children }) => {
           localStorage.setItem("cart", JSON.stringify(json.payload.products));
         });
     }
-    console.log("paso por el use effect de cart");
   }, []);
 
   const addToCart = async (product, quantity) => {
