@@ -4,12 +4,11 @@ const ItemList = ({ items, refresh }) => {
   return (
     <div
       style={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: "20px",
-        padding: "20px",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill,300px)",
+        gap: 15,
         justifyContent: "center",
-        marginTop: 50,
+        padding: "50px",
       }}
     >
       {items.map((item) => {

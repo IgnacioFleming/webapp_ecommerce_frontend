@@ -2,7 +2,6 @@ import { Box, Button, Typography } from "@mui/material";
 import { PaymentElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import Swal from "sweetalert2";
 
-import React from "react";
 import { Link } from "react-router-dom";
 
 const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
