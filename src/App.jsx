@@ -1,18 +1,18 @@
-import Navbar from "./components/Nabvar/Navbar.jsx";
-import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemListContainer from "./pages/ItemListContainer/ItemListContainer";
 import { ThemeProvider } from "@emotion/react";
-import theme from "./components/ThemeConfig/ThemeConfig";
+import theme from "./theme/ThemeConfig/ThemeConfig";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
-import CartContainer from "./components/Cart/CartContainer";
+import ItemDetailContainer from "./pages/ItemDetail/ItemDetailContainer";
 import CartContextProvider from "./context/CartContext";
-import CheckoutContainer from "./components/Checkout/CheckoutContainer";
-import LoginContainer from "./components/Login/LoginContainer.jsx";
-import RegisterContainer from "./components/Register/RegisterContainer.jsx";
-import UserContextProvider from "./context/UserContext.jsx";
-import Profile from "./components/Profile/Profile.jsx";
-import MyTickets from "./components/MyTickets/MyTickets.jsx";
-import AddProductsContainer from "./components/AddProducts/AddProductsContainer.jsx";
+import CheckoutContainer from "./pages/Checkout/CheckoutContainer";
+import LoginContainer from "./pages/Login/LoginContainer";
+import RegisterContainer from "./pages/Register/RegisterContainer";
+import UserContextProvider from "./context/UserContext";
+import MyTickets from "./pages/MyTickets/MyTickets";
+import AddProductsContainer from "./pages/AddProducts/AddProductsContainer";
+import Profile from "./pages/Profile/Profile";
+import Navbar from "./layout/Nabvar/Navbar";
+import CartContainer from "./pages/Cart/CartContainer";
 
 function App() {
   return (

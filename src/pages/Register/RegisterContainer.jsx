@@ -56,7 +56,7 @@ function RegisterContainer() {
               text: "User email already exists. Please Login or try registering with another email",
               icon: "error",
             })
-            .then((res) => resetForm());
+            .then(() => resetForm());
           return;
         }
         swal
@@ -79,7 +79,7 @@ function RegisterContainer() {
             text: err,
             icon: "error",
           })
-          .then((res) => resetForm());
+          .then(() => resetForm());
       });
   }
 

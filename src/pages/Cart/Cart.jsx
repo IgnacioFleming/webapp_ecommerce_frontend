@@ -1,8 +1,6 @@
-import { Box, Button, Divider, Grid, List, Paper, Stack, Typography } from "@mui/material";
-import React from "react";
-import styled from "@emotion/styled";
+import { Box, Button, Divider, List, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import StackOfProducts from "../StackOfProducts/StackOfProducts";
+import StackOfProducts from "../../components/StackOfProducts/StackOfProducts";
 
 const boxStyle = {
   paddingTop: 5,

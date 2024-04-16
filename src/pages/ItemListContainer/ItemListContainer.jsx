@@ -1,6 +1,6 @@
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import Loader from "../Loader/Loader";
+import Loader from "../../components/Loader/Loader";
 import useFetch from "../../utils/hooks/useFetch";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";

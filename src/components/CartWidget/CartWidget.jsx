@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { Box } from "@mui/material";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";

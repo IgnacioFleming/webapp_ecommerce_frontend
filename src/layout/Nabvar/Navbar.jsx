@@ -1,10 +1,9 @@
 import { AppBar, CssBaseline, Toolbar } from "@mui/material";
 import { NavigationMenu } from "./NavigationMenu";
-import CartWidget from "../CartWidget/CartWidget";
 import { Link, Outlet } from "react-router-dom";
 import { useGetUserData } from "../../utils/hooks/useGetUserData";
+import CartWidget from "../../components/CartWidget/CartWidget";
 const Navbar = () => {
-  const drawerWidth = 240;
   useGetUserData();
   return (
     <>

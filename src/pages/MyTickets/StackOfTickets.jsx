@@ -1,5 +1,5 @@
 import { Box, Stack, Typography } from "@mui/material";
-import StackOfProducts from "../StackOfProducts/StackOfProducts";
+import StackOfProducts from "../../components/StackOfProducts/StackOfProducts";
 import { Container } from "../../utils/styledComponents/Container";
 
 const StackOfTickets = ({ array, isAdmin }) => {
