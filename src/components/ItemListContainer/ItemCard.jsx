@@ -36,11 +36,7 @@ const ItemCard = ({ item, refresh }) => {
           maxHeight: 250,
         }}
       />
-      <CardContent
-        sx={{
-          height: 100,
-        }}
-      >
+      <CardContent sx={{ height: "40%" }}>
         <Typography gutterBottom variant="h5" component="div" sx={{ height: "25%", marginBottom: 4 }}>
           {item.title}
         </Typography>
@@ -50,7 +46,7 @@ const ItemCard = ({ item, refresh }) => {
         </Typography>
       </CardContent>
 
-      <CardActions sx={{ display: "flex", justifyContent: "center" }}>
+      <CardActions sx={{ display: "flex", justifyContent: "center", gap: 1, alignItems: "flex-end", height: "10%" }}>
         <Link sx={{ justifySelf: "start" }} to={`/itemDetail/${item._id}`}>
           <Button size="small" variant="contained" sx={{ justifySelf: "start" }}>
             Detalle
