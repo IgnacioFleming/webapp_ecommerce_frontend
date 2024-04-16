@@ -6,10 +6,14 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { MdEdit } from "react-icons/md";
 import UploadButton from "../../components/FileUpload/UploadButton";
+import { useGetProfileImage } from "../../utils/hooks/useGetProfileImage";
 
 const Profile = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
+  const profileImage = useGetProfileImage();
+  console.log(profileImage);
+
   const entries = [
     ["first_name", "Nombre :"],
     ["last_name", "Apellido: "],
@@ -39,8 +43,8 @@ const Profile = () => {
         <Paper elevation={3} sx={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 10 }}>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 3, justifyContent: "center" }}>
             <div className={styles.imgContainer}>
-              <img className={styles.profileImg} src={user.profile_image || "https://res.cloudinary.com/dah7yxmc5/image/upload/v1736197523/Eccomerce/Profile/default-avatar_oarvax.jpg"} alt="Profile Image" />
-              <UploadButton variant="contained" icon={<MdEdit color="white" size={20} />} sx={{ width: 30, height: 30, borderRadius: "150px", padding: 0, position: "absolute", right: 0, bottom: 0 }} />
+              <img className={styles.profileImg} src={profileImage || "https://res.cloudinary.com/dah7yxmc5/image/upload/v1736197523/Eccomerce/Profile/default-avatar_oarvax.jpg"} alt="Profile Image" />
+              {user.role !== "admin" && <UploadButton variant="contained" icon={<MdEdit color="white" size={20} />} sx={{ width: 30, height: 30, borderRadius: "150px", padding: 0, position: "absolute", right: 0, bottom: 0 }} />}
             </div>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
               {entries.map(([entry, text], index) => {

@@ -34,5 +34,6 @@ export function useGetUserData() {
         .catch((err) => alerts.errorAlert(err));
     }
   }, [user]);
+
   return { user };
 }
