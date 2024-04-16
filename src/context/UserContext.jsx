@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
@@ -10,10 +10,17 @@ const UserContextProvider = ({ children }) => {
     data.role === "admin" && setIsAdmin(true);
   };
 
+  const updateUserProfileImage = (image) => {
+    const newUserData = { ...user };
+    newUserData.profile_image = image;
+    setUser(newUserData);
+  };
+
   let data = {
     user,
     setUserData,
     isAdmin,
+    updateUserProfileImage,
   };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;

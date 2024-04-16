@@ -1,6 +1,6 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import React from "react";
-import CounterContainer from "../Counter/CounterContainer.jsx";
+import CounterContainer from "../../components/Counter/CounterContainer.jsx";
 const cardActionsStyle = {
   display: "flex",
   width: "100%",

@@ -39,7 +39,7 @@ function LoginContainer() {
           Swal.fire({ title: "Credenciales Inválidas", text: "El usuario o la contraseña son incorrectos.", timer: 6000, icon: "warning" });
         }
       })
-      .catch((err) => {
+      .catch(() => {
         resetForm();
         Swal.fire({ title: "Servicio no disponible", text: "Actualmente el servicio no se encuentra disponible, por favor intente más tarde", timer: 6000, icon: "error" });
       });
