@@ -4,12 +4,13 @@ const errorAlert = (text) => {
   return Swal.fire({ title: "Ocurrió un error!", icon: "error", timer: 4000, text });
 };
 
-const warningAlert = (title, text) => {
+const warningAlert = (title, text, { needConfirmation = false }) => {
   return Swal.fire({
     title,
     text,
     timer: 4000,
     icon: "warning",
+    showCancelButton: needConfirmation,
   });
 };
 

@@ -33,7 +33,6 @@ const VisuallyHiddenInput = styled("input")({
 function AddProducts({ handleSubmit, handleChange, values, errors, selectedFiles, setSelectedFiles }) {
   const handleFileChange = (event) => {
     const files = Array.from(event.target.files);
-    console.log(files);
     setSelectedFiles(files);
   };
   return (
@@ -47,10 +46,10 @@ function AddProducts({ handleSubmit, handleChange, values, errors, selectedFiles
           <TextField onChange={handleChange} error={errors.code} sx={{ width: "30%", minWidth: "200px" }} name="code" label="Code" value={values.code} helperText={errors.code} />
           <TextField onChange={handleChange} error={errors.stock} sx={{ width: "30%", minWidth: "200px" }} name="stock" label="Stock" value={values.stock} helperText={errors.stock} />
           <Box sx={{ display: "flex", gap: 3, alignItems: "center" }}>
-            <FormControlLabel control={<Checkbox value={values.status} onChange={handleChange} name="status" defaultChecked />} label="Visible" labelPlacement="start" />
+            <FormControlLabel control={<Checkbox value={values.status} onChange={handleChange} name="status" defaultChecked />} label="Visible for Costumers" labelPlacement="start" />
             <Box sx={{ display: "flex", alignItems: "center", gap: 1, justifySelf: "flex-end" }}>
               <Button component="label" role={undefined} variant="contained" tabIndex={-1} startIcon={<CloudUploadIcon />}>
-                Attach images
+                Attach image
                 <VisuallyHiddenInput type="file" onChange={handleFileChange} name="images" />
               </Button>
               {selectedFiles.length > 0 &&

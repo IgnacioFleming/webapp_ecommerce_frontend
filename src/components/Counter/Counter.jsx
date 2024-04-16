@@ -14,25 +14,26 @@ const counterStyles = {
 
 const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
   const { isAdmin } = useContext(UserContext);
-  console.log(isAdmin);
   const adjustedInitial = stock === 0 ? 0 : initial;
   const { counter, agregar, quitar, reset } = useCounter(adjustedInitial);
   return (
     <Grid container>
-      <Grid item xs={12}>
-        <div style={counterStyles}>
-          <Button onClick={quitar}>
-            <AiOutlineMinusSquare size={20} />
-          </Button>
-          <Box sx={{ display: "flex", alignItems: "center", paddingBottom: 0.5 }}>{counter}</Box>
-          <Button onClick={() => agregar(stock)}>
-            <AiOutlinePlusSquare size={20} />
-          </Button>
-          <Button onClick={reset}>
-            <RxCounterClockwiseClock size={20} />
-          </Button>
-        </div>
-      </Grid>
+      {!isAdmin && (
+        <Grid item xs={12}>
+          <div style={counterStyles}>
+            <Button onClick={quitar}>
+              <AiOutlineMinusSquare size={20} />
+            </Button>
+            <Box sx={{ display: "flex", alignItems: "center", paddingBottom: 0.5 }}>{counter}</Box>
+            <Button onClick={() => agregar(stock)}>
+              <AiOutlinePlusSquare size={20} />
+            </Button>
+            <Button onClick={reset}>
+              <RxCounterClockwiseClock size={20} />
+            </Button>
+          </div>
+        </Grid>
+      )}
       <Grid item xs={12}>
         <div
           style={{

@@ -4,7 +4,6 @@ import StackOfTickets from "./StackOfTickets";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
-import Loader from "../Loader/Loader";
 const boxStyle = {
   paddingTop: 5,
   paddingBottom: 5,
@@ -18,7 +17,6 @@ const MyTickets = () => {
   const { user } = useContext(UserContext);
   const url = `${import.meta.env.VITE_APP_BASE_URL}` + (user.first_name === "Admin_User" ? `/api/tickets` : `/api/tickets/${user.email}`);
   const myTickets = useFetch(url, "GET");
-  console.log(myTickets.payload);
   const navigate = useNavigate();
   if (myTickets.payload?.length === 0) boxStyle.height = "80vh";
   return (

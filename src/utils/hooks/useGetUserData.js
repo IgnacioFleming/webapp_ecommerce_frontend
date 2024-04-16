@@ -1,5 +1,4 @@
 import { useContext, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import { CartContext } from "../../context/CartContext";
 import alerts from "../alerts/alerts";

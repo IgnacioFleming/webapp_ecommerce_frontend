@@ -1,6 +1,6 @@
 import { Avatar, Box, IconButton, Typography } from "@mui/material";
-import { useContext, useMemo } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { Link } from "react-router-dom";
 import Dropdown from "./Dropdown";
 import useFetch from "../../utils/hooks/useFetch";
 import { UserContext } from "../../context/UserContext";
@@ -11,7 +11,6 @@ const alignment = {
   justifyContent: "space-evenly",
 };
 export const NavigationMenu = () => {
-  const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const data = useFetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/categories`, "GET");
   const initialsOfName = Object.keys(user).length !== 0 && user.first_name !== "Admin_User" ? user.first_name[0] + user.last_name?.[0] : "";
@@ -19,22 +18,27 @@ export const NavigationMenu = () => {
   return (
     <Box sx={alignment}>
       {data.payload && <Dropdown type="text" title="Productos" listItems={[{ _id: "todos" }, ...data.payload]} />}
-      <IconButton size="small" aria-label="mis-compras" onClick={() => navigate("/tickets")}>
-        <Typography variant="body" color="white">
-          {user?.role === "admin" ? "Ventas" : "Mis Compras"}
-        </Typography>
-      </IconButton>
+
+      <Link to="/tickets">
+        <IconButton size="small" aria-label="mis-compras">
+          <Typography variant="body" color="white">
+            {user?.role === "admin" ? "Ventas" : "Mis Compras"}
+          </Typography>
+        </IconButton>
+      </Link>
       {user?.role === "admin" && (
         <Link to="/addProducts">
-          <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
+          <IconButton size="small" variant="body1" sx={{ cursor: "pointer", color: "white" }} align="center">
             Alta de Productos
           </IconButton>
         </Link>
       )}
-      <IconButton size="small" variant="body1" onClick={() => navigate("/profile")} sx={{ cursor: "pointer", color: "white" }} align="center">
-        <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>
-        Perfil
-      </IconButton>
+      <Link to="/profile">
+        <IconButton size="small" variant="body1" sx={{ cursor: "pointer", color: "white" }} align="center">
+          <Avatar sx={{ width: 32, height: 32, marginRight: "1px" }}>{initialsOfName}</Avatar>
+          Perfil
+        </IconButton>
+      </Link>
     </Box>
   );
 };

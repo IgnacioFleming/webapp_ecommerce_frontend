@@ -8,13 +8,17 @@ const ItemCard = ({ item, refresh }) => {
   const { user } = useContext(UserContext);
   const handleDelete = async (id) => {
     try {
-      refresh(id);
-      let result = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
-        method: "DELETE",
-        credentials: "include",
-      });
-      if (result.status === "error") return alerts.errorAlert(result.description);
-      return alerts.successAlert("Producto Eliminado!", "El producto se eliminó exitosamente");
+      const modal = await alerts.warningAlert("Delete Product", "Are you sure you want to delete this product?", { needConfirmation: true });
+
+      if (modal.isConfirmed) {
+        refresh(id);
+        let result = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
+          method: "DELETE",
+          credentials: "include",
+        });
+        if (result.status === "error") return alerts.errorAlert(result.description);
+        return alerts.successAlert("Product Deleted!", "This product was deleted successfully");
+      }
     } catch (error) {
       throw alerts.errorAlert(error);
     }
