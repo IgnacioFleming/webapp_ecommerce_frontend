@@ -7,7 +7,7 @@ import alerts from "../../utils/alerts/alerts";
 function AddProductsContainer() {
   const [selectedFiles, setSelectedFiles] = useState([]);
 
-  const { handleChange, handleSubmit, values, errors } = useFormik({
+  const { handleChange, handleSubmit, values, errors, resetForm } = useFormik({
     initialValues: {
       title: "",
       description: "",
@@ -46,6 +46,7 @@ function AddProductsContainer() {
       .then((res) => res.json())
       .then((json) => {
         if (json.status !== "success") return alerts.errorAlert("There was an error trying to add the product");
+        resetForm();
         return alerts.successAlert("Product Added", "The product was added successfully!");
       })
       .catch(() => alerts.errorAlert("There was an error during the process"));
