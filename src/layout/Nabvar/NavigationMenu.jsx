@@ -13,7 +13,7 @@ const alignment = {
 export const NavigationMenu = () => {
   const { user } = useContext(UserContext);
   const data = useFetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/categories`, "GET");
-  const initialsOfName = Object.keys(user).length !== 0 && user.first_name !== "Admin_User" ? user.first_name[0] + user.last_name?.[0] : "";
+  const initialsOfName = Object.keys(user).length !== 0 && user.first_name !== "Admin_User" ? user.first_name[0] + user.last_name?.[0] : "A";
 
   return (
     <Box sx={alignment}>

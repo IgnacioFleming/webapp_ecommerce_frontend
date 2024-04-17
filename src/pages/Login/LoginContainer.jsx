@@ -36,12 +36,12 @@ function LoginContainer() {
           setUserData(json.description.dtoUser);
           navigate("/products");
         } else {
-          Swal.fire({ title: "Credenciales Inválidas", text: "El usuario o la contraseña son incorrectos.", timer: 6000, icon: "warning" });
+          Swal.fire({ title: "Invalid Credentials", text: "User or Password values are incorrect.", timer: 6000, icon: "warning" });
         }
       })
       .catch(() => {
         resetForm();
-        Swal.fire({ title: "Servicio no disponible", text: "Actualmente el servicio no se encuentra disponible, por favor intente más tarde", timer: 6000, icon: "error" });
+        Swal.fire({ title: "Service not available", text: "Currently this service is not available, pleas try again later.", timer: 6000, icon: "error" });
       });
   }
 

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const useFetch = (url, method = "GET", dependencies = []) => {
@@ -11,7 +11,7 @@ const useFetch = (url, method = "GET", dependencies = []) => {
     })
       .then((res) => res.json())
       .then((json) => setPayload(json.payload))
-      .catch((err) => navigate("/login"));
+      .catch(() => navigate("/login"));
   }, [url, method, ...dependencies]);
 
   useEffect(() => {
