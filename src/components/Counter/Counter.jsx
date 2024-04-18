@@ -2,7 +2,7 @@ import { Box, Button, Grid } from "@mui/material";
 import { AiOutlineMinusSquare, AiOutlinePlusSquare } from "react-icons/ai";
 import { RxCounterClockwiseClock } from "react-icons/rx";
 import { Link } from "react-router-dom";
-import useCounter from "../../utils/hooks/useCounter";
+import useCounter from "../../hooks/useCounter";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 

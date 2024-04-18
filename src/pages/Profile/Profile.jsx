@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
 import { MdEdit } from "react-icons/md";
 import UploadButton from "../../components/FileUpload/UploadButton";
-import { useGetProfileImage } from "../../utils/hooks/useGetProfileImage";
+import { useGetProfileImage } from "../../hooks/useGetProfileImage";
 
 const Profile = () => {
   const navigate = useNavigate();

@@ -1,7 +1,7 @@
 import { useContext, useEffect } from "react";
-import { UserContext } from "../../context/UserContext";
-import { CartContext } from "../../context/CartContext";
-import alerts from "../alerts/alerts";
+import { UserContext } from "../context/UserContext";
+import { CartContext } from "../context/CartContext";
+import alerts from "../utils/alerts/alerts";
 
 export function useGetUserData() {
   const { user, setUserData } = useContext(UserContext);

@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { UserContext } from "../../context/UserContext";
-import UserApiCall from "../../services/UserApiCall";
+import { UserContext } from "../context/UserContext";
+import UserApiCall from "../services/UserApiCall";
 
 export const useGetProfileImage = () => {
   const { user } = useContext(UserContext);

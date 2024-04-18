@@ -1,14 +1,10 @@
 import { Avatar, Box, Button, Divider, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import React from "react";
 import { Link } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
 import Payment from "../../components/Payment/Payment";
 
-const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, totalQuantity }) => {
+const Checkout = ({ cart, cartAmount, completePurchase, orderId, totalQuantity }) => {
   const total = cartAmount();
-  if (isLoading) {
-    return <Loader />;
-  }
   return (
     <>
       {orderId ? (

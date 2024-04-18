@@ -1,7 +1,7 @@
 import { AppBar, CssBaseline, Toolbar } from "@mui/material";
 import { NavigationMenu } from "./NavigationMenu";
 import { Link, Outlet } from "react-router-dom";
-import { useGetUserData } from "../../utils/hooks/useGetUserData";
+import { useGetUserData } from "../../hooks/useGetUserData";
 const Navbar = () => {
   useGetUserData();
   return (
