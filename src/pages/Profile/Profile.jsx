@@ -12,8 +12,6 @@ const Profile = () => {
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const profileImage = useGetProfileImage();
-  console.log(profileImage);
-
   const entries = [
     ["first_name", "Nombre :"],
     ["last_name", "Apellido: "],
