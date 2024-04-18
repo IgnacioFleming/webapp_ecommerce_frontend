@@ -24,13 +24,13 @@ const MyTickets = () => {
       <Box sx={boxStyle}>
         {myTickets.payload?.length === 0 ? (
           <Typography variant="h4" color="initial">
-            Aún no realizaste compras.
+            You have not purchases yet.
           </Typography>
         ) : (
           <StackOfTickets array={myTickets.payload} isAdmin={user.first_name === "Admin_User" ? true : false} />
         )}
         <Button variant="contained" onClick={() => navigate("/products")}>
-          Volver
+          Go Back
         </Button>
       </Box>
     </>

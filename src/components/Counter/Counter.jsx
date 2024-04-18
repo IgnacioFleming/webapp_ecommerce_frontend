@@ -45,13 +45,13 @@ const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
         >
           {!isAdmin && (
             <Button size="small" variant="contained" disabled={!notDisabled} onClick={() => onAdd(counter)}>
-              Agregar al carrito
+              Add to Cart
             </Button>
           )}
 
           <Link to={`/`}>
             <Button size="small" variant="contained">
-              Volver
+              Go Back
             </Button>
           </Link>
         </div>

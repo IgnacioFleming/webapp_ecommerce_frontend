@@ -13,10 +13,10 @@ const Profile = () => {
   const { user } = useContext(UserContext);
   const profileImage = useGetProfileImage();
   const entries = [
-    ["first_name", "Nombre :"],
-    ["last_name", "Apellido: "],
+    ["first_name", "Name:"],
+    ["last_name", "Last Name: "],
     ["email", "Email: "],
-    ["role", "Rol: "],
+    ["role", "Role: "],
   ];
 
   const handleLogOut = async () => {
@@ -49,7 +49,7 @@ const Profile = () => {
                 if (!user[entry]) return;
                 return (
                   <Typography key={index} variant="body" color="initial" sx={{ display: "flex" }}>
-                    <strong style={{ display: "block", width: 80 }}>{text}</strong>
+                    <strong style={{ display: "block", width: 100 }}>{text}</strong>
                     {user[entry]}
                   </Typography>
                 );
@@ -59,7 +59,7 @@ const Profile = () => {
                   Log Out
                 </Button>
                 <Button variant="contained" onClick={() => navigate("/")} size="small">
-                  Volver
+                  Go Back
                 </Button>
               </Box>
             </Box>

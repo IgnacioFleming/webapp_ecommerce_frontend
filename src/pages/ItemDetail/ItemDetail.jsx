@@ -1,5 +1,4 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
-import React from "react";
 import CounterContainer from "../../components/Counter/CounterContainer.jsx";
 const cardActionsStyle = {
   display: "flex",
@@ -59,7 +58,7 @@ const ItemDetail = ({ item, onAdd, quantity }) => {
                   marginBottom: 5,
                 }}
               >
-                Precio: ${item.price}
+                Price: ${item.price}
               </Typography>
               <Typography
                 gutterBottom
@@ -72,7 +71,7 @@ const ItemDetail = ({ item, onAdd, quantity }) => {
                   marginBottom: 5,
                 }}
               >
-                Stock disponible: {item.stock}
+                Stock: {item.stock}
               </Typography>
             </CardContent>
             <CardActions sx={cardActionsStyle}>

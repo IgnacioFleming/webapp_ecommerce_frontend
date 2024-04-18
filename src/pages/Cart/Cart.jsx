@@ -41,7 +41,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
           <>
             <Box sx={boxStyle}>
               <Typography variant="h4" color="initial">
-                Aún no agregaste productos al Carrito
+                There&apos;s no items added to cart yet.
               </Typography>
             </Box>
           </>
@@ -51,18 +51,18 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
             <>
               <Link to="/checkout">
                 <Button size="large" variant="contained">
-                  Terminar Compra
+                  Complete Purchase
                 </Button>
               </Link>
 
               <Button size="large" variant="contained" onClick={setCartEmpty}>
-                Vaciar Carrito
+                Empty Cart
               </Button>
             </>
           )}
           <Link to="/">
             <Button size="large" variant="contained">
-              Volver
+              Go Back
             </Button>
           </Link>
         </Box>

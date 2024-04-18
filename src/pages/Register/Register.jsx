@@ -1,6 +1,6 @@
 import { Box, Button, TextField, Typography } from "@mui/material";
 import styles from "./Register.module.css";
-import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+import { GithubLoginButton } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
 
 const container = {
@@ -25,6 +25,7 @@ const thirdPartyAuthButtonStyle = {
   width: "220px",
   borderRadius: 45,
   margin: 0,
+  backgroundColor: "#141414",
 };
 
 const thirdPartyAuthInnerTextStyle = {
@@ -75,9 +76,9 @@ function Register({ handleChange, handleSubmit, errors, values }) {
             <div className={styles.line}></div>
           </Box>
           <Box sx={thirdPartyAuthButtonContainer}>
-            <GoogleLoginButton style={thirdPartyAuthButtonStyle}>
+            {/* <GoogleLoginButton style={thirdPartyAuthButtonStyle}>
               <span style={thirdPartyAuthInnerTextStyle}>Sign Up with Google</span>
-            </GoogleLoginButton>
+            </GoogleLoginButton> */}
             <GithubLoginButton style={thirdPartyAuthButtonStyle}>
               <span style={thirdPartyAuthInnerTextStyle}>Sign Up with Github</span>
             </GithubLoginButton>

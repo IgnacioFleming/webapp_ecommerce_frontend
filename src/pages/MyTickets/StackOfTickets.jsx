@@ -38,7 +38,7 @@ const StackOfTickets = ({ array, isAdmin }) => {
               <StackOfProducts array={e.products} />
               <Box>
                 <Typography mb={2} variant="h5" color="initial">
-                  <span style={{ fontWeight: 700 }}>Total:</span> ${e.amount.toLocaleString()}
+                  <span style={{ fontWeight: 700 }}>Amount:</span> ${e.amount.toLocaleString()}
                 </Typography>
               </Box>
             </Container>

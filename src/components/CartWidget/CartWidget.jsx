@@ -17,12 +17,13 @@ const counterStyle = {
   position: "relative",
   top: "-18px",
   right: 10,
-  height: "auto",
-  width: "21px",
+  height: "22px",
+  width: "22px",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   zIndex: "1",
+  fontSize: 13,
 };
 
 const CartWidget = () => {

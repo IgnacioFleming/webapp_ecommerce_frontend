@@ -50,23 +50,23 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
     >
       <form onSubmit={handleSubmit}>
         <Typography variant="h5" mt={11} color="initial">
-          Por favor completá tus datos de pago
+          Please complete your payment details
         </Typography>
-        <PaymentElement />
+        <PaymentElement options={{ business: { name: "The Office Store" }, paymentMethodOrder: ["s"] }} />
         <Typography variant="h5" color="initial" mt={10} mb={5}>
-          Cantidad de items: {totalQuantity}
+          Items Quantity: {totalQuantity}
         </Typography>
         <Typography variant="h5" color="initial" mt={5} mb={10}>
-          Total de la Compra: $ {total}
+          Total Amount: $ {total}
         </Typography>
         <Box sx={{ display: "flex", justifyContent: "center", gap: 5 }}>
           <Button type="submit" variant="contained">
-            Confirmar Compra
+            Confirm Purchase
           </Button>
 
           <Link to="/cart">
             <Button type="button" variant="contained">
-              Volver
+              Go Back
             </Button>
           </Link>
         </Box>

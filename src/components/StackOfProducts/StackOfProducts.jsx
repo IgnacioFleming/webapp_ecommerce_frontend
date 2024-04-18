@@ -66,7 +66,7 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
                   }}
                 >
                   <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
-                    Cantidad
+                    Quantity
                   </Typography>
                   <Typography gutterBottom variant="h5" color="initial">
                     {e.quantity}
@@ -84,7 +84,7 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
                   }}
                 >
                   <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
-                    Importe
+                    Amount
                   </Typography>
                   <Typography gutterBottom variant="h5" color="initial">
                     ${e.quantity * e.product?.price}
@@ -93,7 +93,7 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
                 <Grid item md={2} sx={{ display: "flex", alignItems: "center" }}>
                   {hasDeleteAction && (
                     <Button variant="contained" onClick={() => deleteFromCart(e.product._id)}>
-                      Eliminar
+                      Delete
                     </Button>
                   )}
                 </Grid>
