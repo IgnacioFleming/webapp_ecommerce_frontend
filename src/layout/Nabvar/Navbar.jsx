@@ -2,7 +2,6 @@ import { AppBar, CssBaseline, Toolbar } from "@mui/material";
 import { NavigationMenu } from "./NavigationMenu";
 import { Link, Outlet } from "react-router-dom";
 import { useGetUserData } from "../../utils/hooks/useGetUserData";
-import CartWidget from "../../components/CartWidget/CartWidget";
 const Navbar = () => {
   useGetUserData();
   return (
@@ -14,7 +13,6 @@ const Navbar = () => {
             <img src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/Eccomerce/logo_ecommerce_ci16kw.png" alt="Logo de la empresa" />
           </Link>
           <NavigationMenu />
-          <CartWidget />
         </Toolbar>
       </AppBar>
       <Toolbar />

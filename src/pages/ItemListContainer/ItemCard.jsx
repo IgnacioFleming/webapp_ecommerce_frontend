@@ -49,12 +49,12 @@ const ItemCard = ({ item, refresh }) => {
       <CardActions sx={{ display: "flex", justifyContent: "center", gap: 1, alignItems: "flex-end", height: "10%" }}>
         <Link sx={{ justifySelf: "start" }} to={`/itemDetail/${item._id}`}>
           <Button size="small" variant="contained" sx={{ justifySelf: "start" }}>
-            Detalle
+            Details
           </Button>
         </Link>
         {user.role === "admin" && (
           <Button size="small" variant="contained" sx={{ justifySelf: "start" }} onClick={() => handleDelete(item._id)}>
-            Eliminar
+            Delete
           </Button>
         )}
       </CardActions>

@@ -19,7 +19,7 @@ export function useGetUserData() {
         })
         .catch((err) => {
           alerts.errorAlert(err);
-          setTimeout(() => (window.location.href = "/login"), 3000);
+          // setTimeout(() => (window.location.href = "/login"), 3000);
         });
     }
   }, []);

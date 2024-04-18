@@ -12,18 +12,18 @@ const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, tota
   return (
     <>
       {orderId ? (
-        <Box>
-          <Typography align="center" mt={30} mb={10} variant="h1" color="initial">
-            Felicitaciones!!
+        <Box sx={{ marginBlock: 10 }}>
+          <Typography align="center" mt={10} mb={10} variant="h1" color="initial">
+            Congratulations!!
           </Typography>
           <Typography align="center" variant="subtitle2" color="initial" sx={{ fontSize: 20 }}>
-            Tu compra se realizó con éxito! Tu número de orden es
+            Your purchase was registered successfully! Your order number is
             <strong> {orderId}</strong> .<br />
-            <br /> <br /> Muchas gracias por elegirnos!!
+            <br /> <br /> Thank you for choosing us!!
           </Typography>
           <Box sx={{ display: "flex", justifyContent: "center", marginTop: 5 }}>
             <Link to="/">
-              <Button variant="contained">Volver al Inicio</Button>
+              <Button variant="contained">Back to Home</Button>
             </Link>
           </Box>
         </Box>
@@ -41,7 +41,7 @@ const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, tota
                 }}
               >
                 <Typography variant="h4" mt={10} color="initial">
-                  Detalle de tu compra
+                  Order Detail
                 </Typography>
                 <List
                   sx={{
@@ -66,11 +66,11 @@ const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading, tota
                                 }}
                               >
                                 <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                                  Cantidad: {e.quantity}
+                                  Quantity: {e.quantity}
                                 </Typography>
 
                                 <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
-                                  Monto: $ {e.quantity * e.product.price}
+                                  Amount: $ {e.quantity * e.product.price}
                                 </Typography>
                               </span>
                             }

@@ -2,7 +2,7 @@ import styles from "./Login.module.css";
 import Grid from "@mui/material/Unstable_Grid2";
 import TextField from "@mui/material/TextField";
 import { Box, Button, Typography } from "@mui/material";
-import { GithubLoginButton, GoogleLoginButton } from "react-social-login-buttons";
+import { GithubLoginButton } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
 import PasswordInput from "./PasswordInput";
 
@@ -20,6 +20,7 @@ const thirdPartyAuthButtonStyle = {
   width: "220px",
   borderRadius: 45,
   margin: 0,
+  backgroundColor: "#141414",
 };
 
 const loginButtonStyle = { width: 200, height: 50, fontSize: 20, fontWeight: "semibold", borderRadius: 45, alignSelf: "center" };
@@ -66,7 +67,7 @@ const Login = ({ handleChange, handleSubmit, values, errors }) => {
                 <div className={styles.line}></div>
               </Box>
               <Box sx={thirdPartyAuthButtonContainer}>
-                <GoogleLoginButton style={thirdPartyAuthButtonStyle} />
+                {/* <GoogleLoginButton style={thirdPartyAuthButtonStyle} /> */}
                 <a href={`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/github`}>
                   <GithubLoginButton style={thirdPartyAuthButtonStyle} />
                 </a>
