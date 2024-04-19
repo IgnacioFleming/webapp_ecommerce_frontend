@@ -1,10 +1,10 @@
 import { Avatar, Box, IconButton, Typography } from "@mui/material";
 import { useContext } from "react";
 import { Link } from "react-router-dom";
-import Dropdown from "./Dropdown";
 import useFetch from "../../hooks/useFetch";
 import { UserContext } from "../../context/UserContext";
 import CartWidget from "../../components/CartWidget/CartWidget";
+import Dropdown from "../../components/Dropdown/Dropdown";
 const alignment = {
   width: "100%",
   display: "flex",

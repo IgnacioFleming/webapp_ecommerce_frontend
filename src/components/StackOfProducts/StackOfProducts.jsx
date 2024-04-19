@@ -1,5 +1,6 @@
 import { Box, Button, Grid, Stack, Typography } from "@mui/material";
 import { Container } from "../../utils/styledComponents/Container";
+import { formatCurrency } from "../../utils/utils";
 
 const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
   if (!Array.isArray(array)) return null;
@@ -10,8 +11,8 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
         width: "100%",
         display: "flex",
         alignItems: "center",
-        marginTop: 10,
-        marginBottom: 10,
+        marginTop: 5,
+        marginBottom: 5,
       }}
       spacing={5}
     >
@@ -21,8 +22,8 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
             <Container
               sx={{
                 width: "80%",
-                height: 200,
                 display: "flex",
+                flexWrap: "wrap",
                 justifyContent: "space-evenly",
                 alignItems: "center",
               }}
@@ -30,69 +31,42 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
               elevation={5}
             >
               <Grid container>
-                <Grid item md={2} sx={{ display: "flex", alignItems: "center", height: "100%" }}>
-                  <Box sx={{ height: "80%", width: "100%" }}>
+                <Grid item xs={12} md={4} sx={{ display: "flex", alignItems: { xs: "center", md: "flex-start" }, height: "100%", flexDirection: "column", gap: 2, overflow: "hidden" }}>
+                  <Box sx={{ margin: 2 }}>
                     <img
                       style={{
                         height: 180,
                         width: 180,
-                        objectFit: "contain",
+                        objectFit: "cover",
                       }}
                       src={e.product?.thumbnails[0]}
                     />
+                    <Typography variant="h6" color="initial">
+                      {e.product?.title}
+                    </Typography>
                   </Box>
                 </Grid>
                 <Grid
                   item
-                  md={4}
+                  xs={12}
+                  md={8}
                   sx={{
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    gap: 2,
+                    flexWrap: "wrap",
+                    overflow: "hidden",
                   }}
                 >
-                  <Typography gutterBottom variant="h5" color="initial">
-                    {e.product?.title}
+                  <Typography variant="subtitle1" color="initial">
+                    <strong>Quantity:</strong> {e.quantity}
                   </Typography>
-                </Grid>
-                <Grid
-                  item
-                  md={2}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-                    gap: 1,
-                  }}
-                >
-                  <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
-                    Quantity
+                  <Typography variant="subtitle1" color="initial">
+                    <strong>Amount:</strong> {formatCurrency(e.quantity * e.product?.price)}
                   </Typography>
-                  <Typography gutterBottom variant="h5" color="initial">
-                    {e.quantity}
-                  </Typography>
-                </Grid>
-                <Grid
-                  item
-                  md={2}
-                  sx={{
-                    display: "flex",
-                    flexDirection: "column",
-                    justifyContent: "center",
-
-                    gap: 1,
-                  }}
-                >
-                  <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
-                    Amount
-                  </Typography>
-                  <Typography gutterBottom variant="h5" color="initial">
-                    ${e.quantity * e.product?.price}
-                  </Typography>
-                </Grid>
-                <Grid item md={2} sx={{ display: "flex", alignItems: "center" }}>
                   {hasDeleteAction && (
-                    <Button variant="contained" onClick={() => deleteFromCart(e.product._id)}>
+                    <Button sx={{ justifySelf: "flex-end" }} variant="contained" onClick={() => deleteFromCart(e.product._id)}>
                       Delete
                     </Button>
                   )}
