@@ -3,6 +3,7 @@ import { Box } from "@mui/material";
 import { RiShoppingCartLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
+import { useShowCart } from "../../hooks/useShowCart";
 
 const boxStyle = {
   display: "flex",
@@ -27,12 +28,13 @@ const counterStyle = {
 };
 
 const CartWidget = () => {
+  const showCart = useShowCart();
   const { cartQuantity } = useContext(CartContext);
   const navigate = useNavigate();
   let quantity = cartQuantity();
   return (
     <>
-      {quantity > 0 && (
+      {showCart && (
         <Box sx={boxStyle} onClick={() => navigate("/cart")}>
           <RiShoppingCartLine size={25} />
 

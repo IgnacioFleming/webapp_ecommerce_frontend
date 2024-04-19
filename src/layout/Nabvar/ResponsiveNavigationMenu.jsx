@@ -6,10 +6,10 @@ const alignment = {
   alignItems: "center",
   justifyContent: "flex-end",
 };
-function ResponsiveNavigationMenu() {
+function ResponsiveNavigationMenu({ toggleDrawer }) {
   return (
     <Box sx={alignment}>
-      <MdOutlineMenu size={40} />
+      <MdOutlineMenu size={40} onClick={() => toggleDrawer(true)} />
     </Box>
   );
 }
