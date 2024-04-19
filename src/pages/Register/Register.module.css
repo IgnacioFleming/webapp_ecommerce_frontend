@@ -16,7 +16,7 @@
 
 .logo {
   object-fit: contain;
-  width: 25%;
+  width: 200px;
   margin-bottom: 10px;
 }
 
@@ -26,8 +26,4 @@
   width: 80%;
   flex-wrap: wrap;
   justify-content: center;
-}
-
-.shortInput {
-  width: 50%;
 }

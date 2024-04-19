@@ -10,7 +10,10 @@ const useFetch = (url, method = "GET", dependencies = []) => {
       credentials: "include",
     })
       .then((res) => res.json())
-      .then((json) => setPayload(json.payload))
+      .then((json) => {
+        if (json.status === "error") navigate("/login");
+        else setPayload(json.payload);
+      })
       .catch(() => navigate("/login"));
   }, [url, method, ...dependencies]);
 

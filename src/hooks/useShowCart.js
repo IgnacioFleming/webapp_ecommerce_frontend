@@ -2,11 +2,11 @@ import { useContext, useEffect, useState } from "react";
 import { CartContext } from "../context/CartContext";
 
 export const useShowCart = () => {
-  const { cartQuantity } = useContext(CartContext);
+  const { cart } = useContext(CartContext);
   const [showCart, setShowCart] = useState(false);
   useEffect(() => {
-    if (cartQuantity > 0) return setShowCart(true);
+    if (cart.length > 0) return setShowCart(true);
     else setShowCart(false);
-  }, [cartQuantity]);
+  }, [cart]);
   return showCart;
 };

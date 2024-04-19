@@ -7,9 +7,11 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import { Toolbar } from "@mui/material";
 import { useSetDrawerCategories } from "../../hooks/useSetDrawerCategories";
+import { useNavigate } from "react-router-dom";
 
 export default function DrawerMenu({ openDrawer, toggleDrawer }) {
   const categories = useSetDrawerCategories();
+  const navigate = useNavigate();
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={() => toggleDrawer(false)}>
@@ -17,7 +19,7 @@ export default function DrawerMenu({ openDrawer, toggleDrawer }) {
         <Toolbar />
         {categories.map((category, index) => {
           return (
-            <ListItem key={index} disablePadding>
+            <ListItem key={index} disablePadding onClick={() => navigate(category.path)}>
               <ListItemButton>
                 <ListItemIcon>{category.icon}</ListItemIcon>
                 <ListItemText primary={category.title} sx={{ display: "flex", alignItems: "center", margin: 0, paddingTop: 0 }} />
@@ -31,7 +33,7 @@ export default function DrawerMenu({ openDrawer, toggleDrawer }) {
 
   return (
     <div>
-      <Drawer anchor="right" open={openDrawer} onClose={toggleDrawer}>
+      <Drawer variant="temporary" anchor="right" open={openDrawer} onClose={() => toggleDrawer(false)}>
         {DrawerList}
       </Drawer>
     </div>

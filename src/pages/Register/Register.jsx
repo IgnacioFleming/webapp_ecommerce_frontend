@@ -13,7 +13,7 @@ const container = {
 const formContainer = {
   display: "flex",
   flexDirection: "column",
-  width: "50%",
+  width: { xs: "95%", md: "50%" },
   height: "90%",
   justifyContent: "center",
   alignItems: "center",
@@ -37,7 +37,7 @@ const dividerStyle = { display: "flex", alignItems: "center", gap: 2, justifyCon
 
 const thirdPartyAuthButtonContainer = { display: "flex", justifyContent: "center", gap: 3 };
 
-const shortInputBox = { display: "flex", gap: "10px", width: "100%" };
+const shortInputBox = { display: "flex", gap: "10px", width: "100%", flexWrap: { xs: "wrap", sm: "nowrap" } };
 
 function Register({ handleChange, handleSubmit, errors, values }) {
   return (
@@ -46,7 +46,7 @@ function Register({ handleChange, handleSubmit, errors, values }) {
       <Box sx={container}>
         <Box sx={formContainer}>
           <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/Eccomerce/logo_ecommerce_ci16kw.png" alt="Logo.png" />
-          <Typography variant="h2" color="initial" fontWeight="bold">
+          <Typography variant="h3" color="initial" fontWeight="bold" sx={{ textAlign: "center" }}>
             Create Account
           </Typography>
           <Typography variant="subtitle1" color="initial" mb={1}>
@@ -54,8 +54,8 @@ function Register({ handleChange, handleSubmit, errors, values }) {
           </Typography>
           <form id="Register" className={styles.form} onSubmit={handleSubmit}>
             <Box sx={shortInputBox}>
-              <TextField className={styles.shortInput} name="first_name" label="First Name" variant="outlined" onChange={handleChange} helperText={errors.first_name} error={errors.first_name && true} value={values.first_name} />
-              <TextField className={styles.shortInput} name="last_name" label="Last Name" variant="outlined" onChange={handleChange} helperText={errors.last_name} error={errors.last_name && true} value={values.last_name} />
+              <TextField sx={{ width: { xs: "100%", md: "50%" } }} name="first_name" label="First Name" variant="outlined" onChange={handleChange} helperText={errors.first_name} error={errors.first_name && true} value={values.first_name} />
+              <TextField sx={{ width: { xs: "100%", md: "50%" } }} name="last_name" label="Last Name" variant="outlined" onChange={handleChange} helperText={errors.last_name} error={errors.last_name && true} value={values.last_name} />
             </Box>
             <TextField fullWidth name="email" label="Email" variant="outlined" onChange={handleChange} helperText={errors.email} error={errors.email && true} value={values.email} />
             <Box sx={shortInputBox}>
@@ -78,10 +78,12 @@ function Register({ handleChange, handleSubmit, errors, values }) {
           <Box sx={thirdPartyAuthButtonContainer}>
             {/* <GoogleLoginButton style={thirdPartyAuthButtonStyle}>
               <span style={thirdPartyAuthInnerTextStyle}>Sign Up with Google</span>
-            </GoogleLoginButton> */}
-            <GithubLoginButton style={thirdPartyAuthButtonStyle}>
-              <span style={thirdPartyAuthInnerTextStyle}>Sign Up with Github</span>
-            </GithubLoginButton>
+              </GoogleLoginButton> */}
+            <a href={`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/github`}>
+              <GithubLoginButton style={thirdPartyAuthButtonStyle}>
+                <span style={thirdPartyAuthInnerTextStyle}>Sign Up with Github</span>
+              </GithubLoginButton>
+            </a>
           </Box>
           <Box>
             <Typography variant="body1" color="initial" mt={3}>

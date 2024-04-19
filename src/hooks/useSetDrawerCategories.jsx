@@ -6,13 +6,14 @@ import { RiShoppingCartLine } from "react-icons/ri";
 import { BsBagDashFill } from "react-icons/bs";
 
 const initialCategories = [
-  { title: "Products", icon: <BsBagDashFill size={25} /> },
-  { title: "My Purchases", icon: <BiPurchaseTag size={25} /> },
-  { title: "Profile", icon: <MdAccountCircle size={25} /> },
+  { title: "Products", icon: <BsBagDashFill size={25} />, path: "/products" },
+  { title: "My Purchases", icon: <BiPurchaseTag size={25} />, path: "/tickets" },
+  { title: "Profile", icon: <MdAccountCircle size={25} />, path: "/profile" },
 ];
 const cartCategory = {
   title: "Cart",
   icon: <RiShoppingCartLine size={25} />,
+  path: "/cart",
 };
 export const useSetDrawerCategories = () => {
   const [categories, setCategories] = useState(initialCategories);

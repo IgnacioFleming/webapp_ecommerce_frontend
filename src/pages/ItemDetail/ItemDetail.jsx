@@ -1,5 +1,6 @@
 import { Card, CardActions, CardContent, CardMedia, Grid, Typography } from "@mui/material";
 import CounterContainer from "../../components/Counter/CounterContainer.jsx";
+import { formatCurrency } from "../../utils/utils.js";
 const cardActionsStyle = {
   display: "flex",
   width: "100%",
@@ -12,38 +13,31 @@ const ItemDetail = ({ item, onAdd, quantity }) => {
     <div style={{ display: "flex", justifyContent: "center" }} key={item.id}>
       <Card
         sx={{
-          width: "50%",
-          height: 600,
-          padding: "100px",
-          margin: "50px",
+          width: { xs: "100%", md: "70%" },
+          padding: { xs: "0px", md: "50px" },
+          margin: { xs: "0px", sm: "25px", md: "50px" },
         }}
       >
-        <Grid container sx={{ justifyContent: "center", height: "100%" }}>
-          <Grid item md={6} sx={{ height: "100%" }}>
+        <Grid container sx={{ justifyContent: "center" }}>
+          <Grid item xs={12} md={6} sx={{ display: "flex", justifyContent: "center" }}>
             <CardMedia
               component="img"
               alt="item"
               image={item.thumbnails ? item.thumbnails[0] : ""}
               sx={{
-                width: "80%",
-                height: "80%",
-                objectFit: "contain",
+                width: "100%",
+                objectFit: "cover",
               }}
             />
           </Grid>
 
-          <Grid item md={6}>
-            <CardContent
-              sx={{
-                height: 100,
-                marginBottom: 30,
-              }}
-            >
-              <Typography gutterBottom variant="h3" component="div" sx={{ width: "100%", marginBottom: 5, textAlign: "center" }}>
+          <Grid item xs={12} md={6}>
+            <CardContent>
+              <Typography gutterBottom variant="h5" component="div" sx={{ width: "100%", textAlign: "center" }}>
                 {item.title}
               </Typography>
 
-              <Typography variant="body1" color="text.secondary" sx={{ marginBottom: 5, textAlign: "center" }}>
+              <Typography variant="body1" color="text.secondary" sx={{ margin: 2 }}>
                 {item.description}
               </Typography>
 
@@ -54,11 +48,9 @@ const ItemDetail = ({ item, onAdd, quantity }) => {
                 sx={{
                   width: "100%",
                   textAlign: "center",
-                  height: "10%",
-                  marginBottom: 5,
                 }}
               >
-                Price: ${item.price}
+                Price: {formatCurrency(item.price)}
               </Typography>
               <Typography
                 gutterBottom
@@ -67,8 +59,6 @@ const ItemDetail = ({ item, onAdd, quantity }) => {
                 sx={{
                   width: "100%",
                   textAlign: "center",
-                  height: "10%",
-                  marginBottom: 5,
                 }}
               >
                 Stock: {item.stock}

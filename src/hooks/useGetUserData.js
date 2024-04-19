@@ -2,10 +2,12 @@ import { useContext, useEffect } from "react";
 import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/CartContext";
 import alerts from "../utils/alerts/alerts";
+import { useNavigate } from "react-router-dom";
 
 export function useGetUserData() {
   const { user, setUserData } = useContext(UserContext);
   const { setCart } = useContext(CartContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (Object.keys(user).length === 0) {
@@ -15,9 +17,11 @@ export function useGetUserData() {
       })
         .then((res) => res.json())
         .then((json) => {
-          setUserData(json.description.user);
+          if (json.status === "error") navigate("/login");
+          else setUserData(json.description.user);
         })
         .catch((err) => {
+          console.log("trigger this alert");
           alerts.errorAlert(err);
           // setTimeout(() => (window.location.href = "/login"), 3000);
         });

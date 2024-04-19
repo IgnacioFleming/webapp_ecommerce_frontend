@@ -8,10 +8,9 @@ import { useState } from "react";
 const Navbar = () => {
   useGetUserData();
   const [openDrawer, setOpenDrawer] = useState(false);
-  const toggleDrawer = (newOpen) => () => {
+  const toggleDrawer = (newOpen) => {
     setOpenDrawer(newOpen);
   };
-  console.log(openDrawer);
   return (
     <>
       <CssBaseline />
@@ -29,7 +28,11 @@ const Navbar = () => {
         </Toolbar>
       </AppBar>
       <Toolbar />
-      {openDrawer && <DrawerMenu openDrawer={openDrawer} toggleDrawer={toggleDrawer} />}
+      {openDrawer && (
+        <Hidden mdUp>
+          <DrawerMenu openDrawer={openDrawer} toggleDrawer={toggleDrawer} />
+        </Hidden>
+      )}
       <Outlet />
     </>
   );

@@ -1,11 +1,13 @@
 import { Box, Button, Divider, List, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import StackOfProducts from "../../components/StackOfProducts/StackOfProducts";
+import { formatCurrency } from "../../utils/utils";
 
 const boxStyle = {
   paddingTop: 5,
   paddingBottom: 5,
   display: "flex",
+  flexWrap: "wrap",
 };
 
 const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
@@ -13,7 +15,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
     boxStyle.justifyContent = "center";
     boxStyle.width = "100%";
   } else {
-    boxStyle.justifyContent = "flex-end";
+    boxStyle.justifyContent = { xs: "flex-start", md: "flex-end" };
     boxStyle.width = "80%";
   }
   return (
@@ -31,7 +33,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
             <Divider variant="fullWidth"></Divider>
             <Box sx={boxStyle}>
               <Typography variant="h4" color="initial">
-                Total : {totalAmount}
+                Total : {formatCurrency(totalAmount)}
               </Typography>
             </Box>
             <Divider variant="fullWidth"></Divider>
@@ -46,22 +48,22 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
             </Box>
           </>
         )}
-        <Box sx={{ ...boxStyle, gap: 2 }}>
+        <Box sx={{ ...boxStyle, gap: 1 }}>
           {cart.length > 0 && (
             <>
               <Link to="/checkout">
-                <Button size="large" variant="contained">
+                <Button size="small" variant="contained">
                   Complete Purchase
                 </Button>
               </Link>
 
-              <Button size="large" variant="contained" onClick={setCartEmpty}>
+              <Button size="small" variant="contained" onClick={setCartEmpty}>
                 Empty Cart
               </Button>
             </>
           )}
           <Link to="/">
-            <Button size="large" variant="contained">
+            <Button size="small" variant="contained">
               Go Back
             </Button>
           </Link>

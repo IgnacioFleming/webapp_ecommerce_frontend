@@ -66,7 +66,7 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
                     <strong>Amount:</strong> {formatCurrency(e.quantity * e.product?.price)}
                   </Typography>
                   {hasDeleteAction && (
-                    <Button sx={{ justifySelf: "flex-end" }} variant="contained" onClick={() => deleteFromCart(e.product._id)}>
+                    <Button sx={{ justifySelf: "flex-end" }} size="small" variant="contained" onClick={() => deleteFromCart(e.product._id)}>
                       Delete
                     </Button>
                   )}
