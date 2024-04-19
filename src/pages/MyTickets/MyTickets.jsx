@@ -12,27 +12,28 @@ const boxStyle = {
   justifyContent: "center",
   alignItems: "center",
   gap: 5,
+  height: "80vh",
 };
 const MyTickets = () => {
   const { user } = useContext(UserContext);
   const url = `${import.meta.env.VITE_APP_BASE_URL}` + (user.first_name === "Admin_User" ? `/api/tickets` : `/api/tickets/${user.email}`);
   const myTickets = useFetch(url, "GET");
   const navigate = useNavigate();
-  if (myTickets.payload?.length <= 0) boxStyle.height = "80vh";
+
   return (
     <>
-      <Box sx={boxStyle}>
-        {myTickets.payload?.length === 0 ? (
+      {myTickets.payload?.length === 0 ? (
+        <Box sx={boxStyle}>
           <Typography variant="h4" color="initial">
             You have not purchases yet.
           </Typography>
-        ) : (
-          <StackOfTickets array={myTickets.payload} isAdmin={user.first_name === "Admin_User" ? true : false} />
-        )}
-        <Button variant="contained" onClick={() => navigate("/products")}>
-          Go Back
-        </Button>
-      </Box>
+          <Button variant="contained" onClick={() => navigate("/products")}>
+            Go Back
+          </Button>
+        </Box>
+      ) : (
+        <StackOfTickets array={myTickets.payload} isAdmin={user.first_name === "Admin_User" ? true : false} />
+      )}
     </>
   );
 };

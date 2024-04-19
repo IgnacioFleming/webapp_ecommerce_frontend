@@ -8,3 +8,12 @@ export const formatDate = (timestamp) => {
   const seconds = String(date.getSeconds()).padStart(2, 0);
   return `${month}/${day}/${year} ${hours}:${minutes}:${seconds}`;
 };
+
+export const formatCurrency = (number) => {
+  const USDollar = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    maximumFractionDigits: 0,
+  });
+  return USDollar.format(number);
+};

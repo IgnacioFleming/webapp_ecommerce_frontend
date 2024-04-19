@@ -38,12 +38,14 @@ const Profile = () => {
     <>
       <Toolbar />
       <Container maxWidth="md">
-        <Paper elevation={3} sx={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 10 }}>
+        <Paper elevation={3} sx={{ display: "flex", alignItems: "center", justifyContent: "center", padding: 10, overflow: "hidden" }}>
           <Box sx={{ display: "flex", flexDirection: "column", gap: 3, justifyContent: "center" }}>
-            <div className={styles.imgContainer}>
-              <img className={styles.profileImg} src={profileImage || "https://res.cloudinary.com/dah7yxmc5/image/upload/v1736197523/Eccomerce/Profile/default-avatar_oarvax.jpg"} alt="Profile Image" />
-              {user.role !== "admin" && <UploadButton variant="contained" icon={<MdEdit color="white" size={20} />} sx={{ width: 30, height: 30, borderRadius: "150px", padding: 0, position: "absolute", right: 0, bottom: 0 }} />}
-            </div>
+            <Box sx={{ display: "flex", justifyContent: "center" }}>
+              <div className={styles.imgContainer}>
+                <img className={styles.profileImg} src={profileImage || "https://res.cloudinary.com/dah7yxmc5/image/upload/v1736197523/Eccomerce/Profile/default-avatar_oarvax.jpg"} alt="Profile Image" />
+                {user.role !== "admin" && <UploadButton variant="contained" icon={<MdEdit color="white" size={20} />} sx={{ width: 30, height: 30, borderRadius: "150px", padding: 0, position: "absolute", right: 0, bottom: 0 }} />}
+              </div>
+            </Box>
             <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
               {entries.map(([entry, text], index) => {
                 if (!user[entry]) return;
@@ -54,7 +56,7 @@ const Profile = () => {
                   </Typography>
                 );
               })}
-              <Box sx={{ display: "flex", gap: 1, marginTop: 2 }}>
+              <Box sx={{ display: "flex", gap: 1, marginTop: 2, justifyContent: "center" }}>
                 <Button variant="contained" onClick={handleLogOut} size="small">
                   Log Out
                 </Button>
