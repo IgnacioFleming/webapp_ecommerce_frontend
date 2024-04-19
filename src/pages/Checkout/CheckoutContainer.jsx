@@ -7,7 +7,6 @@ const CheckoutContainer = () => {
   const { cart, cartAmount, setCart, cartQuantity } = useContext(CartContext);
   const { user } = useContext(UserContext);
   const [orderId, setOrderId] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
   let totalQuantity = cartQuantity();
 
   const completePurchase = async (error = false) => {
@@ -26,7 +25,7 @@ const CheckoutContainer = () => {
     localStorage.setItem("cart", JSON.stringify(payload.products));
     setOrderId(ticketData.payload.split(":")[1].trim());
   };
-  return <Checkout cart={cart} cartAmount={cartAmount} completePurchase={completePurchase} orderId={orderId} isLoading={isLoading} totalQuantity={totalQuantity} />;
+  return <Checkout cart={cart} cartAmount={cartAmount} completePurchase={completePurchase} orderId={orderId} totalQuantity={totalQuantity} />;
 };
 
 export default CheckoutContainer;

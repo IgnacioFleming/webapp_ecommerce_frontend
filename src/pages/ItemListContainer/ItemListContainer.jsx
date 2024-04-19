@@ -1,9 +1,9 @@
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
-import useFetch from "../../utils/hooks/useFetch";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import useFetch from "../../hooks/useFetch";
 const ItemListContainer = () => {
   const { categoryName } = useParams();
 

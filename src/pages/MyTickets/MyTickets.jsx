@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
-import useFetch from "../../utils/hooks/useFetch";
 import StackOfTickets from "./StackOfTickets";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { UserContext } from "../../context/UserContext";
+import useFetch from "../../hooks/useFetch";
 const boxStyle = {
   paddingTop: 5,
   paddingBottom: 5,
@@ -18,7 +18,7 @@ const MyTickets = () => {
   const url = `${import.meta.env.VITE_APP_BASE_URL}` + (user.first_name === "Admin_User" ? `/api/tickets` : `/api/tickets/${user.email}`);
   const myTickets = useFetch(url, "GET");
   const navigate = useNavigate();
-  if (myTickets.payload?.length === 0) boxStyle.height = "80vh";
+  if (myTickets.payload?.length <= 0) boxStyle.height = "80vh";
   return (
     <>
       <Box sx={boxStyle}>

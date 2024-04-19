@@ -1,9 +1,11 @@
 import { Box, Stack, Typography } from "@mui/material";
 import StackOfProducts from "../../components/StackOfProducts/StackOfProducts";
 import { Container } from "../../utils/styledComponents/Container";
+import { formatDate } from "../../utils/utils";
 
 const StackOfTickets = ({ array, isAdmin }) => {
   if (!Array.isArray(array)) return null;
+
   return (
     <Stack
       direction="column"
@@ -18,11 +20,11 @@ const StackOfTickets = ({ array, isAdmin }) => {
     >
       {array &&
         array.map((e) => {
+          console.log(e.purchase_datetime);
           return (
             <Container
               sx={{
                 width: "80%",
-                height: "auto",
               }}
               key={e._id}
               elevation={5}
@@ -33,7 +35,7 @@ const StackOfTickets = ({ array, isAdmin }) => {
                 </Typography>
               )}
               <Typography mt={2} variant="h5" color="initial" sx={{ fontWeight: "600" }}>
-                {e.purchase_datetime}
+                {formatDate(e.purchase_datetime)}
               </Typography>
               <StackOfProducts array={e.products} />
               <Box>
