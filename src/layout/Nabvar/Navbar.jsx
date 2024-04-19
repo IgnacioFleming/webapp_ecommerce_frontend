@@ -4,8 +4,14 @@ import { Link, Outlet } from "react-router-dom";
 import { useGetUserData } from "../../hooks/useGetUserData";
 import ResponsiveNavigationMenu from "./ResponsiveNavigationMenu";
 import DrawerMenu from "../Drawer/Drawer";
+import { useState } from "react";
 const Navbar = () => {
   useGetUserData();
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const toggleDrawer = (newOpen) => () => {
+    setOpenDrawer(newOpen);
+  };
+  console.log(openDrawer);
   return (
     <>
       <CssBaseline />
@@ -18,12 +24,12 @@ const Navbar = () => {
             <NavigationMenu />
           </Hidden>
           <Hidden mdUp>
-            <ResponsiveNavigationMenu />
+            <ResponsiveNavigationMenu toggleDrawer={toggleDrawer} openDrawer={openDrawer} />
           </Hidden>
         </Toolbar>
       </AppBar>
       <Toolbar />
-      <DrawerMenu />
+      {openDrawer && <DrawerMenu openDrawer={openDrawer} toggleDrawer={toggleDrawer} />}
       <Outlet />
     </>
   );
