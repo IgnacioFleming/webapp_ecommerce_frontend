@@ -3,6 +3,7 @@ import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/CartContext";
 import alerts from "../utils/alerts/alerts";
 import { useNavigate } from "react-router-dom";
+import { jwt } from "../utils/utils";
 
 export function useGetUserData() {
   const { user, setUserData } = useContext(UserContext);
@@ -13,7 +14,9 @@ export function useGetUserData() {
     if (Object.keys(user).length === 0) {
       fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/current`, {
         method: "GET",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
       })
         .then((res) => res.json())
         .then((json) => {
@@ -31,7 +34,9 @@ export function useGetUserData() {
     if (Object.keys(user).length !== 0 && user.role !== "admin") {
       fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
       })
         .then((res) => res.json())
         .then((json) => setCart(json.payload.products))

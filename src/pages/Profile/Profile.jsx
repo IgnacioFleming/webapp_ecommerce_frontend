@@ -7,6 +7,7 @@ import { UserContext } from "../../context/UserContext";
 import { MdEdit } from "react-icons/md";
 import UploadButton from "../../components/FileUpload/UploadButton";
 import { useGetProfileImage } from "../../hooks/useGetProfileImage";
+import { jwt } from "../../utils/utils";
 
 const Profile = () => {
   const navigate = useNavigate();
@@ -22,12 +23,15 @@ const Profile = () => {
   const handleLogOut = async () => {
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/logout`, {
       method: "GET",
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
     })
       .then((res) => res.json())
       .then((json) => {
         if (json.status === "success") {
           localStorage.clear("user");
+          localStorage.clear("auth-token");
           return (window.location.href = "/login");
         }
         return alerts.errorAlert(json.message);

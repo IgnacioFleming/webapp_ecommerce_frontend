@@ -1,11 +1,15 @@
+import { jwt } from "../utils/utils";
+
 export default class PaymentService {
   constructor() {}
   async createPaymentIntent({ amount, currency }) {
     const fetchData = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/payments/create-payment-intent`, {
       method: "POST",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
       },
       body: JSON.stringify({ amount, currency }),
     });

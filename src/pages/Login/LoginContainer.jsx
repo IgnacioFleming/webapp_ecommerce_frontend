@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { UserContext } from "../../context/UserContext";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { jwt } from "../../utils/utils";
 
 function LoginContainer() {
   const navigate = useNavigate();
@@ -26,14 +27,14 @@ function LoginContainer() {
   async function loginUser({ email, password }) {
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/login`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
+      headers: { "Content-Type": "application/json", Authorization: `Bearer ${jwt}` },
       body: JSON.stringify({ email, password }),
     })
       .then((res) => res.json())
       .then((json) => {
         if (json.status === "success") {
-          setUserData(json.description.dtoUser);
+          setUserData(json.payload.dtoUser);
+          localStorage.setItem("auth-token", json.payload.token);
           navigate("/products");
         } else {
           Swal.fire({ title: "Invalid Credentials", text: "User or Password values are incorrect.", timer: 6000, icon: "warning" });

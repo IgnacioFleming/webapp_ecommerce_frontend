@@ -1,4 +1,5 @@
 import alerts from "../utils/alerts/alerts";
+import { jwt } from "../utils/utils";
 
 export default class ApiCall {
   constructor(path) {
@@ -9,7 +10,7 @@ export default class ApiCall {
     try {
       const result = await fetch(`${this.path}/uploadProfileImage/${id}`, {
         method: "PUT",
-        credentials: "include",
+        headers: { Authorization: `Bearer ${jwt}` },
         body: data,
       });
       const payload = await result.json();
@@ -22,7 +23,7 @@ export default class ApiCall {
     try {
       const result = await fetch(`${this.path}/profileImage/${id}`, {
         method: "GET",
-        credentials: "include",
+        headers: { Authorization: `Bearer ${jwt}` },
       });
       const { payload } = await result.json();
       return payload;
