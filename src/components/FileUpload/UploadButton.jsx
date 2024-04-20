@@ -23,7 +23,7 @@ const VissualyHiddenInput = styled(
 });
 
 function UploadButton({ multiple = false, icon, variant, sx, text = "" }) {
-  const { user, updateUserProfileImage } = useContext(UserContext);
+  const { user, updateUserProfileImage, token } = useContext(UserContext);
   const fileRef = useRef(null);
   const buildFormDataWithFile = (file) => {
     const formData = new FormData();
@@ -43,7 +43,7 @@ function UploadButton({ multiple = false, icon, variant, sx, text = "" }) {
       if (selection.isConfirmed) {
         const formData = buildFormDataWithFile(e.target.files[0]);
         const uploadData = new UserApiCall();
-        const result = await uploadData.upload(user.id, formData);
+        const result = await uploadData.upload(user.id, formData, token);
         if (result?.status === "success") return updateUserProfileImage(result.payload);
         else alerts.errorAlert("There was an error while processing your data");
       } else {

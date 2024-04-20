@@ -3,10 +3,9 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import alerts from "../../utils/alerts/alerts";
-import { jwt } from "../../utils/utils";
 
 const ItemCard = ({ item, refresh }) => {
-  const { user } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
   const handleDelete = async (id) => {
     try {
       const modal = await alerts.warningAlert("Delete Product", "Are you sure you want to delete this product?", { needConfirmation: true });
@@ -16,7 +15,7 @@ const ItemCard = ({ item, refresh }) => {
         let result = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
           method: "DELETE",
           headers: {
-            Authorization: `Bearer ${jwt}`,
+            Authorization: `Bearer ${token}`,
           },
         });
         if (result.status === "error") return alerts.errorAlert(result.description);

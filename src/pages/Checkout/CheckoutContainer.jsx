@@ -2,11 +2,10 @@ import { useContext, useState } from "react";
 import Checkout from "./Checkout";
 import { CartContext } from "../../context/CartContext";
 import { UserContext } from "../../context/UserContext";
-import { jwt } from "../../utils/utils";
 
 const CheckoutContainer = () => {
   const { cart, cartAmount, setCart, cartQuantity } = useContext(CartContext);
-  const { user } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
   const [orderId, setOrderId] = useState(null);
   let totalQuantity = cartQuantity();
 
@@ -15,14 +14,14 @@ const CheckoutContainer = () => {
     const purchase = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}/purchase`, {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     const ticketData = await purchase.json();
     const result = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     });
     const { payload } = await result.json();

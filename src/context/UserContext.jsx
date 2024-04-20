@@ -4,10 +4,16 @@ export const UserContext = createContext();
 
 const UserContextProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [token, setToken] = useState(localStorage.getItem("auth-token") || "");
   const [isAdmin, setIsAdmin] = useState(false);
   const setUserData = (data) => {
     setUser(data);
     data.role === "admin" && setIsAdmin(true);
+  };
+
+  const setNewToken = (token) => {
+    setToken(token);
+    localStorage.setItem("auth-token", token);
   };
 
   const updateUserProfileImage = (image) => {
@@ -21,6 +27,8 @@ const UserContextProvider = ({ children }) => {
     setUserData,
     isAdmin,
     updateUserProfileImage,
+    token,
+    setNewToken,
   };
 
   return <UserContext.Provider value={data}>{children}</UserContext.Provider>;
