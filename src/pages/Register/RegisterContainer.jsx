@@ -4,7 +4,6 @@ import Register from "./Register";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import swal from "sweetalert2";
-import { jwt } from "../../utils/utils";
 
 function RegisterContainer() {
   const navigate = useNavigate();
@@ -44,8 +43,7 @@ function RegisterContainer() {
   async function registerUser(data) {
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/register`, {
       method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${jwt}` },
-      credentials: "include",
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
