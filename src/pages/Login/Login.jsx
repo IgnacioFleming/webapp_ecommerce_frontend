@@ -6,14 +6,16 @@ import { GithubLoginButton } from "react-social-login-buttons";
 import { Link } from "react-router-dom";
 import PasswordInput from "./PasswordInput";
 
-const gridStyle = { display: "flex", alignItems: "center", justifyContent: "center" };
+const gridStyle = { display: "flex", alignItems: "center", justifyContent: "center", width: "100%" };
 
 const formContainer = {
   display: "flex",
   flexDirection: "column",
-  width: "80%",
-  height: "100%",
+  width: { md: "80%" },
   justifyContent: "center",
+  alignItems: { xs: "center", md: "flex-start" },
+  backgroundColor: "white",
+  padding: 2,
 };
 
 const thirdPartyAuthButtonStyle = {
@@ -34,10 +36,11 @@ const Login = ({ handleChange, handleSubmit, values, errors }) => {
     <>
       <div className={styles.container}>
         <Grid container>
-          <Grid md sx={gridStyle}>
+          <Grid md sx={{ ...gridStyle, position: { xs: "absolute", md: "static" }, zIndex: -1 }}>
             <img className={styles.mainImg} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1711660908/Eccomerce/Authentication/login-left-image.jpg" alt="Main image" />
           </Grid>
-          <Grid md sx={gridStyle}>
+
+          <Grid xs={12} md sx={{ ...gridStyle, height: "100vh" }}>
             <Box sx={formContainer}>
               <img className={styles.logo} src="https://res.cloudinary.com/dah7yxmc5/image/upload/v1680611686/Eccomerce/logo_ecommerce_ci16kw.png" alt="Logo.png" />
               <Typography variant="h2" color="initial" mb={1} fontWeight="semibold">

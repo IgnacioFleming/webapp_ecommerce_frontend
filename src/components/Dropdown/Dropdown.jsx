@@ -52,7 +52,7 @@ const Dropdown = ({ title, type, listItems }) => {
       <Menu anchorEl={anchorEl} id="account-menu" open={open} onClose={handleClose} onClick={handleClose} transformOrigin={{ horizontal: "left", vertical: "top" }} anchorOrigin={{ horizontal: "left", vertical: "bottom" }} PaperProps={paperProps}>
         <List>
           {listItems.map((item) => {
-            const path = item._id.toLowerCase() === "todos" ? "/products" : `/products/category/${item._id.toLowerCase()}`;
+            const path = item?._id?.toLowerCase() === "todos" ? "/products" : `/products/category/${item._id.toLowerCase()}`;
             return (
               <ListItemButton key={item._id} onClick={() => navigate(path)}>
                 <ListItemText onClick={handleClose} primary={item._id} sx={{ textTransform: "capitalize" }} />

@@ -24,7 +24,7 @@ const MyTickets = () => {
     <>
       {myTickets.payload?.length === 0 ? (
         <Box sx={boxStyle}>
-          <Typography variant="h4" color="initial">
+          <Typography variant="h4" color="initial" sx={{ textAlign: "center" }}>
             You have not purchases yet.
           </Typography>
           <Button variant="contained" onClick={() => navigate("/products")}>

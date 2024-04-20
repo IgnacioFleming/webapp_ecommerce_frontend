@@ -24,7 +24,7 @@ const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
             <Button onClick={quitar}>
               <AiOutlineMinusSquare size={20} />
             </Button>
-            <Box sx={{ display: "flex", alignItems: "center", paddingBottom: 0.5 }}>{counter}</Box>
+            <Box sx={{ display: "flex", alignItems: "center" }}>{counter}</Box>
             <Button onClick={() => agregar(stock)}>
               <AiOutlinePlusSquare size={20} />
             </Button>
