@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
+import { jwt } from "../utils/utils";
 
 export const CartContext = createContext();
 
@@ -12,7 +13,9 @@ const CartContextProvider = ({ children }) => {
     if (user.cart) {
       fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
-        credentials: "include",
+        headers: {
+          Authorization: `Bearer ${jwt}`,
+        },
       })
         .then((res) => res.json())
         .then((json) => {
@@ -25,16 +28,18 @@ const CartContextProvider = ({ children }) => {
   const addToCart = async (product, quantity) => {
     await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}/products/${product}`, {
       method: "POST",
-      credentials: "include",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${jwt}`,
       },
       body: JSON.stringify({ quantity }),
     });
 
     await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "GET",
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
     })
       .then((res) => res.json())
       .then((json) => {
@@ -53,7 +58,9 @@ const CartContextProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}/products/${id}`, {
       method: "DELETE",
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
     });
   };
   const cartAmount = () => {
@@ -83,7 +90,9 @@ const CartContextProvider = ({ children }) => {
     localStorage.setItem("cart", JSON.stringify([]));
     await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "DELETE",
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
     });
   };
 

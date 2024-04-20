@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
 import alerts from "../../utils/alerts/alerts";
+import { jwt } from "../../utils/utils";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
@@ -13,7 +14,9 @@ const ItemDetailContainer = () => {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
       method: "GET",
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
     })
       .then((res) => res.json())
       .then((json) => {

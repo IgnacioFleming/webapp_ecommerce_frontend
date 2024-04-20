@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../context/UserContext";
 import alerts from "../../utils/alerts/alerts";
+import { jwt } from "../../utils/utils";
 
 const ItemCard = ({ item, refresh }) => {
   const { user } = useContext(UserContext);
@@ -14,7 +15,9 @@ const ItemCard = ({ item, refresh }) => {
         refresh(id);
         let result = await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
           method: "DELETE",
-          credentials: "include",
+          headers: {
+            Authorization: `Bearer ${jwt}`,
+          },
         });
         if (result.status === "error") return alerts.errorAlert(result.description);
         return alerts.successAlert("Product Deleted!", "This product was deleted successfully");

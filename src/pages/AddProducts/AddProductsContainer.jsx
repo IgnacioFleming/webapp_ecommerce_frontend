@@ -3,6 +3,7 @@ import AddProducts from "./AddProducts";
 import * as Yup from "yup";
 import { useState } from "react";
 import alerts from "../../utils/alerts/alerts";
+import { jwt } from "../../utils/utils";
 
 function AddProductsContainer() {
   const [selectedFiles, setSelectedFiles] = useState([]);
@@ -39,7 +40,9 @@ function AddProductsContainer() {
     selectedFiles.length > 0 && selectedFiles.forEach((file) => formData.append("thumbnail", file));
 
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products`, {
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
       method: "POST",
       body: formData,
     })

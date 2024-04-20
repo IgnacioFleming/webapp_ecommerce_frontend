@@ -17,3 +17,5 @@ export const formatCurrency = (number) => {
   });
   return USDollar.format(number);
 };
+
+export const jwt = localStorage.getItem("auth-token") || "";

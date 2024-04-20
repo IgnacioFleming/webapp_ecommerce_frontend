@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { jwt } from "../utils/utils";
 
 const useFetch = (url, method = "GET", dependencies = []) => {
   const navigate = useNavigate();
@@ -7,7 +8,9 @@ const useFetch = (url, method = "GET", dependencies = []) => {
   const fetchFunction = useCallback(() => {
     fetch(url, {
       method,
-      credentials: "include",
+      headers: {
+        Authorization: `Bearer ${jwt}`,
+      },
     })
       .then((res) => res.json())
       .then((json) => {
