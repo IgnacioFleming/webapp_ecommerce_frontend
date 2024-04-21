@@ -13,6 +13,7 @@ import AddProductsContainer from "./pages/AddProducts/AddProductsContainer";
 import Profile from "./pages/Profile/Profile";
 import Navbar from "./layout/Nabvar/Navbar";
 import CartContainer from "./pages/Cart/CartContainer";
+import GithubAuth from "./pages/GithubAuth/GithubAuth";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                 </Route>
                 <Route path="/login" element={<LoginContainer />}></Route>
                 <Route path="/register" element={<RegisterContainer />}></Route>
+                <Route path="/auth/*" element={<GithubAuth />}></Route>
                 <Route
                   path="*"
                   element={
