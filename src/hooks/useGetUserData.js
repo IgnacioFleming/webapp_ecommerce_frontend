@@ -3,10 +3,9 @@ import { UserContext } from "../context/UserContext";
 import { CartContext } from "../context/CartContext";
 import alerts from "../utils/alerts/alerts";
 import { useNavigate } from "react-router-dom";
-import { jwt } from "../utils/utils";
 
 export function useGetUserData() {
-  const { user, setUserData } = useContext(UserContext);
+  const { user, setUserData, token } = useContext(UserContext);
   const { setCart } = useContext(CartContext);
   const navigate = useNavigate();
 
@@ -15,7 +14,7 @@ export function useGetUserData() {
       fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/current`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${jwt}`,
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((res) => res.json())
@@ -26,7 +25,6 @@ export function useGetUserData() {
         .catch((err) => {
           console.log("trigger this alert");
           alerts.errorAlert(err);
-          // setTimeout(() => (window.location.href = "/login"), 3000);
         });
     }
   }, []);
@@ -35,7 +33,7 @@ export function useGetUserData() {
       fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${jwt}`,
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((res) => res.json())

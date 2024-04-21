@@ -4,18 +4,19 @@ import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import Swal from "sweetalert2";
 import alerts from "../../utils/alerts/alerts";
-import { jwt } from "../../utils/utils";
+import { UserContext } from "../../context/UserContext";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
   const { addToCart, getCartQuantity } = useContext(CartContext);
+  const { token } = useContext(UserContext);
 
   useEffect(() => {
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products/${id}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

@@ -7,11 +7,10 @@ import { UserContext } from "../../context/UserContext";
 import { MdEdit } from "react-icons/md";
 import UploadButton from "../../components/FileUpload/UploadButton";
 import { useGetProfileImage } from "../../hooks/useGetProfileImage";
-import { jwt } from "../../utils/utils";
 
 const Profile = () => {
   const navigate = useNavigate();
-  const { user } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
   const profileImage = useGetProfileImage();
   const entries = [
     ["first_name", "Name:"],
@@ -24,7 +23,7 @@ const Profile = () => {
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/sessions/logout`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

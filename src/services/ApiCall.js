@@ -1,16 +1,15 @@
 import alerts from "../utils/alerts/alerts";
-import { jwt } from "../utils/utils";
 
 export default class ApiCall {
   constructor(path) {
     this.path = path;
   }
 
-  async upload(id, data) {
+  async upload(id, data, token) {
     try {
       const result = await fetch(`${this.path}/uploadProfileImage/${id}`, {
         method: "PUT",
-        headers: { Authorization: `Bearer ${jwt}` },
+        headers: { Authorization: `Bearer ${token}` },
         body: data,
       });
       const payload = await result.json();
@@ -19,11 +18,11 @@ export default class ApiCall {
       alerts.errorAlert("There was a problem while processing your data");
     }
   }
-  async getProfileImage(id) {
+  async getProfileImage(id, token) {
     try {
       const result = await fetch(`${this.path}/profileImage/${id}`, {
         method: "GET",
-        headers: { Authorization: `Bearer ${jwt}` },
+        headers: { Authorization: `Bearer ${token}` },
       });
       const { payload } = await result.json();
       return payload;

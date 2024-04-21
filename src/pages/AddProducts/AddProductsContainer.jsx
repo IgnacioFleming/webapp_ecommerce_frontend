@@ -1,12 +1,13 @@
 import { useFormik } from "formik";
 import AddProducts from "./AddProducts";
 import * as Yup from "yup";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import alerts from "../../utils/alerts/alerts";
-import { jwt } from "../../utils/utils";
+import { UserContext } from "../../context/UserContext";
 
 function AddProductsContainer() {
   const [selectedFiles, setSelectedFiles] = useState([]);
+  const { token } = useContext(UserContext);
 
   const { handleChange, handleSubmit, values, errors, resetForm } = useFormik({
     initialValues: {
@@ -41,7 +42,7 @@ function AddProductsContainer() {
 
     fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/products`, {
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
       method: "POST",
       body: formData,

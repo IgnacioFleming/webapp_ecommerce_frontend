@@ -1,20 +1,18 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { UserContext } from "./UserContext";
-import { jwt } from "../utils/utils";
-
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
   const [cart, setCart] = useState(JSON.parse(localStorage.getItem("cart")) || []);
 
-  const { user } = useContext(UserContext);
+  const { user, token } = useContext(UserContext);
 
   useEffect(() => {
     if (user.cart) {
       fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
         method: "GET",
         headers: {
-          Authorization: `Bearer ${jwt}`,
+          Authorization: `Bearer ${token}`,
         },
       })
         .then((res) => res.json())
@@ -30,7 +28,7 @@ const CartContextProvider = ({ children }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({ quantity }),
     });
@@ -38,7 +36,7 @@ const CartContextProvider = ({ children }) => {
     await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())
@@ -59,7 +57,7 @@ const CartContextProvider = ({ children }) => {
     await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}/products/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     });
   };
@@ -91,7 +89,7 @@ const CartContextProvider = ({ children }) => {
     await fetch(`${import.meta.env.VITE_APP_BASE_URL}/api/carts/${user.cart}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     });
   };

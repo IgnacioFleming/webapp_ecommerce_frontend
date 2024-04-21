@@ -1,15 +1,16 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { jwt } from "../utils/utils";
+import { UserContext } from "../context/UserContext";
 
 const useFetch = (url, method = "GET", dependencies = []) => {
+  const { token } = useContext(UserContext);
   const navigate = useNavigate();
   const [payload, setPayload] = useState();
   const fetchFunction = useCallback(() => {
     fetch(url, {
       method,
       headers: {
-        Authorization: `Bearer ${jwt}`,
+        Authorization: `Bearer ${token}`,
       },
     })
       .then((res) => res.json())

@@ -9,7 +9,7 @@ import Swal from "sweetalert2";
 function LoginContainer() {
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
-  const { setUserData } = useContext(UserContext);
+  const { setUserData, setNewToken } = useContext(UserContext);
 
   const { handleChange, handleSubmit, values, errors, resetForm } = useFormik({
     initialValues: {
@@ -33,7 +33,7 @@ function LoginContainer() {
       .then((json) => {
         if (json.status === "success") {
           setUserData(json.payload.dtoUser);
-          localStorage.setItem("auth-token", json.payload.token);
+          setNewToken(json.payload.token);
           navigate("/products");
         } else {
           Swal.fire({ title: "Invalid Credentials", text: "User or Password values are incorrect.", timer: 6000, icon: "warning" });
