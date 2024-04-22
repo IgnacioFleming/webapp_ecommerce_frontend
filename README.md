@@ -77,14 +77,15 @@ The application will be available at `http://localhost:5173`.
 
 ```bash
 src/
-├── components/     # Reusable UI components
-├── pages/          # Page-level components (Home, Cart, Checkout, etc.)
-├── services/       # API services (Axios handlers)
-├── hooks/          # Custom React hooks
-├── context/        # Context API providers for global state
-├── utils/          # Helper functions
 ├── assets/         # Static images, icons, etc.
-├── styles/         # Global and modular styles
+├── components/     # Reusable UI components
+├── context/        # Context API providers for global state
+├── hooks/          # Custom React hooks
+├── layout/         # Layout-level components (Navbar, Drawer)
+├── pages/          # Page-level components (Home, Cart, Checkout, etc.)
+├── services/       # API services (fetch handlers)
+├── theme/          # MUI theme configuration for global styles
+├── utils/          # Helper functions
 └── main.jsx        # Application entry point
 ```
 
