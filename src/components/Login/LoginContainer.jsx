@@ -1,10 +1,15 @@
 import { useFormik } from "formik";
 import Login from "./Login";
 import * as Yup from "yup";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { UserContext } from "../../context/UserContext";
+import { useNavigate } from "react-router-dom";
 
 function LoginContainer() {
+  const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
+  const { user, setUserData } = useContext(UserContext);
+  console.log(user);
   const loginUser = async ({ email, password }) => {
     fetch("http://localhost:8080/api/sessions/login", {
       method: "POST",
@@ -13,7 +18,11 @@ function LoginContainer() {
       body: JSON.stringify({ email, password }),
     })
       .then((res) => res.json())
-      .then((json) => console.log(json))
+      .then((json) => {
+        console.log(json);
+        setUserData(json.description.dtoUser);
+        navigate("/products");
+      })
       .catch((err) => console.log(err));
   };
   const { handleChange, handleSubmit, values, errors } = useFormik({
@@ -33,6 +42,7 @@ function LoginContainer() {
       setSubmitted(true);
     }
   }, [errors]);
+
   return (
     <div>
       <Login handleChange={handleChange} handleSubmit={handleSubmit} values={values} errors={errors} />

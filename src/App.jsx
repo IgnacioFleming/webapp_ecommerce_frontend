@@ -11,41 +11,44 @@ import CheckoutContainer from "./components/Checkout/CheckoutContainer";
 import LoginContainer from "./components/Login/LoginContainer.jsx";
 import Current from "./components/Current/current.jsx";
 import RegisterContainer from "./components/Register/RegisterContainer.jsx";
+import UserContextProvider from "./context/UserContext.jsx";
 
 function App() {
   return (
     <>
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <CartContextProvider>
-            <Routes>
-              <Route element={<Navbar />}>
-                <Route path="/" element={<Navigate to="/products" />} />
-                <Route path="/products" element={<ItemListContainer />} />
-                <Route path="/category/:categoryName" element={<ItemListContainer />} />
-                <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
-                <Route path="/cart" element={<CartContainer />} />
-                <Route path="/checkout" element={<CheckoutContainer />} />
-              </Route>
-              <Route path="/login" element={<LoginContainer />}></Route>
-              <Route path="/register" element={<RegisterContainer />}></Route>
-              <Route path="/current" element={<Current />}></Route>
-              <Route
-                path="*"
-                element={
-                  <h1
-                    style={{
-                      textAlign: "center",
-                      fontSize: 50,
-                      paddingTop: 30,
-                    }}
-                  >
-                    La Pagina buscada no existe
-                  </h1>
-                }
-              />
-            </Routes>
-          </CartContextProvider>
+          <UserContextProvider>
+            <CartContextProvider>
+              <Routes>
+                <Route element={<Navbar />}>
+                  <Route path="/" element={<Navigate to="/products" />} />
+                  <Route path="/products" element={<ItemListContainer />} />
+                  <Route path="/category/:categoryName" element={<ItemListContainer />} />
+                  <Route path="/itemDetail/:id" element={<ItemDetailContainer />} />
+                  <Route path="/cart" element={<CartContainer />} />
+                  <Route path="/checkout" element={<CheckoutContainer />} />
+                </Route>
+                <Route path="/login" element={<LoginContainer />}></Route>
+                <Route path="/register" element={<RegisterContainer />}></Route>
+                <Route path="/current" element={<Current />}></Route>
+                <Route
+                  path="*"
+                  element={
+                    <h1
+                      style={{
+                        textAlign: "center",
+                        fontSize: 50,
+                        paddingTop: 30,
+                      }}
+                    >
+                      La Pagina buscada no existe
+                    </h1>
+                  }
+                />
+              </Routes>
+            </CartContextProvider>
+          </UserContextProvider>
         </BrowserRouter>
       </ThemeProvider>
     </>
