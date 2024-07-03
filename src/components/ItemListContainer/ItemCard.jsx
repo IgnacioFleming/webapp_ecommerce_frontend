@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const ItemCard = ({ item }) => {
-  console.log(item);
   return (
     <Card sx={{ maxWidth: 300, padding: "10px" }}>
       <CardMedia

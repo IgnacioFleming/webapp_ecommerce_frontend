@@ -21,6 +21,7 @@ function LoginContainer() {
       .then((json) => {
         console.log(json);
         setUserData(json.description.dtoUser);
+        localStorage.setItem("user", JSON.stringify(json.description.dtoUser));
         navigate("/products");
       })
       .catch((err) => console.log(err));

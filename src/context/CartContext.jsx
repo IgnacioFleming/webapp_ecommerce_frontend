@@ -4,15 +4,15 @@ import { UserContext } from "./UserContext";
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-  // let localCart = JSON.parse(localStorage.getItem("cart"));
+  let localCart = localStorage.getItem("cart");
 
-  // let initialCart = localCart || [];
+  let initialCart = JSON.parse(localCart) || [];
 
-  const [cart, setCart] = useState([]);
+  const [cart, setCart] = useState(initialCart);
 
   const { user } = useContext(UserContext);
-  console.log(cart);
-  console.log(user.cart);
+  console.log(user);
+
   useEffect(() => {
     if (user.cart) {
       const data = fetch(`http://localhost:8080/api/carts/${user.cart}`, {
@@ -22,27 +22,15 @@ const CartContextProvider = ({ children }) => {
         .then((res) => res.json())
         .then((json) => {
           console.log(json);
-          setCart(json.products);
+          setCart(json.payload.products);
+          localStorage.setItem("cart", JSON.stringify(json.payload.products));
+          console.log(cart);
         });
-      console.log(data);
     }
   }, [user]);
 
   const addToCart = (product) => {
-    // let exists = isInCart(producto.id);
-
-    // if (exists) {
-    //   let newCart = cart.map((e) => {
-    //     if (e.id === producto.id) {
-    //       return { ...e, quantity: producto.quantity };
-    //     } else {
-    //       return e;
-    //     }
-    //   });
-    //   setCart(newCart);
-    // } else {
-    //   setCart([...cart, producto]);
-    // }
+    console.log(user);
 
     fetch(`http://localhost:8080/api/carts/${user.cart}/products/${product}`, {
       method: "POST",
@@ -75,7 +63,7 @@ const CartContextProvider = ({ children }) => {
 
   const cartQuantity = () => {
     console.log(cart, "en la funcion cartQuantity");
-    if (cart.length > 0) {
+    if (cart?.length > 0) {
       let itemsQuantity = cart.reduce((acc, e) => {
         return acc + e.quantity;
       }, 0);
