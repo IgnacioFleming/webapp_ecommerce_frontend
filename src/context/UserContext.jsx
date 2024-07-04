@@ -8,7 +8,6 @@ const UserContextProvider = ({ children }) => {
   const setUserData = (data) => {
     setUser(data);
   };
-  console.log(user);
   let data = {
     user,
     setUserData,

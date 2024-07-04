@@ -12,8 +12,8 @@ const counterStyles = {
 };
 
 const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
-  stock === 0 && (initial = 0);
-  const { counter, agregar, quitar, reset } = useCounter(initial);
+  const adjustedInitial = stock === 0 ? 0 : initial;
+  const { counter, agregar, quitar, reset } = useCounter(adjustedInitial);
   return (
     <Grid container>
       <Grid item xs={12}>

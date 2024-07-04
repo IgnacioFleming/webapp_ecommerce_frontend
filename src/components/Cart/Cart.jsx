@@ -44,7 +44,6 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
         spacing={5}
       >
         {cart.map((e) => {
-          console.log(cart);
           return (
             <Item
               sx={{
@@ -67,7 +66,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
                         objectFit: "contain",
                         paddingLeft: 100,
                       }}
-                      src={e.img}
+                      src={e.product.thumbnails[0]}
                     />
                   </Box>
                 </Grid>
@@ -120,7 +119,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
                   </Typography>
                 </Grid>
                 <Grid item md={2} sx={{ display: "flex", alignItems: "center" }}>
-                  <Button variant="contained" onClick={() => deleteFromCart(e.id)}>
+                  <Button variant="contained" onClick={() => deleteFromCart(e.product._id)}>
                     Eliminar
                   </Button>
                 </Grid>

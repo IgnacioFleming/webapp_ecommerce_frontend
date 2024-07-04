@@ -68,7 +68,6 @@ function RegisterContainer() {
           })
           .then((res) => {
             if (res.isConfirmed) {
-              console.log("confirmed");
               navigate("/login");
             }
           });

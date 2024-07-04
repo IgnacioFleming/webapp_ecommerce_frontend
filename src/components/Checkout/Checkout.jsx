@@ -1,27 +1,10 @@
-import {
-  Avatar,
-  Box,
-  Button,
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemAvatar,
-  ListItemText,
-  Typography,
-} from "@mui/material";
+import { Avatar, Box, Button, Divider, Grid, List, ListItem, ListItemAvatar, ListItemText, Typography } from "@mui/material";
 import React from "react";
 import FormCheckoutContainer from "../FormCheckout/FormCheckoutContainer";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
 
-const Checkout = ({
-  cart,
-  cartAmount,
-  completePurchase,
-  orderId,
-  isLoading,
-}) => {
+const Checkout = ({ cart, cartAmount, completePurchase, orderId, isLoading }) => {
   const total = cartAmount();
   if (isLoading) {
     return <Loader />;
@@ -30,21 +13,10 @@ const Checkout = ({
     <>
       {orderId ? (
         <Box>
-          <Typography
-            align="center"
-            mt={30}
-            mb={10}
-            variant="h1"
-            color="initial"
-          >
+          <Typography align="center" mt={30} mb={10} variant="h1" color="initial">
             Felicitaciones!!
           </Typography>
-          <Typography
-            align="center"
-            variant="subtitle2"
-            color="initial"
-            sx={{ fontSize: 20 }}
-          >
+          <Typography align="center" variant="subtitle2" color="initial" sx={{ fontSize: 20 }}>
             Tu compra se realizó con éxito! Tu número de orden es
             <strong> {orderId}</strong> .<br />
             <br /> <br /> Muchas gracias por elegirnos!!
@@ -78,7 +50,6 @@ const Checkout = ({
                   }}
                 >
                   {cart.map((e) => {
-                    console.log(e);
                     return (
                       <>
                         <ListItem alignItems="flex-start">
@@ -94,21 +65,11 @@ const Checkout = ({
                                   flexDirection: "column",
                                 }}
                               >
-                                <Typography
-                                  sx={{ display: "inline" }}
-                                  component="span"
-                                  variant="body2"
-                                  color="text.primary"
-                                >
+                                <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
                                   Cantidad: {e.quantity}
                                 </Typography>
 
-                                <Typography
-                                  sx={{ display: "inline" }}
-                                  component="span"
-                                  variant="body2"
-                                  color="text.primary"
-                                >
+                                <Typography sx={{ display: "inline" }} component="span" variant="body2" color="text.primary">
                                   Monto: $ {e.quantity * e.price}
                                 </Typography>
                               </Box>

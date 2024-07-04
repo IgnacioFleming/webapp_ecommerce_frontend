@@ -9,7 +9,6 @@ function Current() {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         setUser(json);
       })
       .catch((err) => console.log(err));

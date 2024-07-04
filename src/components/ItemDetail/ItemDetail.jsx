@@ -8,7 +8,7 @@ const cardActionsStyle = {
   marginBottom: 6,
 };
 
-const ItemDetail = ({ item, onAdd, cantidad }) => {
+const ItemDetail = ({ item, onAdd, quantity }) => {
   return (
     <div style={{ display: "flex", justifyContent: "center" }} key={item.id}>
       <Card
@@ -76,7 +76,7 @@ const ItemDetail = ({ item, onAdd, cantidad }) => {
               </Typography>
             </CardContent>
             <CardActions sx={cardActionsStyle}>
-              <CounterContainer stock={item.stock} onAdd={onAdd} initial={cantidad} />
+              <CounterContainer stock={item.stock} onAdd={onAdd} initial={quantity} />
             </CardActions>
           </Grid>
         </Grid>

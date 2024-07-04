@@ -9,7 +9,6 @@ function LoginContainer() {
   const navigate = useNavigate();
   const [submitted, setSubmitted] = useState(false);
   const { user, setUserData } = useContext(UserContext);
-  console.log(user);
   const loginUser = async ({ email, password }) => {
     fetch("http://localhost:8080/api/sessions/login", {
       method: "POST",
@@ -19,7 +18,6 @@ function LoginContainer() {
     })
       .then((res) => res.json())
       .then((json) => {
-        console.log(json);
         setUserData(json.description.dtoUser);
         localStorage.setItem("user", JSON.stringify(json.description.dtoUser));
         navigate("/products");
