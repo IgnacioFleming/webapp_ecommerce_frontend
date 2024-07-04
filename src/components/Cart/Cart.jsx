@@ -1,13 +1,4 @@
-import {
-  Box,
-  Button,
-  Divider,
-  Grid,
-  List,
-  Paper,
-  Stack,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Divider, Grid, List, Paper, Stack, Typography } from "@mui/material";
 import React from "react";
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
@@ -63,15 +54,11 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
                 justifyContent: "space-evenly",
                 alignItems: "center",
               }}
-              key={e.id}
+              key={e._id}
               elevation={5}
             >
               <Grid container>
-                <Grid
-                  item
-                  md={1}
-                  sx={{ display: "flex", alignItems: "center" }}
-                >
+                <Grid item md={1} sx={{ display: "flex", alignItems: "center" }}>
                   <Box sx={{ height: "80%", width: "80%" }}>
                     <img
                       style={{
@@ -107,12 +94,7 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
                     gap: 1,
                   }}
                 >
-                  <Typography
-                    gutterBottom
-                    sx={{ fontWeight: "bold" }}
-                    variant="subtitle1"
-                    color="initial"
-                  >
+                  <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
                     Cantidad
                   </Typography>
                   <Typography gutterBottom variant="h5" color="initial">
@@ -130,27 +112,15 @@ const Cart = ({ cart, deleteFromCart, totalAmount, setCartEmpty }) => {
                     gap: 1,
                   }}
                 >
-                  <Typography
-                    gutterBottom
-                    sx={{ fontWeight: "bold" }}
-                    variant="subtitle1"
-                    color="initial"
-                  >
+                  <Typography gutterBottom sx={{ fontWeight: "bold" }} variant="subtitle1" color="initial">
                     Importe
                   </Typography>
                   <Typography gutterBottom variant="h5" color="initial">
-                    {e.quantity * e.price}
+                    {e.quantity * e.product.price}
                   </Typography>
                 </Grid>
-                <Grid
-                  item
-                  md={2}
-                  sx={{ display: "flex", alignItems: "center" }}
-                >
-                  <Button
-                    variant="contained"
-                    onClick={() => deleteFromCart(e.id)}
-                  >
+                <Grid item md={2} sx={{ display: "flex", alignItems: "center" }}>
+                  <Button variant="contained" onClick={() => deleteFromCart(e.id)}>
                     Eliminar
                   </Button>
                 </Grid>

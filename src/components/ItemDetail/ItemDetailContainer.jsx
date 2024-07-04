@@ -2,28 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
-import { db } from "../../firebaseConfig";
-import { collection, doc, getDoc } from "firebase/firestore";
 import Swal from "sweetalert2";
 
 const ItemDetailContainer = () => {
   const { id } = useParams();
   const [item, setItem] = useState({});
   const { addToCart, getCartQuantity } = useContext(CartContext);
-
-  // useEffect(() => {
-  //   const itemCollection = collection(db, "products");
-  //   const itemFiltered = doc(itemCollection, id);
-  //   getDoc(itemFiltered)
-  //     .then((res) => {
-  //       const product = {
-  //         ...res.data(),
-  //         id: res.id,
-  //       };
-  //       setItem(product);
-  //     })
-  //     .catch((err) => console.log(err));
-  // }, [id]);
 
   useEffect(() => {
     fetch(`http://localhost:8080/api/products/${id}`, {
@@ -39,8 +23,8 @@ const ItemDetailContainer = () => {
   }, [id]);
 
   const onAdd = (cantidad) => {
-    cantidad > 0 && addToCart(item._id);
-
+    cantidad > 0 && addToCart(item._id, { quantity: cantidad });
+    console.log(cantidad);
     Swal.fire({
       position: "center",
       icon: "success",

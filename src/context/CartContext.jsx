@@ -29,15 +29,29 @@ const CartContextProvider = ({ children }) => {
     }
   }, [user]);
 
-  const addToCart = (product) => {
-    console.log(user);
-
+  const addToCart = (product, quantity) => {
+    console.log(quantity);
     fetch(`http://localhost:8080/api/carts/${user.cart}/products/${product}`, {
       method: "POST",
       credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ quantity }),
     })
       .then((res) => res.json())
       .then((json) => console.log(json));
+
+    fetch(`http://localhost:8080/api/carts/${user.cart}`, {
+      method: "GET",
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        console.log("paso por el addcart", json);
+        setCart(json.payload.products);
+        localStorage.setItem("cart", JSON.stringify(json.payload.products));
+      });
   };
 
   const isInCart = (id) => {
