@@ -20,7 +20,7 @@ const Counter = ({ stock, onAdd, notDisabled, initial = 1 }) => {
     <Grid container>
       {!isAdmin && (
         <Grid item xs={12}>
-          <div style={counterStyles}>
+          <div style={counterStyles} data-testid="counter-controls">
             <Button onClick={quitar}>
               <AiOutlineMinusSquare size={20} />
             </Button>

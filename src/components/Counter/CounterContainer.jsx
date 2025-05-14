@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Counter from "./Counter";
 
-const CounterContainer = ({ stock, onAdd, initial }) => {
+const CounterContainer = ({ stock, onAdd, initial = 1 }) => {
   const [notDisabled, setNotDisabled] = useState(false);
   useEffect(() => {
     stock !== 0 && setNotDisabled(true);
