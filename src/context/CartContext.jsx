@@ -45,10 +45,6 @@ const CartContextProvider = ({ children }) => {
         localStorage.setItem("cart", JSON.stringify(json.payload.products));
       });
   };
-  // const isInCart = (id) => {
-  //   let exists = cart.some((e) => e.id === id);
-  //   return exists;
-  // };
 
   const deleteFromCart = async (id) => {
     const updatedCart = cart.filter((item) => item.product._id !== id);

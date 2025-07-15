@@ -1,0 +1,34 @@
+.container {
+  height: 100vh;
+  margin: 0;
+}
+
+.mainImg {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  justify-self: flex-start;
+}
+
+.logo {
+  object-fit: contain;
+  width: 200px;
+  margin-bottom: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 60%;
+}
+.line {
+  height: 0px;
+  width: 20%;
+  border: solid black 1pt;
+}
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
