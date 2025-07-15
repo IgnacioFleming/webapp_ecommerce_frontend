@@ -15,7 +15,7 @@ function GithubAuth() {
       navigate("/products");
     } else {
       alerts.errorAlert("Authentication failed.");
-      navigate("/login"); // O cualquier otra ruta de error
+      navigate("/demo-login"); // O cualquier otra ruta de error
     }
   }, [navigate]);
 

@@ -19,7 +19,7 @@ export function useGetUserData() {
       })
         .then((res) => res.json())
         .then((json) => {
-          if (json.status === "error") navigate("/login");
+          if (json.status === "error") navigate("/demo-login");
           else setUserData(json.description.user);
         })
         .catch((err) => {

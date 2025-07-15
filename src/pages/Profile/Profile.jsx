@@ -31,7 +31,7 @@ const Profile = () => {
         if (json.status === "success") {
           localStorage.clear("user");
           localStorage.clear("auth-token");
-          return (window.location.href = "/login");
+          return (window.location.href = "/demo-login");
         }
         return alerts.errorAlert(json.message);
       });

@@ -15,10 +15,10 @@ const useFetch = (url, method = "GET", dependencies = []) => {
     })
       .then((res) => res.json())
       .then((json) => {
-        if (json.status === "error") navigate("/login");
+        if (json.status === "error") navigate("/demo-login");
         else setPayload(json.payload);
       })
-      .catch(() => navigate("/login"));
+      .catch(() => navigate("/demo-login"));
   }, [url, method, ...dependencies]);
 
   useEffect(() => {
