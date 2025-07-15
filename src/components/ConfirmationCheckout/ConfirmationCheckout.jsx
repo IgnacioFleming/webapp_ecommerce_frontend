@@ -9,24 +9,15 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
   const elements = useElements();
 
   const handleSubmit = async (event) => {
-    // We don't want to let default form submission happen here,
-    // which would refresh the page.
     event.preventDefault();
-
-    if (!stripe || !elements) {
-      // Stripe.js hasn't yet loaded.
-      // Make sure to disable form submission until Stripe.js has loaded.
-      return;
-    }
-
+    if (!stripe || !elements) return;
     const result = await stripe.confirmPayment({
-      //`Elements` instance that was used to create the Payment Element
       elements,
       redirect: "if_required",
     });
 
     if (result.error) {
-      // Show error to your customer (for example, payment details incomplete)
+      console.log("no tengo que entrar aca");
       await completePurchase(true);
       Swal.fire({
         title: "Error! The Payment was declined",
@@ -36,6 +27,7 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
       });
       elements.getElement(PaymentElement).clear();
     } else {
+      console.log("tengo que entrar aca");
       await completePurchase();
     }
   };
@@ -48,7 +40,7 @@ const ConfirmationCheckout = ({ total, totalQuantity, completePurchase }) => {
         alignItems: "center",
       }}
     >
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} role="form">
         <Typography variant="h5" mt={11} color="initial">
           Please complete your payment details
         </Typography>

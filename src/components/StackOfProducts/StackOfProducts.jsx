@@ -15,9 +15,11 @@ const StackOfProducts = ({ array, hasDeleteAction, deleteFromCart }) => {
         marginBottom: 5,
       }}
       spacing={5}
+      data-testid="stack"
     >
       {array &&
         array.map((e) => {
+          console.log(e);
           return (
             <Container
               sx={{

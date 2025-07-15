@@ -35,8 +35,8 @@ const CartWidget = () => {
   return (
     <>
       {showCart && (
-        <Box sx={boxStyle} onClick={() => navigate("/cart")}>
-          <RiShoppingCartLine size={25} />
+        <Box sx={boxStyle} onClick={() => navigate("/cart")} data-testid="cart-widget-box">
+          <RiShoppingCartLine size={25} data-testid="cart-icon" />
 
           <span style={counterStyle}>{quantity || 0}</span>
         </Box>

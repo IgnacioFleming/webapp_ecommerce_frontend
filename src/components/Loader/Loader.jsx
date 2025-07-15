@@ -7,6 +7,7 @@ const Loader = () => {
         display: "flex",
         justifyContent: "center",
       }}
+      data-testid="loader"
     >
       <TailSpin height="120" width="120" color="black" ariaLabel="tail-spin-loading" wrapperStyle={{ paddingTop: 200 }} />
     </div>

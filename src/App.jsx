@@ -14,6 +14,7 @@ import Profile from "./pages/Profile/Profile";
 import Navbar from "./layout/Nabvar/Navbar";
 import CartContainer from "./pages/Cart/CartContainer";
 import GithubAuth from "./pages/GithubAuth/GithubAuth";
+import DemoLoginContainer from "./pages/DemoLogin/DemoLoginContainer";
 
 function App() {
   return (
@@ -35,6 +36,7 @@ function App() {
                   <Route path="/addProducts" element={<AddProductsContainer />} />
                 </Route>
                 <Route path="/login" element={<LoginContainer />}></Route>
+                <Route path="/demo-login" element={<DemoLoginContainer />}></Route>
                 <Route path="/register" element={<RegisterContainer />}></Route>
                 <Route path="/auth/*" element={<GithubAuth />}></Route>
                 <Route
